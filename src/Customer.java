@@ -7,7 +7,7 @@
 public class Customer {
 
     private String name;
-    private ListArrayBasedPlusN<Item> shoppingCart;
+    private Stack<Item> shoppingCart;
     private int totalTime;
     private int itemAmount;
 
@@ -16,10 +16,26 @@ public class Customer {
         if(!name.isEmpty()){
             this.name = name;
         }
-        shoppingCart = new ListArrayBasedPlusN<Item>();
-        itemAmount = shoppingCart.size();
+        shoppingCart = new Stack<Item>();
+        itemAmount = 0;
         totalTime = 0;
     }
+
+    /**
+     * Basic method will add more logic later
+     * */
+    public void addItem(Item item){
+	    shoppingCart.push(item);
+	    itemAmount++;
+    }
+
+    /**
+     * Basic method will add more logic later
+     * */
+    public Item removeItem(){
+	    Item item = shoppingCart.pop();
+	    return item;
+    }	    
 
     public String getName(){
         return name;
@@ -29,11 +45,11 @@ public class Customer {
         this.name = name;
     }
 
-    public ListArrayBasedPlusN<Item> getShoppingCart(){
+    public Stack<Item> getShoppingCart(){
         return shoppingCart;
     }
 
-    public void setShoppingCart(ListArrayBasedPlusN<Item> shoppingCart){
+    public void setShoppingCart(Stack<Item> shoppingCart){
         this.shoppingCart = shoppingCart;
     }
 
