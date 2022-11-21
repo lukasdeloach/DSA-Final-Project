@@ -1,5 +1,5 @@
 /**
- * Updated with driver options. 
+ * Updated with driver options. No other features added. 
  * - Lukas DeLoach
  */
  
