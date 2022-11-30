@@ -4,4 +4,4 @@ public class ListException extends RuntimeException
     {
         super(s);
     }  // end constructor
-}  // end ListException                                             
+}  // end ListException

@@ -11,4 +11,3 @@ public interface ListInterface<T>
     void removeAll();
     String toString();
 }  // end ListInterface
-                                      

@@ -1,14 +1,13 @@
-public class Node<T> {
-
+public class CNode<T> {
     private T item;
-    private Node<T> next;
+    private CNode<T> next;
 
-    public Node(T newItem) {
+    public CNode(T newItem) {
         item = newItem;
-        next = null;
+        next = this;
     } // end constructor
 
-    public Node(T newItem, Node<T> nextNode) {
+    public CNode(T newItem, CNode<T> nextNode) {
         item = newItem;
         next = nextNode;
     } // end constructor
@@ -21,11 +20,12 @@ public class Node<T> {
         return item;
     } // end getItem
 
-    public void setNext(Node<T> nextNode) {
+    public void setNext(CNode<T> nextNode) {
         next = nextNode;
     } // end setNext
 
-    public Node<T> getNext() {
+    public CNode<T> getNext() {
         return next;
     } // end getNext
-} // end class Node
+}
+

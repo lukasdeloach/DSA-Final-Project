@@ -2,13 +2,14 @@
  * Item Class - will add javadoc later
  * @author Lukas DeLoach
  */
-public class Item {
+public class Item extends KeyedItem<String>{
 
     private String name;
     private int amount;
 
     public Item(String name, int amount){
-        this.name = name;
+        super(name); 
+	this.name = name;
         this.amount = amount;
     }
 
