@@ -23,4 +23,24 @@ public class ShoppingCenterModel{
 		restockingLevel = 0;
 		checkOutStart = 0;
 	}
+
+	public boolean itemSearch(Item item){
+		String name = item.getName();
+		boolean check = true;
+		int result = items.search(name);
+		if(result > -1){
+			check = false;
+		}
+		return check;
+	}
+
+	public boolean customerSearch(Customer customer){
+		String name = customer.getName();
+		boolean check = true;
+		int result = customers.search(name);
+		if(result > -1){
+			check = false;
+		}
+		return check;
+	}
 }
