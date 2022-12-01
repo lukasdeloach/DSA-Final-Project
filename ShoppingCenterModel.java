@@ -1,7 +1,7 @@
 /*
  *
  * NEED TO ADDRESS HANDLING OF AMOUNT OF SHOPPERS ONLY
- *
+ * Curently subtracting, use possible tracker
  */
 
 import java.lang.*;
