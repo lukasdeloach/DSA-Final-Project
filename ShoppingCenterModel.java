@@ -1,8 +1,7 @@
 /*
  *
  * NEED TO ADDRESS HANDLING OF AMOUNT OF SHOPPERS ONLY
- *
- 
+ * 
  */
 
 import java.lang.*;
