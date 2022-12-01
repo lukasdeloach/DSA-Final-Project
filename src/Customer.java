@@ -21,13 +21,14 @@ public class Customer extends KeyedItem<String> {
             this.name = name;
         }
         itemAmount = totalTime = 0;
-	inCheckOut = 0;
+	checkOut = false;
     }
 
     /**
      * Basic method will add more logic later
      * */
-    public void addItem() {
+    public void addItem(Item item) {
+	item.decrementAmount();
         itemAmount++;
     }
 
@@ -55,15 +56,11 @@ public class Customer extends KeyedItem<String> {
         return itemAmount;
     }
 
-    public void addItem() {
-        itemAmount++;;
-    }
-
     public void removeItem(){
 	    itemAmount--;
     }
 
-    public void setCheckOut(int status){
+    public void setCheckOut(boolean status){
 	    checkOut = status;
     }
 

@@ -57,13 +57,13 @@ public class ShoppingCenterModel{
 		}
 	}
 
-	public boolean itemSearch(String name){
+	public int itemSearch(String name){
 		boolean check = true;
 		int result = items.search(name);
 		if(result > -1){
-			check = false;
+			result = -1;
 		}
-		return check;
+		return result;
 	}
 
 	// method to validate customer status, if they return -1, the customer does not exist
@@ -105,14 +105,14 @@ public class ShoppingCenterModel{
 			retStr.append("No customers are in the Shopping Center!");
 		}else{
 			retStr.append("The following " + numCust + " customers are in the Shopping Center:\r");
-			for(int i = 0; i < numCustomers; i++){
+			for(int i = 0; i < numCust; i++){
 				Customer cust = customers.get(i);
-				retStr.append("Customer " +cust.getName() +" with " + cust.getItemAmount() +...
+				retStr.append("Customer " +cust.getName() +" with " + cust.getItemAmount() +
 						" items present for " + cust.getTotalTime() + " minutes.\n");
 			}	
 		}
 
-		return retStr;
+		return retStr.toString();
 	}
 
 

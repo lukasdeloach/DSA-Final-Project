@@ -66,8 +66,11 @@ public class Driver {
                 clearList(myList);
                 break;
             case 6:
-                printListStats(myList);
+                inputCaseSix(shoppingCenter);
                 break;
+	    case 7:
+		inputCaseSeven(shoppingCenter);
+		break;
             default:
                 invalidInput();
                 break;
@@ -118,36 +121,31 @@ public class Driver {
 	System.out.println(">>Enter customer name : ");
 	String name = stdin.readLine().trim();
  	System.out.println(name);
-	int custResult = customerSearch(name);
+	int custResult = store.customerSearch(name);
 	while(custResult<0){
 			
-		if(custResult==-1){
-			System.out.println("Customer " + name + " is now in the Shopping Center.");
-		}
-		else if(custResult==-2){
-			System.out.println("Customer " + name + " is in a checkoutline!");
-		}
 		System.out.println(">>Enter customer name : ");
 		name = stdin.readLine().trim();
 		System.out.println(name);
+		custResult = store.customerSearch(name);
 	}
-	Customer customer = store.getCustomers().get(custResult);
+	Customer customer = (Customer) store.getCustomers().get(custResult);
 	System.out.print("What item does " + name + " want? ");
 	String itemName = stdin.readLine().trim();
 	System.out.println(itemName);
-	int itemResult = itemSearch(itemName);
-	if(itemResult>-1){
+	int itemResult = store.itemSearch(itemName);
+	if(itemResult==-1){
 		System.out.println("No " + itemName + " in Shopping Center.");
 	}
 
 	else{
 		itemResult += store.getItems().size();
-		Item item = store.getItems().get(itemResult);
+		Item item = (Item) store.getItems().get(itemResult);
 		if(item.getAmount() < 1){
 			System.out.println("No " + itemName + " in stock.");
 		}
 		else{
-			customer.addItem();
+			customer.addItem(item);
 			System.out.println("Customer " + name + " has " + customer.getItemAmount() + " in the shopping cart.");
 		}
 	}	
@@ -158,7 +156,7 @@ public class Driver {
     }
 
     public static void inputCaseSeven(ShoppingCenterModel store){
-	    System.out.println(store.displayLine1 + store.displayLine2() + store.displayExpress());
+	    System.out.println(store.displayLine1() + store.displayLine2() + store.displayExpress());
     }
 
     // method to get Item based on index give

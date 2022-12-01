@@ -17,6 +17,10 @@ public class Item extends KeyedItem<String>{
         return name;
     }
 
+    public void decrementAmount(){
+	    amount--;
+    }
+
     public void setName(String name){
         this.name = name;
     }
