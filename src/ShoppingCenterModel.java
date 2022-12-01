@@ -42,19 +42,54 @@ public class ShoppingCenterModel{
 		customers.add(newCust);
 	}
 
-	public void checkOut(){
+	// find out who is checking out next and return their name
+	public String nextCheckOut(){
 		checkOutStart = (checkOutStart + 1) % 3;
+		String nextCust = null;
+                switch(checkOutStart){
+                        case 0:
+                                nextCust = (expressLine.peek()).getName();
+                                break;
+                        case 1:
+				nextCust = (lineOne.peek()).getName();
+                                break;
+                        case 2:
+                                nextCust = (lineTwo.peek()).getName();
+                                break;
+                }
+		return nextCust;
+	}
+
+
+	// check out person based on which checkout lane is next
+	// take in param of if they leave or return shopping
+	// if leave, remove from list of all customers aswell
+	// returns int of how many items they have. If -1, they are leaving and can be ignored,
+	// if they go back to shopping, returns the amount of items they have
+	public int checkOut(boolean leave){
+		int items = -1;
+		checkOutStart = (checkOutStart + 1) % 3;
+		Customer cust = null;
 		switch(checkOutStart){
 			case 0:
-				expressLine.dequeue();
+				cust = expressLine.dequeue();
 				break;
 			case 1:
-				lineOne.dequeue();
+				cust = lineOne.dequeue();
 				break;
 			case 2:
-				lineTwo.dequeue();
+				cust = lineTwo.dequeue();
 				break;
 		}
+		
+		if(leave){
+			int index = customers.search(cust.getName());
+			index = index + customers.size();
+			customers.remove(index);
+		}else{
+			items = cust.getItemAmount();	
+		}
+		return items;		
 	}
 
 	public int itemSearch(String name){
