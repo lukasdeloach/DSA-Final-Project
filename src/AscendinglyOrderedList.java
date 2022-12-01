@@ -27,7 +27,6 @@ public class AscendinglyOrderedList<T extends KeyedItem<KT>, KT extends Comparab
             int result = search(key.getKey());
             if(result < 0) {
                 result+=numItems; //decodes;
-                System.out.println("Cannot add duplicate item. Item " + key + " is already found at index " + result);
             }
             else {
                 add(result, key);

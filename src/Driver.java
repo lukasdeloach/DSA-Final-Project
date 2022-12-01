@@ -12,10 +12,15 @@ public class Driver {
     // create static reader to be used throughout driver, in accordance with coding guidlines
     // static as it belongs to class
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws IOException{
 
         // Declare ListArrayBased Plus variable local to main
         ListArrayBasedPlusN myList = new ListArrayBasedPlusN();
+
+	ShoppingCenterModel shoppingCenter = new ShoppingCenterModel();
+	shoppingCenter.getItems().add(new Item("Apple", 1));
+	shoppingCenter.getItems().add(new Item("Orange", 1));
+	shoppingCenter.getItems().add(new Item("Banana", 1));
 
         // Print out to user options for input
         System.out.println("Enter an option below:");
@@ -46,10 +51,10 @@ public class Driver {
                 exitProgram();
                 break;
             case 1:
-                insertItem(myList);
+                inputCaseOne(shoppingCenter);
                 break;
             case 2:
-                removeItem(myList);
+                inputCaseTwo(shoppingCenter);
                 break;
             case 3:
                 getItem(myList);
@@ -88,76 +93,73 @@ public class Driver {
     }// end exitProgram
 
     // method called when want to add item
-    public static void insertItem(ListArrayBasedPlusN list) {
+    public static void inputCaseOne(ShoppingCenterModel store) throws IOException {
         // set up for variables needed
-        String item = null;
-        int position;
-
+	int size = store.getCustomers().size();
+	System.out.print(">>Enter customer name : ");
+	String name = stdin.readLine().trim();
+	System.out.println(name);
+	Customer customer = new Customer(name);
+	store.addCustomer(customer);
+	if(store.getCustomers().size() > size){
+		System.out.println("Customer " + name + " is now in the Shopping Center.");
+	}
+	else{
+		System.out.println("Customer " + name + " is already in the Shopping Center.");
+	}
         // prompt for item to insert
-        String key = "";
-        boolean correct = false;
-        while(!correct) { // reprompt until valid input given
-            System.out.println("You are now inserting an item into the ordered list.");
-            System.out.print("\tEnter item: ");
-            try {
-                key = stdin.readLine().trim();
-                System.out.println(key);
-                correct = true;
-            } catch(Exception e) {
-                invalidInput();
-            }
-        }// end while
-
-        // if list is greater than size 0, search for the key
-        if(list.size() > 0) {
-            position = search(list, key);
-            //if position is less than one, it is negtaive,
-            //negative means it does not exist, and can be added
-            //so multiply by -1, and minus one to retrieve where it needs to be placed
-            if(position < 0) {
-                position = (position *-1) - 1;
-                list.add(position, key);
-                // otherwise it already exists, and no eduplicates are allowed
-            } else {
-                System.out.println(key + " already exists in list at position " + position);
-            }// end else
-            // if list is of size 0, means there can be no duplicates and can be added.
-        } else {
-            list.add(0, key);
-        }// end else
     }// end method
 
 
     // method to remove item based on index
-    public static void removeItem(ListArrayBasedPlusN list) {
+    public static void inputCaseTwo(ShoppingCenterModel store) throws IOException {
         // prompt for and read index to remove from, if empty unecessary to call for prompt
-        if(list.size() != 0) {
-            int position = 0;
+	//
+	System.out.println(">>Enter customer name : ");
+	String name = stdin.readLine().trim();
+ 	System.out.println(name);
+	int custResult = customerSearch(name);
+	while(custResult<0){
+			
+		if(custResult==-1){
+			System.out.println("Customer " + name + " is now in the Shopping Center.");
+		}
+		else if(custResult==-2){
+			System.out.println("Customer " + name + " is in a checkoutline!");
+		}
+		System.out.println(">>Enter customer name : ");
+		name = stdin.readLine().trim();
+		System.out.println(name);
+	}
+	Customer customer = store.getCustomers().get(custResult);
+	System.out.print("What item does " + name + " want? ");
+	String itemName = stdin.readLine().trim();
+	System.out.println(itemName);
+	int itemResult = itemSearch(itemName);
+	if(itemResult>-1){
+		System.out.println("No " + itemName + " in Shopping Center.");
+	}
 
-            boolean correct = false;
-            while(!correct) { // continue to prompt until valid response is given.
-                System.out.print("\tEnter position to remove item from: ");
-                try {
-                    position = Integer.parseInt(stdin.readLine().trim());
-                    System.out.println(position);
-                    correct = true;
-                } catch (Exception e) {
-                    invalidInput();
-                }
-            }
-            // if index is valid, remove
-            if(position >= 0 && position < list.size()) {
-                String removed = (String)list.get(position);
-                list.remove(position);
-                System.out.println("Item "+ removed  + " removed from position " + position +" in the list.");
-                // else, print outOfRange
-            } else {
-                outOfRange();
-            }// end else
-        } else { // if list is empty, print
-            listEmpty();
-        }//end else
-    }// end removeItem
+	else{
+		itemResult += store.getItems().size();
+		Item item = store.getItems().get(itemResult);
+		if(item.getAmount() < 1){
+			System.out.println("No " + itemName + " in stock.");
+		}
+		else{
+			customer.addItem();
+			System.out.println("Customer " + name + " has " + customer.getItemAmount() + " in the shopping cart.");
+		}
+	}	
+    }// end inputCaseTwo
+    //
+    public static void inputCaseSix(ShoppingCenterModel store){
+	    System.out.println(store.displayShoppers());
+    }
+
+    public static void inputCaseSeven(ShoppingCenterModel store){
+	    System.out.println(store.displayLine1 + store.displayLine2() + store.displayExpress());
+    }
 
     // method to get Item based on index give
     public static void getItem(ListArrayBasedPlusN list) {
