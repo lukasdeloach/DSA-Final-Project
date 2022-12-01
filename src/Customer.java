@@ -1,14 +1,18 @@
 
 /**
+ *
+ * should we perform checkout checks for add and remove
+ *
  * Customer class
  * Will add Javadoc later
- * @author Lukas DeLoach
+ * @author Lukas DeLoach and Jessica Rodgers
  */
 public class Customer extends KeyedItem<String> {
 
     private String name;
     private int totalTime;
     private int itemAmount;
+    private boolean checkOut;
 
     public Customer(String name) {
 
@@ -17,21 +21,14 @@ public class Customer extends KeyedItem<String> {
             this.name = name;
         }
         itemAmount = totalTime = 0;
+	inCheckOut = 0;
     }
 
     /**
      * Basic method will add more logic later
      * */
-    public void addItem(Item item) {
+    public void addItem() {
         itemAmount++;
-    }
-
-    /**
-     * Basic method will add more logic later
-     * */
-    public void removeItem() {
-        itemAmount--;
-
     }
 
     public void updateTime(){
@@ -58,7 +55,24 @@ public class Customer extends KeyedItem<String> {
         return itemAmount;
     }
 
-    public void setItemAmount(int itemAmount) {
-        this.itemAmount = itemAmount;
+    public void addItem() {
+        itemAmount++;;
+    }
+
+    public void removeItem(){
+	    itemAmount--;
+    }
+
+    public void setCheckOut(int status){
+	    checkOut = status;
+    }
+
+    public boolean getCheckOut(){
+	    return checkOut;
+    }
+
+    public String toString(){
+	   String retStr = name + " " + itemAmount + " " + totalTime;
+	   return retStr; 
     }
 }
