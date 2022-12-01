@@ -93,7 +93,6 @@ public class ShoppingCenterModel{
 	}
 
 	public int itemSearch(String name){
-		boolean check = true;
 		int result = items.search(name);
 		if(result > -1){
 			result = -1;
