@@ -1,3 +1,8 @@
+/*
+ *
+ * NEED TO ADDRESS HANDLING OF AMOUNT OF SHOPPERS ONLY
+ * Curently subtracting, use possible tracker
+ */
 
 import java.lang.*;
 
@@ -42,23 +47,57 @@ public class ShoppingCenterModel{
 		customers.add(newCust);
 	}
 
-	public void checkOut(){
+	// find out who is checking out next and return their name
+	public String nextCheckOut(){
 		checkOutStart = (checkOutStart + 1) % 3;
+		String nextCust = null;
+                switch(checkOutStart){
+                        case 0:
+                                nextCust = (expressLine.peek()).getName();
+                                break;
+                        case 1:
+				nextCust = (lineOne.peek()).getName();
+                                break;
+                        case 2:
+                                nextCust = (lineTwo.peek()).getName();
+                                break;
+                }
+		return nextCust;
+	}
+
+
+	// check out person based on which checkout lane is next
+	// take in param of if they leave or return shopping
+	// if leave, remove from list of all customers aswell
+	// returns int of how many items they have. If -1, they are leaving and can be ignored,
+	// if they go back to shopping, returns the amount of items they have
+	public int checkOut(boolean leave){
+		int items = -1;
+		checkOutStart = (checkOutStart + 1) % 3;
+		Customer cust = null;
 		switch(checkOutStart){
 			case 0:
-				expressLine.dequeue();
+				cust = expressLine.dequeue();
 				break;
 			case 1:
-				lineOne.dequeue();
+				cust = lineOne.dequeue();
 				break;
 			case 2:
-				lineTwo.dequeue();
+				cust = lineTwo.dequeue();
 				break;
 		}
+		
+		if(leave){
+			int index = customers.search(cust.getName());
+			index = index + customers.size();
+			customers.remove(index);
+		}else{
+			items = cust.getItemAmount();	
+		}
+		return items;		
 	}
 
 	public int itemSearch(String name){
-		boolean check = true;
 		int result = items.search(name);
 		if(result > -1){
 			result = -1;
@@ -98,17 +137,23 @@ public class ShoppingCenterModel{
 		return expressLine.toString();
 	}
 
+	// Possible fix 1 vs multiple
 	public String displayShoppers(){
 		StringBuilder retStr = new StringBuilder();
+		//TEMPORARY SOLUTION FOR HOW MANY CUSTOMERS ARE SHOPPING, NOT JUST ALL CUSTOMERS
+		//CURRENTLY SUBTRACTION, POSSIBLE COUNTER
 		int numCust = customers.size();
-		if(numCust == 0){
+		int shoppers = numCust - lineOne.size() - lineTwo.size() - expressLine.size();
+		if(shoppers == 0){
 			retStr.append("No customers are in the Shopping Center!");
 		}else{
-			retStr.append("The following " + numCust + " customers are in the Shopping Center:\r");
+			retStr.append("The following " + shoppers + " customers are in the Shopping Center:\r");
 			for(int i = 0; i < numCust; i++){
 				Customer cust = customers.get(i);
-				retStr.append("Customer " +cust.getName() +" with " + cust.getItemAmount() +
+				if(!cust.getCheckOut()){
+					retStr.append("Customer " +cust.getName() +" with " + cust.getItemAmount() +
 						" items present for " + cust.getTotalTime() + " minutes.\n");
+				}
 			}	
 		}
 

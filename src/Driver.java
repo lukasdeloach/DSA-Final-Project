@@ -22,6 +22,7 @@ public class Driver {
 	shoppingCenter.getItems().add(new Item("Orange", 1));
 	shoppingCenter.getItems().add(new Item("Banana", 1));
 
+
         // Print out to user options for input
         System.out.println("Enter an option below:");
         System.out.println("0. Close the Shopping Center.\n1. Customer enter Shopping Center.\n2. Customer picks an item and places it in the shopping cart." +
