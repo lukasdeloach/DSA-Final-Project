@@ -1,3 +1,8 @@
+/*
+ *
+ * NEED TO ADDRESS HANDLING OF AMOUNT OF SHOPPERS ONLY
+ * Curently subtracting, use possible tracker
+ */
 
 import java.lang.*;
 
@@ -132,17 +137,23 @@ public class ShoppingCenterModel{
 		return expressLine.toString();
 	}
 
+	// Possible fix 1 vs multiple
 	public String displayShoppers(){
 		StringBuilder retStr = new StringBuilder();
+		//TEMPORARY SOLUTION FOR HOW MANY CUSTOMERS ARE SHOPPING, NOT JUST ALL CUSTOMERS
+		//CURRENTLY SUBTRACTION, POSSIBLE COUNTER
 		int numCust = customers.size();
-		if(numCust == 0){
+		int shoppers = numCust - lineOne.size() - lineTwo.size() - expressLine.size();
+		if(shoppers == 0){
 			retStr.append("No customers are in the Shopping Center!");
 		}else{
-			retStr.append("The following " + numCust + " customers are in the Shopping Center:\r");
+			retStr.append("The following " + shoppers + " customers are in the Shopping Center:\r");
 			for(int i = 0; i < numCust; i++){
 				Customer cust = customers.get(i);
-				retStr.append("Customer " +cust.getName() +" with " + cust.getItemAmount() +
+				if(!cust.getCheckOut()){
+					retStr.append("Customer " +cust.getName() +" with " + cust.getItemAmount() +
 						" items present for " + cust.getTotalTime() + " minutes.\n");
+				}
 			}	
 		}
 
