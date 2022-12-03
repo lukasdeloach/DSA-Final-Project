@@ -12,15 +12,15 @@ public class Driver {
     // create static reader to be used throughout driver, in accordance with coding guidlines
     // static as it belongs to class
 
-    public static void main(String[] args) throws IOException{
+    public static void main(String[] args) throws IOException {
 
         // Declare ListArrayBased Plus variable local to main
         ListArrayBasedPlusN myList = new ListArrayBasedPlusN();
 
-	ShoppingCenterModel shoppingCenter = new ShoppingCenterModel();
-	shoppingCenter.getItems().add(new Item("Apple", 1));
-	shoppingCenter.getItems().add(new Item("Orange", 1));
-	shoppingCenter.getItems().add(new Item("Banana", 1));
+        ShoppingCenterModel shoppingCenter = new ShoppingCenterModel();
+        shoppingCenter.getItems().add(new Item("Apple", 1));
+        shoppingCenter.getItems().add(new Item("Orange", 1));
+        shoppingCenter.getItems().add(new Item("Banana", 1));
 
 
         // Print out to user options for input
@@ -69,9 +69,9 @@ public class Driver {
             case 6:
                 inputCaseSix(shoppingCenter);
                 break;
-	    case 7:
-		inputCaseSeven(shoppingCenter);
-		break;
+            case 7:
+                inputCaseSeven(shoppingCenter);
+                break;
             default:
                 invalidInput();
                 break;
@@ -99,93 +99,91 @@ public class Driver {
     // method called when want to add item
     public static void inputCaseOne(ShoppingCenterModel store) throws IOException {
         // set up for variables needed
-	int size = store.getCustomers().size();
-	System.out.print(">>Enter customer name : ");
-	String name = stdin.readLine().trim();
-	System.out.println(name);
-	Customer customer = new Customer(name);
-	store.addCustomer(customer);
-	if(store.getCustomers().size() > size){
-		System.out.println("Customer " + name + " is now in the Shopping Center.");
-	}
-	else{
-		System.out.println("Customer " + name + " is already in the Shopping Center.");
-	}
+        int size = store.getCustomers().size();
+        System.out.print(">>Enter customer name : ");
+        String name = stdin.readLine().trim();
+        System.out.println(name);
+        if(store.addCustomer(name) == true) {
+            System.out.println("Customer " + name + " is now in the Shopping Center.");
+        }
+        else {
+            System.out.println("Customer " + name + " is already in the Shopping Center.");
+        }
         // prompt for item to insert
     }// end method
 
 
-    // method to remove item based on index
+    // method to add item based on index
     public static void inputCaseTwo(ShoppingCenterModel store) throws IOException {
         // prompt for and read index to remove from, if empty unecessary to call for prompt
-	//
-	System.out.println(">>Enter customer name : ");
-	String name = stdin.readLine().trim();
- 	System.out.println(name);
-	int custResult = store.customerSearch(name);
-	while(custResult<0){
-			
-		System.out.println(">>Enter customer name : ");
-		name = stdin.readLine().trim();
-		System.out.println(name);
-		custResult = store.customerSearch(name);
-	}
-	Customer customer = (Customer) store.getCustomers().get(custResult);
-	System.out.print("What item does " + name + " want? ");
-	String itemName = stdin.readLine().trim();
-	System.out.println(itemName);
-	int itemResult = store.itemSearch(itemName);
-	if(itemResult==-1){
-		System.out.println("No " + itemName + " in Shopping Center.");
-	}
+        //
+        System.out.println(">>Enter customer name : ");
+        String name = stdin.readLine().trim();
+        System.out.println(name);
+        int custResult = store.customerSearch(name);
+        while(custResult<0) {
 
-	else{
-		itemResult += store.getItems().size();
-		Item item = (Item) store.getItems().get(itemResult);
-		if(item.getAmount() < 1){
-			System.out.println("No " + itemName + " in stock.");
-		}
-		else{
-			customer.addItem(item);
-			System.out.println("Customer " + name + " has " + customer.getItemAmount() + " in the shopping cart.");
-		}
-	}	
+            System.out.println(">>Enter customer name : ");
+            name = stdin.readLine().trim();
+            System.out.println(name);
+            custResult = store.customerSearch(name);
+        }
+        Customer customer = (Customer) store.getCustomers().get(custResult);
+        System.out.print("What item does " + name + " want? ");
+        String itemName = stdin.readLine().trim();
+        System.out.println(itemName);
+        int itemResult = store.itemSearch(itemName);
+        if(itemResult==-1) {
+            System.out.println("No " + itemName + " in Shopping Center.");
+        }
+
+        else {
+            itemResult += store.getItems().size();
+            Item item = (Item) store.getItems().get(itemResult);
+            if(item.getAmount() < 1) {
+                System.out.println("No " + itemName + " in stock.");
+            }
+            else {
+                store.customerAddItem(customer, item);;
+                System.out.println("Customer " + name + " has " + customer.getItemAmount() + " in the shopping cart.");
+            }
+        }
     }// end inputCaseTwo
     //
 
     public static void inputCaseThree(ShoppingCenterModel store) throws IOException {
-	    if(store.getCustomers().isEmpty()){
-		    System.out.println("No one is in the Shopping Center!");
-	    }
-	    else{
-		    System.out.print(">>Enter customer name : ");
-		    String name = stdin.readLine().trim();
-        	    System.out.println(name);
-        	    int custResult = store.customerSearch(name);
-        	    while(custResult<0){
-                	            
-               		System.out.println(">>Enter customer name : ");
-                	name = stdin.readLine().trim();
-                	System.out.println(name);
-                	custResult = store.customerSearch(name);
-		    }
-		    Customer customer = (Customer) store.getCustomers().get(custResult);
-		    if(customer.getItemAmount() == 0){
-			    System.out.println("Customer " + name + " does not have any items in their shopping cart!");
-		    }
-		    else{
-			    customer.removeItem();
-			    System.out.println("Customer " + name + " has now " + customer.getItemAmount() + " items in the shopping cart.");
-		    }
-	    }
-        } 
+        if(store.getCustomers().isEmpty()) {
+            System.out.println("No one is in the Shopping Center!");
+        }
+        else {
+            System.out.print(">>Enter customer name : ");
+            String name = stdin.readLine().trim();
+            System.out.println(name);
+            int custResult = store.customerSearch(name);
+            while(custResult<0) {
+
+                System.out.println(">>Enter customer name : ");
+                name = stdin.readLine().trim();
+                System.out.println(name);
+                custResult = store.customerSearch(name);
+            }
+            Customer customer = (Customer) store.getCustomers().get(custResult);
+            if(customer.getItemAmount() == 0) {
+                System.out.println("Customer " + name + " does not have any items in their shopping cart!");
+            }
+            else {
+                store.customerRemoveItem(customer);
+                System.out.println("Customer " + name + " has now " + customer.getItemAmount() + " items in the shopping cart.");
+            }
+        }
+    }
     //
-    public static void inputCaseSix(ShoppingCenterModel store){
-	    System.out.println(store.displayShoppers());
+    public static void inputCaseSix(ShoppingCenterModel store) {
+        System.out.println(store.displayShoppers());
     }
 
-    public static void inputCaseSeven(ShoppingCenterModel store){
-	    System.out.println(store.displayLine1() + store.displayLine2() + store.displayExpress());
+    public static void inputCaseSeven(ShoppingCenterModel store) {
+        System.out.println(store.displayLine1() + store.displayLine2() + store.displayExpress());
     }
 
     // method to get Item based on index give

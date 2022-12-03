@@ -16,24 +16,23 @@ public class Customer extends KeyedItem<String> {
 
     public Customer(String name) {
 
-	super(name);
+        super(name);
         if(!name.isEmpty()) {
             this.name = name;
         }
         itemAmount = totalTime = 0;
-	checkOut = false;
+        checkOut = false;
     }
 
     /**
      * Basic method will add more logic later
      * */
     public void addItem(Item item) {
-	item.decrementAmount();
         itemAmount++;
     }
 
-    public void updateTime(){
-	totalTime++;
+    public void updateTime() {
+        totalTime++;
     }
 
     public String getName() {
@@ -56,20 +55,20 @@ public class Customer extends KeyedItem<String> {
         return itemAmount;
     }
 
-    public void removeItem(){
-	    itemAmount--;
+    public void removeItem() {
+        itemAmount--;
     }
 
-    public void setCheckOut(boolean status){
-	    checkOut = status;
+    public void setCheckOut(boolean status) {
+        checkOut = status;
     }
 
-    public boolean getCheckOut(){
-	    return checkOut;
+    public boolean getCheckOut() {
+        return checkOut;
     }
 
-    public String toString(){
-	   String retStr = name + " " + itemAmount + " " + totalTime;
-	   return retStr; 
+    public String toString() {
+        String retStr = name + " " + itemAmount + " " + totalTime;
+        return retStr;
     }
 }
