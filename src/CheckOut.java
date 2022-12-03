@@ -31,6 +31,10 @@ public class CheckOut<T> extends Queue<T>{
 		size = 0;
 	}
 
+	public int size(){
+		return size;
+	}
+
 	public String toString(){
 		//declare string builder to collect items from items
 		StringBuilder str = new StringBuilder();

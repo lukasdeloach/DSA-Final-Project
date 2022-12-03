@@ -58,7 +58,7 @@ public class Driver {
                 inputCaseTwo(shoppingCenter);
                 break;
             case 3:
-                getItem(myList);
+                inputCaseThree(shoppingCenter);
                 break;
             case 4:
                 getSearchKey(myList);
@@ -151,6 +151,34 @@ public class Driver {
 		}
 	}	
     }// end inputCaseTwo
+    //
+
+    public static void inputCaseThree(ShoppingCenterModel store) throws IOException {
+	    if(store.getCustomers().isEmpty()){
+		    System.out.println("No one is in the Shopping Center!");
+	    }
+	    else{
+		    System.out.print(">>Enter customer name : ");
+		    String name = stdin.readLine().trim();
+        	    System.out.println(name);
+        	    int custResult = store.customerSearch(name);
+        	    while(custResult<0){
+                	            
+               		System.out.println(">>Enter customer name : ");
+                	name = stdin.readLine().trim();
+                	System.out.println(name);
+                	custResult = store.customerSearch(name);
+		    }
+		    Customer customer = (Customer) store.getCustomers().get(custResult);
+		    if(customer.getItemAmount() == 0){
+			    System.out.println("Customer " + name + " does not have any items in their shopping cart!");
+		    }
+		    else{
+			    customer.removeItem();
+			    System.out.println("Customer " + name + " has now " + customer.getItemAmount() + " items in the shopping cart.");
+		    }
+	    }
+        } 
     //
     public static void inputCaseSix(ShoppingCenterModel store){
 	    System.out.println(store.displayShoppers());
