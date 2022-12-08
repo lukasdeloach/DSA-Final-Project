@@ -42,6 +42,14 @@ public class ShoppingCenterModel {
         return customers;
     }
 
+    public boolean addItem(Item item){
+	    int size = items.size();
+	    items.add(item);
+	    System.out.println(items.size() + "  " + size);
+	    return (size==items.size()) ? false : true;
+    }
+
+
     /**
      * Method to add a method.
      * Calls internal customer search method for customer validation.
@@ -143,10 +151,13 @@ public class ShoppingCenterModel {
     }
 
     public int itemSearch(String name) {
-        int result = items.search(name);
-        if(result > -1) {
-            result = -1;
-        }
+	int result = -2;
+	if(!items.isEmpty()){
+        	result = (items.search(name));
+        	if(result > -1) {
+            	result = -1;
+        	}
+	}
         return result;
     }
 

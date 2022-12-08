@@ -14,14 +14,9 @@ public class Driver {
 
     public static void main(String[] args) throws IOException {
 
-        // Declare ListArrayBased Plus variable local to main
-        ListArrayBasedPlusN myList = new ListArrayBasedPlusN();
 
         ShoppingCenterModel shoppingCenter = new ShoppingCenterModel();
-        shoppingCenter.getItems().add(new Item("Apple", 1));
-        shoppingCenter.getItems().add(new Item("Orange", 1));
-        shoppingCenter.getItems().add(new Item("Banana", 1));
-
+	shoppingCenter = simulateStart(shoppingCenter);
 
         // Print out to user options for input
         System.out.println("Enter an option below:");
@@ -61,10 +56,8 @@ public class Driver {
                 inputCaseThree(shoppingCenter);
                 break;
             case 4:
-                getSearchKey(myList);
                 break;
             case 5:
-                clearList(myList);
                 break;
             case 6:
                 inputCaseSix(shoppingCenter);
@@ -95,6 +88,45 @@ public class Driver {
     public static void exitProgram() {
         System.out.println("Exiting program...Good Bye");
     }// end exitProgram
+    //
+    public static ShoppingCenterModel simulateStart(ShoppingCenterModel store) throws IOException{
+
+	    System.out.println("Welcome to the Shopping Center!!!");
+	    System.out.println("\nPlease specify stock");
+	    System.out.print(" How many items do you have? : ");
+	    int numOfItems = convertToInt(stdin.readLine().trim());
+	    System.out.println(numOfItems);
+	    System.out.print("Please specify restocking amount: ");
+	    int stockingAmount = convertToInt(stdin.readLine().trim());
+	    for(int i = 0; i < numOfItems; i++){
+		    System.out.print(">>Enter item name : ");
+		    String itemName = stdin.readLine().trim();
+		    System.out.println(itemName);
+		    System.out.print(">>How many " + itemName + "s? : ");
+		    int itemNum = convertToInt(stdin.readLine().trim());
+		    System.out.println(itemNum);
+		    Item item = new Item(itemName, itemNum);
+		    boolean status = store.addItem(item);
+		    while(!status){
+			    System.out.println("Invalid or Duplicate item. Try again");
+			    System.out.print(">>Enter item name : ");
+	                    itemName = stdin.readLine().trim();
+        	            System.out.println(itemName);
+                	    System.out.print(">>How many " + itemName + "s? : ");
+                    	    itemNum = convertToInt(stdin.readLine().trim());
+                    	    System.out.println(itemNum);
+                    	    item = new Item(itemName, itemNum);
+                    	    status = store.addItem(item);
+		    }
+	    }
+	    System.out.print("Please select the checkout line that should check out customers first\n(regular1/regular2/express) : ");
+            String checkOutLine = stdin.readLine().trim();
+	    return store;
+    }
+
+
+
+
 
     // method called when want to add item
     public static void inputCaseOne(ShoppingCenterModel store) throws IOException {
@@ -186,126 +218,26 @@ public class Driver {
         System.out.println(store.displayLine1() + store.displayLine2() + store.displayExpress());
     }
 
-    // method to get Item based on index give
-    public static void getItem(ListArrayBasedPlusN list) {
-        // prompt for and read in index, if empty, no need to prompt
-        if(list.size() != 0) {
-            int position = 0;
-
-            boolean correct = false;
-            while(!correct) { // reprompt until valid input given
-                System.out.print("\tEnter position to retrieve item from: ");
-                try {
-                    position = Integer.parseInt(stdin.readLine().trim());
-                    System.out.println(position);
-                    correct = true;
-                } catch(Exception e) {
-                    invalidInput();
-                }
-            }
-            // if index is valid, get item
-            if(position >= 0 && position < list.size()) {
-                String retrieved = (String)list.get(position);
-                System.out.println("Item " + retrieved + " retrieved from position " + position + " in the list.");
-                // else, print outOfRange
-            } else {
-                outOfRange();
-            }// end else
-        } else { // if empty, print
-            listEmpty();
-        }// end else
-    }// end getItem
-
-    // method to utilize search and print values to user
-    public static void getSearchKey(ListArrayBasedPlusN list) {
-        if(!list.isEmpty()) {
-            // prompt for what value you are looking for, and except only valid input
-            String key = "";
-            boolean correct = false;
-            while(!correct) { // reprompt until valid input given
-                System.out.print("\tWhat value are you searching for? ");
-                try {
-                    key = stdin.readLine().trim();
-                    System.out.println(key);
-                    correct = true;
-                } catch(Exception e) {
-                    invalidInput();
-                }
-            }// end while
-
-            // save value of search
-            int ind = search(list, key);
-
-            // if serach key is found, print using decode, else print it is not in list
-            if(ind > 0) {
-                System.out.println("\t" + key + " was found in list, at position " + (ind - 1));
-            } else {
-                System.out.println("\t" + key + " does not exist in the list.");
-            }// end else
-            // if list is empty, print
-        } else {
-            listEmpty();
-        }// end else
-    }// end method
-
-
-    //method to search for item in list
-    // This uses Modified Sequential Search III, as it continues until a equality of over is reached
-    // It uses continue to constantly advance as the search key is greater than the current checked key
-    // If the value exists in the list, it will return the exact index it is at exactly
-    // If it does not exist, since 0 is a valid return value for where a key already exists, the value
-    // for where it should be inserted will be returned, but 1 added to the index of where, and then
-    // made negative.
-    // TO DECODE: where value would be if inserted (does not already exist)multiply by negative, and minus 1
-    //  If sucessful(Does not exist yet in list), -1 from return value.
-    private static int search(ListArrayBasedPlusN list, String searchKey) {
-        // save value of size to avoid repetitive calls
-        int listSize = list.size();
-        //return value for index
-        int indexVal = 0;
-        // if list is not empty
-        // for size of array, search sequntially
-        for(int i = 0 ; i < listSize; i++) {
-            String checkKey = (String)list.get(i);
-            if(searchKey.compareTo(checkKey) > 0) {
-                continue;
-            } else if(checkKey.equals(searchKey)) {
-                indexVal = i + 1;
-                i = listSize;
-            } else {
-                indexVal = -1*(i + 1);
-                i = listSize;
-            }// end else
-        }// end for
-
-        if(indexVal == 0) {
-            indexVal = -1*(listSize+1);
-        }
-        return indexVal;
-    }
-
-    // method to clear all from list using ListArrayBased removeAll method
-    public static void clearList(ListArrayBasedPlusN list) {
-        if(list.size() > 0) {
-            list.removeAll();
-        }
-    }
-
-    // method to print info on list
-    public static void printListStats(ListArrayBasedPlusN list) {
-        // get num of items in list
-        int listSize = list.size();
-        // if 0, print it is empty
-        if(listSize == 0) {
-            listEmpty();
-            // else, print size and use toString to get all items in list seperated by spaces
-        } else {
-            System.out.println("\tList of size " + listSize + " has the following items: " + list.toString());
-        }// end else
-    }// end printListStats
-
     // method to declare that inputted option is not valid from menu items
     public static void invalidInput() {
         System.out.println("This is not an option. Try again.");
     }// end invalidInput
+
+
+    /**
+     * Method to convert to an integer from a string
+     * @param s
+     * @return i
+     */
+    private static int convertToInt(String s) {
+        int i = -1;
+        try {
+            i = Integer.parseInt(s);
+        }
+        catch(Exception e) {
+            System.out.println("Invalid number.");
+        }
+        return i;
+    }
+
 }// end class
