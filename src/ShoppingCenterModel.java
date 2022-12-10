@@ -20,6 +20,8 @@ public class ShoppingCenterModel {
     // check out start will be 0-2, 0 being express, 1 being line 1, 2 being line 2
     private int checkOutStart;
 
+    private Customer longestCustomer;
+
     public ShoppingCenterModel() {
         lineOne = new CheckOut<>("first");
         lineTwo = new CheckOut<>("second");
@@ -30,16 +32,6 @@ public class ShoppingCenterModel {
 
         restockingLevel = 0;
         checkOutStart = 0;
-    }
-
-
-    // temp until we create getItem and getCustomer
-    public AscendinglyOrderedList getItems() {
-        return items;
-    }
-
-    public AscendinglyOrderedList getCustomers() {
-        return customers;
     }
 
     public boolean addItem(Item item){
@@ -93,10 +85,104 @@ public class ShoppingCenterModel {
     }
 
     private void simulateTime() {
-        for(int i = 0;  i < customers.size(); i++) {
+	int size = customers.size();
+	if(longestCustomer!=null){
+        for(int i = 0;  i < size; i++) {
             customers.get(i).updateTime();
         }
+	}
+	else{
+		int max = Integer.MIN_VALUE, index = 0;
+		for(int i = 0; i < size; i++){
+			Customer cust = customers.get(i);
+			cust.updateTime();
+			if(cust.getTotalTime() > max && !cust.getCheckOut()){
+				max = cust.getTotalTime();
+				index = i;
+			}
+		}
+		longestCustomer = customers.get(index);
+	}
     }
+
+
+    public Customer getLongestShopper(){
+	if(longestCustomer == null){
+		longestCustomer = searchMaxTime();
+	}
+	return longestCustomer;
+	    
+    }
+
+    /**
+     * Method to search for customer in the shopping center that is not in any of the checkout lines
+     * @return Customer at the index found
+     */
+    private Customer searchMaxTime() {
+	int max = Integer.MIN_VALUE;
+	int index = 0;
+        int size = customers.size();
+	for(int i = 0; i < size; i++){
+		int time = customers.get(i).getTotalTime();
+		if(time > max && !customers.get(i).getCheckOut()){
+			max = time;
+			index = i;
+		}
+	}
+        return customers.get(index);
+    }
+    
+    /**
+     * Method to enqueue a customer
+     * Need to add which queue takes priority after given input at initial start of program
+     * @param customer - passed customer object
+     * @return String  - String object which describes which line the customer was added into
+     */
+    public String enqueueCustomer(Customer customer){
+	    int itemAmount = customer.getItemAmount();
+	    int expressSize = expressLine.size(), lineOneSize = lineOne.size(), lineTwoSize = lineTwo.size();
+	    StringBuilder str = new StringBuilder();
+	    if(itemAmount < 5){
+		    if((expressLine.size()<<1 > lineOne.size()+1) || (expressLine.size()<<1 > lineTwo.size()+1)){
+		    	if(lineOneSize < lineTwoSize){
+			   	 lineOne.enqueue(customer);
+				 str.append("first checkout line");
+		    	}
+		    	else{
+			    lineTwo.enqueue(customer);
+			    str.append("second checkout line");
+		    	}
+		    }
+		    else{
+			    expressLine.enqueue(customer);
+			    str.append("express line");
+		    }
+	    }
+	    else{
+		    if(lineOneSize < lineTwoSize){
+			    lineOne.enqueue(customer);
+			    str.append("first checkout line");
+		    }
+		    else{
+			    lineTwo.enqueue(customer);
+			    str.append("second checkout line");
+		    }
+	    }
+	    customer.setCheckOut(true);
+	    longestCustomer = null;
+	    return str.toString();
+    }
+
+    public void reAddCustomer(Customer customer){
+	    customer.setTotalTime(0);
+	    customer.setCheckOut(false);
+    }
+
+    public void removeLongestCustomer(Customer customer){
+	    customers.remove(customers.search(customer.getName())+customers.size());
+	    longestCustomer = null;
+    }
+
 
     // confirm where the line counter should restart from
     private CheckOut<Customer> nextCheckOut(){
@@ -142,7 +228,7 @@ public class ShoppingCenterModel {
     // returns int of how many items they have. If -1, they are leaving and can be ignored,
     // if they go back to shopping, returns the amount of items they have
     public Customer checkOut(boolean leave) {
-        CheckOut<Customer> line = itemsToCheckout();
+        CheckOut<Customer> line = null;
 	Customer cust = line.dequeue();
 	
 	if(leave){
@@ -154,12 +240,9 @@ public class ShoppingCenterModel {
     }
 
     public int itemSearch(String name) {
-	int result = -2;
+	int result = 0;
 	if(!items.isEmpty()){
         	result = (items.search(name));
-        	if(result > -1) {
-            	result = -1;
-        	}
 	}
         return result;
     }
@@ -206,7 +289,7 @@ public class ShoppingCenterModel {
         if(shoppers == 0) {
             retStr.append("No customers are in the Shopping Center!");
         } else {
-            retStr.append("The following " + shoppers + " customers are in the Shopping Center:\r");
+            retStr.append("The following " + shoppers + " customers are in the Shopping Center:\n");
             for(int i = 0; i < numCust; i++) {
                 Customer cust = customers.get(i);
                 if(!cust.getCheckOut()) {
@@ -274,6 +357,12 @@ public class ShoppingCenterModel {
 	    this.restockingLevel = restockingLevel;
     }
 
+    // temp until we create getItem and getCustomer
+    public AscendinglyOrderedList getItems() {
+        return items;
+    }
 
-
+    public AscendinglyOrderedList getCustomers() {
+        return customers;
+    }
 }

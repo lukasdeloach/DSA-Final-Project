@@ -56,6 +56,7 @@ public class Driver {
                 inputCaseThree(shoppingCenter);
                 break;
             case 4:
+		inputCaseFour(shoppingCenter);
                 break;
             case 5:
                 break;
@@ -172,7 +173,7 @@ public class Driver {
         String itemName = stdin.readLine().trim();
         System.out.println(itemName);
         int itemResult = store.itemSearch(itemName);
-        if(itemResult==-1) {
+        if(itemResult>-1) {
             System.out.println("No " + itemName + " in Shopping Center.");
         }
 
@@ -217,7 +218,37 @@ public class Driver {
         }
     }
 
-    public static void inputCaseFive(ShoppingCenterModel store){
+    public static void inputCaseFour(ShoppingCenterModel store) throws IOException {
+	if(store.getCustomers().isEmpty()){
+		System.out.println("No customers in the Shopping Center!");
+	}
+	else{
+		Customer cust = store.getLongestShopper();
+		if(cust == null){
+			System.out.println("Every Customer is in a Checkout Line");
+		}
+		else if(cust.getItemAmount() == 0){
+			System.out.print("Should customer " + cust.getName() + " with " + cust.getItemAmount() + " leave or keep on shopping?(Y/N): ");
+			String answer = stdin.readLine().trim();
+			System.out.println(answer);
+			if(answer.equalsIgnoreCase("y")){
+				store.reAddCustomer(cust);
+				System.out.println(" customer " + cust.getName() + " with " + cust.getItemAmount() + " items returned to shopping.");
+			}
+			else{
+				store.removeLongestCustomer(cust);
+				System.out.println("Customer has left");
+			}	
+		}
+		else{
+			String lineStatus = store.enqueueCustomer(cust);
+			System.out.println("After " + cust.getTotalTime() + " minutes in the Shopping Center, customer " + cust.getName() + " with " + cust.getItemAmount() + " is now in the " + lineStatus + ".");
+		}
+	}
+    }
+
+
+    public static void inputCaseFive(ShoppingCenterModel store) throws IOException{
 	    // need to change for method for just lines, not entire store!!!
 	if(store.getCustomers().isEmpty()){
 		System.out.println("No customers in any line.");
@@ -225,14 +256,14 @@ public class Driver {
 		boolean leave = true;
 		String name = store.itemsToCheckout();
 		if(name != null){
-			char confirm;
+			String confirm;
 			boolean correct = false;
 			do{	
 				System.out.print("Should customer " +  name + " leave or keep on shopping? Leave?(Y/N):");
-				confirm = (char)stdin.read().trim();
-				if(leave = 'Y'){
+				confirm = stdin.readLine().trim();
+				if(confirm.equalsIgnoreCase("Y") || confirm.equalsIgnoreCase("yes")){
 					correct = true;
-				}else if(leave = 'N'){
+				}else if(confirm.equalsIgnoreCase("N") || confirm.equalsIgnoreCase("no")){
 					leave = false;
 					correct = true;
 				}else{
@@ -244,7 +275,10 @@ public class Driver {
 		if(leave == true){
 			System.out.print("After " + left.getTotalTime() + " minutes in Shopping Center customer " 
 					+ left.getName() + " with " + left.getItemAmount() + 
-					" items is now in first checkout line.
+					" items is now in first checkout line.");
+		}
+	}
+    }
 
 
 
