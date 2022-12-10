@@ -65,6 +65,12 @@ public class Driver {
             case 7:
                 inputCaseSeven(shoppingCenter);
                 break;
+	    case 8:
+		inputCaseEight(shoppingCenter);
+		break;
+	    case 9:
+		inputCaseNine(shoppingCenter);
+		break;
             default:
                 invalidInput();
                 break;
@@ -98,6 +104,7 @@ public class Driver {
 	    System.out.println(numOfItems);
 	    System.out.print("Please specify restocking amount: ");
 	    int stockingAmount = convertToInt(stdin.readLine().trim());
+	    store.setRestockingLevel(stockingAmount);
 	    for(int i = 0; i < numOfItems; i++){
 		    System.out.print(">>Enter item name : ");
 		    String itemName = stdin.readLine().trim();
@@ -217,6 +224,28 @@ public class Driver {
     public static void inputCaseSeven(ShoppingCenterModel store) {
         System.out.println(store.displayLine1() + store.displayLine2() + store.displayExpress());
     }
+
+    public static void inputCaseEight(ShoppingCenterModel store){
+	    System.out.println("Items at re-stocking level: ");
+	    System.out.println(store.displayRestockingLevelItems());
+    }
+
+    public static void inputCaseNine(ShoppingCenterModel store) throws IOException{
+	    System.out.print("Enter item name to be re-ordered : ");
+	    String name = stdin.readLine().trim();
+	    System.out.println(name);
+	    System.out.print("Enter number of " + name + "s to be re-ordered : ");
+	    int num = convertToInt(stdin.readLine().trim());
+	    System.out.println(num);
+	    Item item = store.orderItem(name, num);
+	    if(item==null){
+		   System.out.println("Invalid item");
+	    }
+	    else{
+		   System.out.println("Stock has now " + item.getAmount() + " " + item.getName() + "s.");
+	    }
+    }
+
 
     // method to declare that inputted option is not valid from menu items
     public static void invalidInput() {

@@ -45,7 +45,6 @@ public class ShoppingCenterModel {
     public boolean addItem(Item item){
 	    int size = items.size();
 	    items.add(item);
-	    System.out.println(items.size() + "  " + size);
 	    return (size==items.size()) ? false : true;
     }
 
@@ -214,6 +213,61 @@ public class ShoppingCenterModel {
         }
 
         return retStr.toString();
+    }
+	
+    /**
+     * Method to display the restocking level
+     * Iterates through the AscendignlyOrdered List of Items and checks if the item's stock at that index is equal to or lower than the stocking level
+     * @return String - a String type that holds all of the items that are equal or below the stocking level in the format of: "item name" with "item amount" items.
+     */
+    public String displayRestockingLevelItems(){
+	    StringBuilder str = new StringBuilder();
+	    int size = items.size();
+	    for(int i = 0; i < size; i++){
+		    Item item = items.get(i);
+		    if(item.getAmount() < restockingLevel+1){
+			    str.append(item.getName() + " with " + item.getAmount() + " items.\n");
+		    }
+	    }
+	    return str.toString();
+    }
+
+    /**
+     * The orderItem method updates a given item current stock amount
+     * This method calls upon the AscendinglyOrderedList's method called search.
+     * The search method searches for a provided key in the items collection and returns an encoded value describing whether an item name is found or not.
+     * The AscendinglyOrderedList Class further describes the search method and its encoded value. Simply put, if the item is found in the collection, a negative value is returned.
+     * To decode a negative value, the AscendinglyOrderedList's size() method is added to the negative value. The decoded value is the index of the item in the collection.
+     * If a positive index is returned, the item is not found. The AscendinglyOrderedList describes the meaning for a positively returned value
+     * @param name - String type varaible which will hold the item's name of which the user wants to search for.
+     * @param amount - primitive type int that holds the amount of new stock the user wants to add to the existing item stock.
+     * @return item - Object type Item. If the item is not found based on the given name, the method will return a null item
+     */
+    public Item orderItem(String name, int amount){
+	    Item item = null;
+	    int index = items.search(name);
+	    if(index < 0){
+		    item = items.get(index+items.size()); // decodes value found
+		    int updatedValue = item.getAmount()+amount;
+		    item.setAmount(updatedValue);
+	    }
+	    return item;
+    }
+
+    /**
+     * Method to get the restocking level
+     * @return restockingLevel - the ShoppingCenterModel's private type int variable that stores the restocking level inputted by the user
+     */
+    public int getRestockingLevel(){
+	    return restockingLevel;
+    }
+
+    /**
+     * Mutator method to set the restocking level to the amount passed as a parameter
+     * @param restockingLevel - int type that holds the new stocking level value to be stored
+     */
+    public void setRestockingLevel(int restockingLevel){
+	    this.restockingLevel = restockingLevel;
     }
 
 
