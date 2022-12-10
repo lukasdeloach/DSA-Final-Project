@@ -98,55 +98,59 @@ public class ShoppingCenterModel {
         }
     }
 
-
-    // find out who is checking out next and return their name
-    public String nextCheckOut() {
-        checkOutStart = (checkOutStart + 1) % 3;
-        String nextCust = null;
-        switch(checkOutStart) {
-        case 0:
-            nextCust = (expressLine.peek()).getName();
-            break;
-        case 1:
-            nextCust = (lineOne.peek()).getName();
-            break;
-        case 2:
-            nextCust = (lineTwo.peek()).getName();
-            break;
-        }
-        return nextCust;
+    // confirm where the line counter should restart from
+    private CheckOut<Customer> nextCheckOut(){
+        CheckOut<Customer> next = null;
+	boolean customers = false;
+	int counter = 0;
+	while(customers == false && counter < 3){
+		switch(checkOutStart) {
+        	case 0:
+         	   next = expressLine;
+          	   break;
+        	case 1:
+        	    next = lineOne;
+         	    break;
+        	case 2:
+		    next = lineTwo;
+            	    break;
+        	}
+		if(next != null){
+			customers = true;
+		}else{
+			checkOutStart = (checkOutStart + 1) % 3;
+		}
+		counter++;
+	}
+        return next;
     }
 
-
+    // determine if the next person in line has items in their cart.
+    // If no items, return name, if items, return null.
+    public String itemsToCheckout() {
+	    String name = null;
+	    CheckOut<Customer> line = nextCheckOut();
+	    if(line.peek().getItemAmount() == 0){
+		name = line.peek().getName();
+	    }
+	    return name;
+    }
+    
     // check out person based on which checkout lane is next
     // take in param of if they leave or return shopping
     // if leave, remove from list of all customers aswell
     // returns int of how many items they have. If -1, they are leaving and can be ignored,
     // if they go back to shopping, returns the amount of items they have
-    public int checkOut(boolean leave) {
-        int items = -1;
-        checkOutStart = (checkOutStart + 1) % 3;
-        Customer cust = null;
-        switch(checkOutStart) {
-        case 0:
-            cust = expressLine.dequeue();
-            break;
-        case 1:
-            cust = lineOne.dequeue();
-            break;
-        case 2:
-            cust = lineTwo.dequeue();
-            break;
+    public Customer checkOut(boolean leave) {
+        CheckOut<Customer> line = itemsToCheckout();
+	Customer cust = line.dequeue();
+	
+	if(leave){
+        	int index = customers.search(cust.getName());
+        	index = index + customers.size();
+        	customers.remove(index);
         }
-
-        if(leave) {
-            int index = customers.search(cust.getName());
-            index = index + customers.size();
-            customers.remove(index);
-        } else {
-            items = cust.getItemAmount();
-        }
-        return items;
+        return cust;
     }
 
     public int itemSearch(String name) {

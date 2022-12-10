@@ -216,6 +216,38 @@ public class Driver {
             }
         }
     }
+
+    public static void inputCaseFive(ShoppingCenterModel store){
+	    // need to change for method for just lines, not entire store!!!
+	if(store.getCustomers().isEmpty()){
+		System.out.println("No customers in any line.");
+	}else{
+		boolean leave = true;
+		String name = store.itemsToCheckout();
+		if(name != null){
+			char confirm;
+			boolean correct = false;
+			do{	
+				System.out.print("Should customer " +  name + " leave or keep on shopping? Leave?(Y/N):");
+				confirm = (char)stdin.read().trim();
+				if(leave = 'Y'){
+					correct = true;
+				}else if(leave = 'N'){
+					leave = false;
+					correct = true;
+				}else{
+					invalidInput();
+				}
+			}while(correct == false);
+		}
+		Customer left = store.checkOut(leave);
+		if(leave == true){
+			System.out.print("After " + left.getTotalTime() + " minutes in Shopping Center customer " 
+					+ left.getName() + " with " + left.getItemAmount() + 
+					" items is now in first checkout line.
+
+
+
     //
     public static void inputCaseSix(ShoppingCenterModel store) {
         System.out.println(store.displayShoppers());
