@@ -34,6 +34,10 @@ public class ShoppingCenterModel {
         checkOutStart = 0;
     }
 
+    public boolean isEmpty(){
+	    return (customers.isEmpty());
+    }
+
     public boolean addItem(Item item){
 	    int size = items.size();
 	    items.add(item);
@@ -176,6 +180,7 @@ public class ShoppingCenterModel {
     public void resetCustomer(Customer customer){
 	    customer.setTotalTime(0);
 	    customer.setCheckOut(false);
+	    longestCustomer = null;
     }
 
     public void removeLongestCustomer(Customer customer){
@@ -256,10 +261,11 @@ public class ShoppingCenterModel {
         return cust;
     }
 
+    //ADJUSTED FOR CASE 9, REVISIT
     public int itemSearch(String name) {
-	int result = 0;
+	int result =  -1;
 	if(!items.isEmpty()){
-        	result = (items.search(name));
+		result = items.search(name);
 	}
         return result;
     }
@@ -355,7 +361,7 @@ public class ShoppingCenterModel {
 		    int updatedValue = item.getAmount()+amount;
 		    item.setAmount(updatedValue);
 	    }
-	    return item;
+	    return item;	    
     }
 
     /**

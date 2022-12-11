@@ -19,18 +19,17 @@ public class Driver {
 	shoppingCenter = simulateStart(shoppingCenter);
 
         // Print out to user options for input
-        System.out.println("Enter an option below:");
-        System.out.println("0. Close the Shopping Center.\n1. Customer enter Shopping Center.\n2. Customer picks an item and places it in the shopping cart." +
-                           "\n3. Customer removes an item from the shopping cart.\n4. Customer is done shopping.\n5. Customer checks out.\n6. Print info about customers who are shopping."+
-                           "\n7. Print info about customers in checkout lines.\n8. Print info about items at or below re-stocking level.\n9. Reorder an item.");
+        System.out.println("\nHere are the choices to select from: ");
+        System.out.println("\t0. Close the Shopping Center.\n\t1. Customer enter Shopping Center.\n\t2. Customer picks an item and places it in the shopping cart." +
+                           "\n\t3. Customer removes an item from the shopping cart.\n\t4. Customer is done shopping.\n\t5. Customer checks out.\n\t6. Print info about customers who are shopping."+
+                           "\n\t7. Print info about customers in checkout lines.\n\t8. Print info about items at or below re-stocking level.\n\t9. Reorder an item.");
+	System.out.print("Make your menu selection now: ");
 
         // do while that will repeat until user inputs a 0. Do while will run once the first time before initial input
         int choice = 0;
         do {
             boolean correct = false;
             while(!correct) { // until valid response given, will ask for input
-                // print out each time to choose option from menu
-                System.out.print("Make your menu selection now: ");
                 // scan and read inputted option
                 try {
                     choice = Integer.parseInt(stdin.readLine().trim());
@@ -77,6 +76,7 @@ public class Driver {
                 invalidInput();
                 break;
             }
+	    System.out.print("\nSelect an operation from the following menu: ");
         } while(choice != 0);// do while choice is not 0
 
 
@@ -87,11 +87,6 @@ public class Driver {
         System.out.println("Position specified is out of range!");
     }// end outOfRange call
 
-    // method to declare when list is empty
-    public static void listEmpty() {
-        System.out.println("List is empty.");
-    }// end listEmpty
-
     // method to exit program
     public static void exitProgram() {
         System.out.println("Exiting program...Good Bye");
@@ -101,35 +96,38 @@ public class Driver {
 
 	    System.out.println("Welcome to the Shopping Center!!!");
 	    System.out.println("\nPlease specify stock");
-	    System.out.print(" How many items do you have? : ");
+	    System.out.print(" How many items do you have? ");
 	    int numOfItems = convertToInt(stdin.readLine().trim());
 	    System.out.println(numOfItems);
 	    System.out.print("Please specify restocking amount: ");
 	    int stockingAmount = convertToInt(stdin.readLine().trim());
+	    System.out.println(stockingAmount);
 	    store.setRestockingLevel(stockingAmount);
 	    for(int i = 0; i < numOfItems; i++){
 		    System.out.print(">>Enter item name : ");
 		    String itemName = stdin.readLine().trim();
 		    System.out.println(itemName);
-		    System.out.print(">>How many " + itemName + "s? : ");
+		    System.out.print(">>How many " + itemName + "s? ");
 		    int itemNum = convertToInt(stdin.readLine().trim());
 		    System.out.println(itemNum);
 		    Item item = new Item(itemName, itemNum);
 		    boolean status = store.addItem(item);
+		    System.out.println(itemNum + " items of " + itemName + " have been placed in stock.");
 		    while(!status){
 			    System.out.println("Invalid or Duplicate item. Try again");
 			    System.out.print(">>Enter item name : ");
 	                    itemName = stdin.readLine().trim();
         	            System.out.println(itemName);
-                	    System.out.print(">>How many " + itemName + "s? : ");
+                	    System.out.print(">>How many " + itemName + "s? ");
                     	    itemNum = convertToInt(stdin.readLine().trim());
                     	    System.out.println(itemNum);
                     	    item = new Item(itemName, itemNum);
                     	    status = store.addItem(item);
 		    }
 	    }
-	    System.out.print("Please select the checkout line that should check out customers first\n(regular1/regular2/express) : ");
+	    System.out.print("Please select the checkout line that should check out customers first (regular1/regular2/express): ");
             String checkOutLine = stdin.readLine().trim();
+	    System.out.println(checkOutLine);
 	    return store;
     }
 
@@ -140,31 +138,41 @@ public class Driver {
     // method called when want to add item
     public static void inputCaseOne(ShoppingCenterModel store) throws IOException {
         // set up for variables needed
-        int size = store.getCustomers().size();
-        System.out.print(">>Enter customer name : ");
+        boolean added;
+	    do{
+	    System.out.print(">>Enter customer name : ");
         String name = stdin.readLine().trim();
         System.out.println(name);
-        if(store.addCustomer(name) == true) {
+	added = store.addCustomer(name);
+        if(added == true) {
             System.out.println("Customer " + name + " is now in the Shopping Center.");
         }
         else {
-            System.out.println("Customer " + name + " is already in the Shopping Center.");
+            System.out.println("Customer " + name + " is already in the Shopping Center!");
         }
+	}while(added == false);
         // prompt for item to insert
     }// end method
 
 
+    // HOW MUCH OF THE ITEMS NEEDS TO BE DONE IN SHOPPING CENTER, NOT HERE
+    // ADJUST ITEMSEARCH METHOD
     // method to add item based on index
     public static void inputCaseTwo(ShoppingCenterModel store) throws IOException {
         // prompt for and read index to remove from, if empty unecessary to call for prompt
-        //
-        System.out.println(">>Enter customer name : ");
+       if(!store.isEmpty()){ 
+        System.out.print(">>Enter customer name : ");
         String name = stdin.readLine().trim();
         System.out.println(name);
         int custResult = store.customerSearch(name);
         while(custResult<0) {
+		if(custResult == 0){
+			System.out.println("Customer "+ name+ " is in a checkoutline !");
+		}else{
+			System.out.println("Customer " + name + " is not in shopping center!");
+		}
 
-            System.out.println(">>Enter customer name : ");
+            System.out.print(">>Enter customer name : ");
             name = stdin.readLine().trim();
             System.out.println(name);
             custResult = store.customerSearch(name);
@@ -175,26 +183,36 @@ public class Driver {
         System.out.println(itemName);
         int itemResult = store.itemSearch(itemName);
         if(itemResult>-1) {
-            System.out.println("No " + itemName + " in Shopping Center.");
+            System.out.println("No " + itemName + "s in Shopping Center.");
         }
 
         else {
             itemResult += store.getItems().size();
             Item item = (Item) store.getItems().get(itemResult);
             if(item.getAmount() < 1) {
-                System.out.println("No " + itemName + " in stock.");
+                System.out.println("No " + itemName + "s in stock.");
             }
             else {
-                store.customerAddItem(customer, item);;
-                System.out.println("Customer " + name + " has " + customer.getItemAmount() + " in the shopping cart.");
+                store.customerAddItem(customer, item);
+		//ternary operator?
+		int custItems = customer.getItemAmount();
+		if(custItems != 1){
+                	System.out.println("Customer " + name + " has now " + customer.getItemAmount() + " items in the shopping cart.");
+		}else{
+			System.out.println("Customer " + name + " has now " + customer.getItemAmount() + " item in the shopping cart.");
+		}
+
             }
         }
+       }else{
+	       System.out.println("\tNo one is in the Shopping Center!");
+       }
     }// end inputCaseTwo
     //
 
     public static void inputCaseThree(ShoppingCenterModel store) throws IOException {
-        if(store.getCustomers().isEmpty()) {
-            System.out.println("No one is in the Shopping Center!");
+        if(store.isEmpty()) {
+            System.out.println("\tNo one is in the Shopping Center!");
         }
         else {
             System.out.print(">>Enter customer name : ");
@@ -209,19 +227,25 @@ public class Driver {
                 custResult = store.customerSearch(name);
             }
             Customer customer = (Customer) store.getCustomers().get(custResult);
+	    //fix to call item amount once
             if(customer.getItemAmount() == 0) {
                 System.out.println("Customer " + name + " does not have any items in their shopping cart!");
             }
-            else {
+	    //get rid of repeated code
+            else if(customer.getItemAmount() != 1){
                 store.customerRemoveItem(customer);
                 System.out.println("Customer " + name + " has now " + customer.getItemAmount() + " items in the shopping cart.");
-            }
+            }else{
+		store.customerRemoveItem(customer);
+                System.out.println("Customer " + name + " has now " + customer.getItemAmount() + " item in the shopping cart.");
+	    }
+
         }
     }
 
     public static void inputCaseFour(ShoppingCenterModel store) throws IOException {
-	if(store.getCustomers().isEmpty()){
-		System.out.println("No customers in the Shopping Center!");
+	if(store.isEmpty()){
+		System.out.println("\tNo customers in the Shopping Center!");
 	}
 	else{
 		Customer cust = store.getLongestShopper();
@@ -254,7 +278,7 @@ public class Driver {
     public static void inputCaseFive(ShoppingCenterModel store) throws IOException{
 	String name = store.nextCheckOut();
 	if(name == null){
-		System.out.println("No customers in any line.");
+		System.out.println("\tNo customers in any line.");
 	}else{
 		boolean leave = true;
 		String confirm;
@@ -299,22 +323,28 @@ public class Driver {
 
     public static void inputCaseEight(ShoppingCenterModel store){
 	    System.out.println("Items at re-stocking level: ");
-	    System.out.println(store.displayRestockingLevelItems());
+	    System.out.print(store.displayRestockingLevelItems());
     }
-
+	// change how it is retrieved, need to confirm if it exists first, then 
+    // display if not existant, so search, return item, directly adjust, or pass to
+    // method to update
+    // CONFRIM BEFORE CORRECTION
+    // -- AS OF NOW, SEARCHES TWICE 
     public static void inputCaseNine(ShoppingCenterModel store) throws IOException{
 	    System.out.print("Enter item name to be re-ordered : ");
 	    String name = stdin.readLine().trim();
 	    System.out.println(name);
+	    int amount= store.itemSearch(name);
+	    if(amount  > -1){
+		System.out.println(name + " is not it stock!");
+	    }else{
+		// search goes here, confirm if it exists
 	    System.out.print("Enter number of " + name + "s to be re-ordered : ");
 	    int num = convertToInt(stdin.readLine().trim());
 	    System.out.println(num);
 	    Item item = store.orderItem(name, num);
-	    if(item==null){
-		   System.out.println("Invalid item");
-	    }
-	    else{
-		   System.out.println("Stock has now " + item.getAmount() + " " + item.getName() + "s.");
+	    // then order based on name/item
+	    System.out.println("Stock has now " + item.getAmount() + " " + item.getName() + "s.");
 	    }
     }
 
