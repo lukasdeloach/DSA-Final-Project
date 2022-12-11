@@ -53,7 +53,9 @@ public class CheckOut<T> extends Queue<T> {
             for(int ind = 0; ind < numItems; ind++) {
                 // saved for readability
                 int normIndex = (front+ind)%items.length;
-                str.append("Customer " +items[normIndex].toString() + " has " + items[normIndex].toString() + " items in the shopping basket.\n");
+		Customer cust = (Customer)items[normIndex];
+                str.append("\n\tCustomer " + cust.getName() + " has " + cust.getItemAmount() + 
+				" items in the shopping basket.");
             }
             str.append("\n");
         }

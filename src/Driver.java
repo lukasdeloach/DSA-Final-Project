@@ -110,8 +110,7 @@ public class Driver {
 		    System.out.print(">>How many " + itemName + "s? ");
 		    int itemNum = convertToInt(stdin.readLine().trim());
 		    System.out.println(itemNum);
-		    Item item = new Item(itemName, itemNum);
-		    boolean status = store.addItem(item);
+		    boolean status = store.addItem(itemName, itemNum);
 		    System.out.println(itemNum + " items of " + itemName + " have been placed in stock.");
 		    while(!status){
 			    System.out.println("Invalid or Duplicate item. Try again");
@@ -121,8 +120,7 @@ public class Driver {
                 	    System.out.print(">>How many " + itemName + "s? ");
                     	    itemNum = convertToInt(stdin.readLine().trim());
                     	    System.out.println(itemNum);
-                    	    item = new Item(itemName, itemNum);
-                    	    status = store.addItem(item);
+                    	    status = store.addItem(itemName, itemNum);
 		    }
 	    }
 	    System.out.print("Please select the checkout line that should check out customers first (regular1/regular2/express): ");
@@ -181,14 +179,12 @@ public class Driver {
         System.out.print("What item does " + name + " want? ");
         String itemName = stdin.readLine().trim();
         System.out.println(itemName);
-        int itemResult = store.itemSearch(itemName);
-        if(itemResult>-1) {
+        Item item = store.itemSearch(itemName);
+        if(item == null) {
             System.out.println("No " + itemName + "s in Shopping Center.");
         }
 
         else {
-            itemResult += store.getItems().size();
-            Item item = (Item) store.getItems().get(itemResult);
             if(item.getAmount() < 1) {
                 System.out.println("No " + itemName + "s in stock.");
             }
@@ -227,20 +223,23 @@ public class Driver {
                 custResult = store.customerSearch(name);
             }
             Customer customer = (Customer) store.getCustomers().get(custResult);
+	    int amount = customer.getItemAmount();
 	    //fix to call item amount once
-            if(customer.getItemAmount() == 0) {
+            if(amount == 0) {
                 System.out.println("Customer " + name + " does not have any items in their shopping cart!");
             }
 	    //get rid of repeated code
-            else if(customer.getItemAmount() != 1){
-                store.customerRemoveItem(customer);
-                System.out.println("Customer " + name + " has now " + customer.getItemAmount() + " items in the shopping cart.");
-            }else{
+	    else{
 		store.customerRemoveItem(customer);
-                System.out.println("Customer " + name + " has now " + customer.getItemAmount() + " item in the shopping cart.");
+		if(customer.getItemAmount() == 1){
+                	System.out.println("Customer " + name + " has now " + customer.getItemAmount() + 
+					" item in the shopping cart.");
+		}else{
+                	System.out.println("Customer " + name + " has now " + customer.getItemAmount() + 
+					" items in the shopping cart.");
+	    	}
 	    }
-
-        }
+	}
     }
 
     public static void inputCaseFour(ShoppingCenterModel store) throws IOException {
@@ -334,15 +333,15 @@ public class Driver {
 	    System.out.print("Enter item name to be re-ordered : ");
 	    String name = stdin.readLine().trim();
 	    System.out.println(name);
-	    int amount= store.itemSearch(name);
-	    if(amount  > -1){
+	    Item item = store.itemSearch(name);
+	    if(item == null){
 		System.out.println(name + " is not it stock!");
 	    }else{
 		// search goes here, confirm if it exists
 	    System.out.print("Enter number of " + name + "s to be re-ordered : ");
 	    int num = convertToInt(stdin.readLine().trim());
 	    System.out.println(num);
-	    Item item = store.orderItem(name, num);
+	    store.orderItem(item, num);
 	    // then order based on name/item
 	    System.out.println("Stock has now " + item.getAmount() + " " + item.getName() + "s.");
 	    }

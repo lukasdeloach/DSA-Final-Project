@@ -38,8 +38,9 @@ public class ShoppingCenterModel {
 	    return (customers.isEmpty());
     }
 
-    public boolean addItem(Item item){
+    public boolean addItem(String name, int num){
 	    int size = items.size();
+	    Item item = new Item(name, num);
 	    items.add(item);
 	    return (size==items.size()) ? false : true;
     }
@@ -196,8 +197,9 @@ public class ShoppingCenterModel {
         CheckOut<Customer> next = null;
 	boolean customers = false;
 	int counter = 0;
+	int lane = checkOutStart;
 	while(customers == false && counter < 3){
-		switch(checkOutStart) {
+		switch(lane) {
         	case 0:
          	   next = expressLine;
           	   break;
@@ -211,7 +213,7 @@ public class ShoppingCenterModel {
 		if(next.size() > 0){
 			customers = true;
 		}
-		checkOutStart = (checkOutStart + 1) % 3;
+		lane = (lane + 1) % 3;
 		counter++;
 	}
 	if(customers == false){
@@ -260,14 +262,19 @@ public class ShoppingCenterModel {
 		cust.setTotalTime(0);
 		cust.setCheckOut(false);
 	}
+	checkOutStart = (checkOutStart + 1)%3;
         return cust;
     }
 
     //ADJUSTED FOR CASE 9, REVISIT
-    public int itemSearch(String name) {
-	int result =  -1;
+    public Item itemSearch(String name) {
+	Item result =  null;
+	int temp = 0;
 	if(!items.isEmpty()){
-		result = items.search(name);
+		temp = items.search(name);
+		if(temp < 0){
+			result = items.get(temp+items.size());;
+		}
 	}
         return result;
     }
@@ -355,15 +362,13 @@ public class ShoppingCenterModel {
      * @param amount - primitive type int that holds the amount of new stock the user wants to add to the existing item stock.
      * @return item - Object type Item. If the item is not found based on the given name, the method will return a null item
      */
-    public Item orderItem(String name, int amount){
-	    Item item = null;
-	    int index = items.search(name);
-	    if(index < 0){
-		    item = items.get(index+items.size()); // decodes value found
-		    int updatedValue = item.getAmount()+amount;
+    public int orderItem(Item item, int amount){
+	    int updatedValue = -1;
+	    if(item != null){
+		    updatedValue = item.getAmount()+amount;
 		    item.setAmount(updatedValue);
 	    }
-	    return item;	    
+	    return updatedValue;	    
     }
 
     /**
