@@ -173,7 +173,7 @@ public class ShoppingCenterModel {
 	    return str.toString();
     }
 
-    public void reAddCustomer(Customer customer){
+    public void resetCustomer(Customer customer){
 	    customer.setTotalTime(0);
 	    customer.setCheckOut(false);
     }
@@ -185,7 +185,7 @@ public class ShoppingCenterModel {
 
 
     // confirm where the line counter should restart from
-    private CheckOut<Customer> nextCheckOut(){
+    private CheckOut<Customer> nextLane(){
         CheckOut<Customer> next = null;
 	boolean customers = false;
 	int counter = 0;
@@ -201,18 +201,30 @@ public class ShoppingCenterModel {
 		    next = lineTwo;
             	    break;
         	}
-		if(next != null){
+		if(next.size() > 0){
 			customers = true;
-		}else{
-			checkOutStart = (checkOutStart + 1) % 3;
 		}
+		checkOutStart = (checkOutStart + 1) % 3;
 		counter++;
+	}
+	if(customers == false){
+		next = null;
 	}
         return next;
     }
 
+    public String nextCheckOut(){
+	    String cust = null;
+	    CheckOut<Customer> next = nextLane();
+	    if(next != null){
+		cust = next.peek().getName();
+	    }
+	    return cust;
+    }
+
+
     // determine if the next person in line has items in their cart.
-    // If no items, return name, if items, return null.
+    /* If no items, return name, if items, return null.
     public String itemsToCheckout() {
 	    String name = null;
 	    CheckOut<Customer> line = nextCheckOut();
@@ -221,21 +233,26 @@ public class ShoppingCenterModel {
 	    }
 	    return name;
     }
+    */
     
     // check out person based on which checkout lane is next
     // take in param of if they leave or return shopping
     // if leave, remove from list of all customers aswell
     // returns int of how many items they have. If -1, they are leaving and can be ignored,
     // if they go back to shopping, returns the amount of items they have
+    // ADD ERROR CHECKING?
     public Customer checkOut(boolean leave) {
-        CheckOut<Customer> line = null;
+        CheckOut<Customer> line = this.nextLane();
 	Customer cust = line.dequeue();
 	
 	if(leave){
         	int index = customers.search(cust.getName());
         	index = index + customers.size();
         	customers.remove(index);
-        }
+        }else{
+		cust.setTotalTime(0);
+		cust.setCheckOut(false);
+	}
         return cust;
     }
 

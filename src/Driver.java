@@ -59,6 +59,7 @@ public class Driver {
 		inputCaseFour(shoppingCenter);
                 break;
             case 5:
+		inputCaseFive(shoppingCenter);
                 break;
             case 6:
                 inputCaseSix(shoppingCenter);
@@ -224,63 +225,68 @@ public class Driver {
 	}
 	else{
 		Customer cust = store.getLongestShopper();
+		String name = cust.getName();
+		int items = cust.getItemAmount();
 		if(cust == null){
 			System.out.println("Every Customer is in a Checkout Line");
 		}
 		else if(cust.getItemAmount() == 0){
-			System.out.print("Should customer " + cust.getName() + " with " + cust.getItemAmount() + " leave or keep on shopping?(Y/N): ");
+			System.out.print("Should customer " + name + " leave or keep on shopping? Leave?(Y/N): ");
 			String answer = stdin.readLine().trim();
 			System.out.println(answer);
 			if(answer.equalsIgnoreCase("y")){
-				store.reAddCustomer(cust);
-				System.out.println(" customer " + cust.getName() + " with " + cust.getItemAmount() + " items returned to shopping.");
+				store.removeLongestCustomer(cust);
+				System.out.println("Customer " + name + "has left.");
 			}
 			else{
-				store.removeLongestCustomer(cust);
-				System.out.println("Customer has left");
+				store.resetCustomer(cust);
+				System.out.println("Customer " + name + " with " + items + " returned to shopping.");
 			}	
 		}
 		else{
 			String lineStatus = store.enqueueCustomer(cust);
-			System.out.println("After " + cust.getTotalTime() + " minutes in the Shopping Center, customer " + cust.getName() + " with " + cust.getItemAmount() + " is now in the " + lineStatus + ".");
+			System.out.println("After " + cust.getTotalTime() + " minutes in the Shopping Center, customer " + name + " with " + items + " is now in the " + lineStatus + ".");
 		}
 	}
     }
 
 
     public static void inputCaseFive(ShoppingCenterModel store) throws IOException{
-	    // need to change for method for just lines, not entire store!!!
-	if(store.getCustomers().isEmpty()){
+	String name = store.nextCheckOut();
+	if(name == null){
 		System.out.println("No customers in any line.");
 	}else{
 		boolean leave = true;
-		String name = store.itemsToCheckout();
-		if(name != null){
-			String confirm;
-			boolean correct = false;
-			do{	
-				System.out.print("Should customer " +  name + " leave or keep on shopping? Leave?(Y/N):");
-				confirm = stdin.readLine().trim();
-				if(confirm.equalsIgnoreCase("Y") || confirm.equalsIgnoreCase("yes")){
-					correct = true;
-				}else if(confirm.equalsIgnoreCase("N") || confirm.equalsIgnoreCase("no")){
-					leave = false;
-					correct = true;
-				}else{
-					invalidInput();
-				}
-			}while(correct == false);
-		}
+		String confirm;
+		boolean correct = false;
+		do{	
+			System.out.print("Should customer " +  name + " leave or keep on shopping? Leave?(Y/N):");
+			confirm = stdin.readLine().trim();
+			if(confirm.equalsIgnoreCase("Y")){
+				correct = true;
+			}else if(confirm.equalsIgnoreCase("N")){
+				leave = false;
+				correct = true;
+			}else{
+				invalidInput();
+			}
+		}while(correct == false);
+
 		Customer left = store.checkOut(leave);
 		if(leave == true){
-			System.out.print("After " + left.getTotalTime() + " minutes in Shopping Center customer " 
-					+ left.getName() + " with " + left.getItemAmount() + 
-					" items is now in first checkout line.");
+			System.out.print("Customer" + name + " is now leaving the Shopping Center.");
+		}else{
+			int items = left.getItemAmount();
+			System.out.print("Customer " + name + " with ");
+			if(items > 1){
+				System.out.print(items + " items ");
+			}else{
+				System.out.print(items + " item ");
+			}
+			System.out.println(" returned to shopping.");
 		}
 	}
     }
-
-
 
     //
     public static void inputCaseSix(ShoppingCenterModel store) {
