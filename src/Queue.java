@@ -8,8 +8,6 @@
  * @author: Jessica Rodgers
  * @version: 2022.10.13
  */
-
-
 public class Queue<T> implements QueueInterface<T> {
 
     // protected data fields for DEQ
