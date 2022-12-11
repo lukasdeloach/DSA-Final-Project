@@ -430,7 +430,7 @@ juice with 0 items.
 water with 2 items.
 
 Select an operation from the following menu: 4
-After 42 minutes in the Shopping Center, customer Eevee with 7 is now in the second checkout line.
+After 42 minutes in the Shopping Center, customer Eevee with 7 is now in the first checkout line.
 
 Select an operation from the following menu: 4
 Should customer Latias leave or keep on shopping? Leave?(Y/N): N
@@ -451,9 +451,9 @@ Customer Woobat with 6 items present for 34 minutes.
 
 
 Select an operation from the following menu: 7
-No customers are in the first checkout line!
-The following customer is in the second checkout line:Customer Eevee 7 42 has Eevee 7 42 items in the shopping basket.
+The following customer is in the first checkout line:Customer Eevee 7 42 has Eevee 7 42 items in the shopping basket.
 
+No customers are in the second checkout line!
 The following customer is in the express checkout line:Customer Pickachu 2 41 has Pickachu 2 41 items in the shopping basket.
 
 
@@ -475,7 +475,7 @@ What item does Latias want? juice
 No juices in stock.
 
 Select an operation from the following menu: 4
-After 41 minutes in the Shopping Center, customer Clefairy with 1 is now in the first checkout line.
+After 41 minutes in the Shopping Center, customer Clefairy with 1 is now in the second checkout line.
 
 Select an operation from the following menu: 6
 The following 6 customers are in the Shopping Center:
@@ -488,9 +488,9 @@ Customer Woobat with 6 items present for 35 minutes.
 
 
 Select an operation from the following menu: 7
-The following customer is in the first checkout line:Customer Clefairy 1 41 has Clefairy 1 41 items in the shopping basket.
+The following customer is in the first checkout line:Customer Eevee 7 43 has Eevee 7 43 items in the shopping basket.
 
-The following customer is in the second checkout line:Customer Eevee 7 43 has Eevee 7 43 items in the shopping basket.
+The following customer is in the second checkout line:Customer Clefairy 1 41 has Clefairy 1 41 items in the shopping basket.
 
 The following customer is in the express checkout line:Customer Pickachu 2 42 has Pickachu 2 42 items in the shopping basket.
 
@@ -510,9 +510,9 @@ What item does Beartic want? 6
 No 6s in Shopping Center.
 
 Select an operation from the following menu: 7
-The following customer is in the first checkout line:Customer Clefairy 1 41 has Clefairy 1 41 items in the shopping basket.
+The following customer is in the first checkout line:Customer Eevee 7 43 has Eevee 7 43 items in the shopping basket.
 
-The following customer is in the second checkout line:Customer Eevee 7 43 has Eevee 7 43 items in the shopping basket.
+The following customer is in the second checkout line:Customer Clefairy 1 41 has Clefairy 1 41 items in the shopping basket.
 
 The following customer is in the express checkout line:Customer Pickachu 2 42 has Pickachu 2 42 items in the shopping basket.
 
@@ -534,10 +534,10 @@ Select an operation from the following menu: 4
 After 42 minutes in the Shopping Center, customer Munna with 4 is now in the express line.
 
 Select an operation from the following menu: 4
-After 36 minutes in the Shopping Center, customer Woobat with 6 is now in the second checkout line.
+After 36 minutes in the Shopping Center, customer Woobat with 6 is now in the first checkout line.
 
 Select an operation from the following menu: 4
-After 35 minutes in the Shopping Center, customer Beartic with 4 is now in the first checkout line.
+After 35 minutes in the Shopping Center, customer Beartic with 4 is now in the express line.
 
 Select an operation from the following menu: 4
 After 35 minutes in the Shopping Center, customer Minccino with 6 is now in the second checkout line.
@@ -549,15 +549,15 @@ Customer Pansage with 2 items present for 27 minutes.
 
 
 Select an operation from the following menu: 7
-The following 2 customers are in the first checkout line:Customer Clefairy 1 42 has Clefairy 1 42 items in the shopping basket.
-Customer Beartic 4 35 has Beartic 4 35 items in the shopping basket.
-
-The following 3 customers are in the second checkout line:Customer Eevee 7 44 has Eevee 7 44 items in the shopping basket.
+The following 2 customers are in the first checkout line:Customer Eevee 7 44 has Eevee 7 44 items in the shopping basket.
 Customer Woobat 6 36 has Woobat 6 36 items in the shopping basket.
+
+The following 2 customers are in the second checkout line:Customer Clefairy 1 42 has Clefairy 1 42 items in the shopping basket.
 Customer Minccino 6 35 has Minccino 6 35 items in the shopping basket.
 
-The following 2 customers are in the express checkout line:Customer Pickachu 2 43 has Pickachu 2 43 items in the shopping basket.
+The following 3 customers are in the express checkout line:Customer Pickachu 2 43 has Pickachu 2 43 items in the shopping basket.
 Customer Munna 4 42 has Munna 4 42 items in the shopping basket.
+Customer Beartic 4 35 has Beartic 4 35 items in the shopping basket.
 
 
 
@@ -568,25 +568,25 @@ juice with 0 items.
 water with 2 items.
 
 Select an operation from the following menu: 5
-Should customer Pickachu leave or keep on shopping? Leave?(Y/N):Customer Pickachu with 1 item  returned to shopping.
+Should customer Pickachu leave or keep on shopping? Leave?(Y/N):Customer Pickachu with 7 items  returned to shopping.
 
 Select an operation from the following menu: 5
-Should customer Eevee leave or keep on shopping? Leave?(Y/N):CustomerEevee is now leaving the Shopping Center.
+Should customer Clefairy leave or keep on shopping? Leave?(Y/N):CustomerClefairy is now leaving the Shopping Center.
 Select an operation from the following menu: 6
 The following 3 customers are in the Shopping Center:
-Customer Clefairy with 1 items present for 0 minutes.
+Customer Eevee with 7 items present for 0 minutes.
 Customer Latias with 0 items present for 2 minutes.
 Customer Pansage with 2 items present for 27 minutes.
 
 
 Select an operation from the following menu: 7
-The following customer is in the first checkout line:Customer Beartic 4 35 has Beartic 4 35 items in the shopping basket.
+The following customer is in the first checkout line:Customer Woobat 6 36 has Woobat 6 36 items in the shopping basket.
 
-The following 3 customers are in the second checkout line:Customer Eevee 7 44 has Eevee 7 44 items in the shopping basket.
-Customer Woobat 6 36 has Woobat 6 36 items in the shopping basket.
+The following 2 customers are in the second checkout line:Customer Clefairy 1 42 has Clefairy 1 42 items in the shopping basket.
 Customer Minccino 6 35 has Minccino 6 35 items in the shopping basket.
 
-The following customer is in the express checkout line:Customer Munna 4 42 has Munna 4 42 items in the shopping basket.
+The following 2 customers are in the express checkout line:Customer Munna 4 42 has Munna 4 42 items in the shopping basket.
+Customer Beartic 4 35 has Beartic 4 35 items in the shopping basket.
 
 
 
@@ -608,25 +608,25 @@ Customer 5 is now in the Shopping Center.
 
 Select an operation from the following menu: This is not an option. Try again.
 5
-Should customer Beartic leave or keep on shopping? Leave?(Y/N):CustomerBeartic is now leaving the Shopping Center.
+Should customer Woobat leave or keep on shopping? Leave?(Y/N):CustomerWoobat is now leaving the Shopping Center.
 Select an operation from the following menu: 5
 Should customer Munna leave or keep on shopping? Leave?(Y/N):CustomerMunna is now leaving the Shopping Center.
 Select an operation from the following menu: 5
-Should customer Woobat leave or keep on shopping? Leave?(Y/N):CustomerWoobat is now leaving the Shopping Center.
+Should customer Minccino leave or keep on shopping? Leave?(Y/N):CustomerMinccino is now leaving the Shopping Center.
 Select an operation from the following menu: 6
 The following 4 customers are in the Shopping Center:
 Customer 5 with 0 items present for 0 minutes.
-Customer Clefairy with 1 items present for 0 minutes.
+Customer Eevee with 7 items present for 0 minutes.
 Customer Latias with 0 items present for 2 minutes.
 Customer Pansage with 2 items present for 27 minutes.
 
 
 Select an operation from the following menu: 7
 No customers are in the first checkout line!
-The following 2 customers are in the second checkout line:Customer Woobat 6 36 has Woobat 6 36 items in the shopping basket.
-Customer Minccino 6 35 has Minccino 6 35 items in the shopping basket.
+The following customer is in the second checkout line:Customer Minccino 6 35 has Minccino 6 35 items in the shopping basket.
 
-No customers are in the express checkout line!
+The following customer is in the express checkout line:Customer Beartic 4 35 has Beartic 4 35 items in the shopping basket.
+
 
 
 Select an operation from the following menu: 8
@@ -636,15 +636,15 @@ juice with 0 items.
 water with 2 items.
 
 Select an operation from the following menu: 5
-Should customer Woobat leave or keep on shopping? Leave?(Y/N):Customer Woobat with 6 items  returned to shopping.
+Should customer Minccino leave or keep on shopping? Leave?(Y/N):Customer Minccino with 4 items  returned to shopping.
 
 Select an operation from the following menu: 6
 The following 5 customers are in the Shopping Center:
 Customer 5 with 0 items present for 0 minutes.
-Customer Clefairy with 1 items present for 0 minutes.
+Customer Beartic with 4 items present for 0 minutes.
+Customer Eevee with 7 items present for 0 minutes.
 Customer Latias with 0 items present for 2 minutes.
 Customer Pansage with 2 items present for 27 minutes.
-Customer Woobat with 6 items present for 0 minutes.
 
 
 Select an operation from the following menu: 7
@@ -662,27 +662,25 @@ water with 2 items.
 
 Select an operation from the following menu: 2
 >>Enter customer name : Eevee
-Customer Eevee is not in shopping center!
->>Enter customer name : soup
-Customer soup is not in shopping center!
->>Enter customer name : 4
-Customer 4 is not in shopping center!
->>Enter customer name : 5
-What item does 5 want? Y
-No Ys in Shopping Center.
+What item does Eevee want? soup
+Customer Eevee has now 8 items in the shopping cart.
 
+Select an operation from the following menu: 4
+After 28 minutes in the Shopping Center, customer Pansage with 2 is now in the express line.
+
+Select an operation from the following menu: 5
+Should customer Minccino leave or keep on shopping? Leave?(Y/N):CustomerMinccino is now leaving the Shopping Center.
 Select an operation from the following menu: 6
-The following 5 customers are in the Shopping Center:
-Customer 5 with 0 items present for 0 minutes.
-Customer Clefairy with 1 items present for 0 minutes.
-Customer Latias with 0 items present for 2 minutes.
-Customer Pansage with 2 items present for 27 minutes.
-Customer Woobat with 6 items present for 0 minutes.
+The following 4 customers are in the Shopping Center:
+Customer 5 with 0 items present for 1 minutes.
+Customer Beartic with 4 items present for 1 minutes.
+Customer Eevee with 8 items present for 1 minutes.
+Customer Latias with 0 items present for 3 minutes.
 
 
 Select an operation from the following menu: 7
 No customers are in the first checkout line!
-The following customer is in the second checkout line:Customer Minccino 6 35 has Minccino 6 35 items in the shopping basket.
+The following customer is in the second checkout line:Customer Minccino 6 36 has Minccino 6 36 items in the shopping basket.
 
 No customers are in the express checkout line!
 

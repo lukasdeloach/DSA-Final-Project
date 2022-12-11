@@ -147,8 +147,10 @@ public class ShoppingCenterModel {
 	    int expressSize = expressLine.size(), lineOneSize = lineOne.size(), lineTwoSize = lineTwo.size();
 	    StringBuilder str = new StringBuilder();
 	    if(itemAmount < 5){
-		    if((expressLine.size()<<1 > lineOne.size()+1) || (expressLine.size()<<1 > lineTwo.size()+1)){
-		    	if(lineOneSize < lineTwoSize){
+		    //System.out.println("line one: " + (expressLine.size() + 1 > lineOne.size()<<1));
+		    //System.out.println("line two: " + (expressLine.size() + 1 > lineTwo.size()<<1)); 
+		    if((expressLine.size() > lineOne.size()<<1) || (expressLine.size() > lineTwo.size()<<1)){
+		    	if(lineOneSize < lineTwoSize + 1){
 			   	 lineOne.enqueue(customer);
 				 str.append("first checkout line");
 		    	}
@@ -163,7 +165,7 @@ public class ShoppingCenterModel {
 		    }
 	    }
 	    else{
-		    if(lineOneSize < lineTwoSize){
+		    if(lineOneSize < lineTwoSize + 1){
 			    lineOne.enqueue(customer);
 			    str.append("first checkout line");
 		    }
