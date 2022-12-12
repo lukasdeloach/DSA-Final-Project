@@ -264,13 +264,12 @@ public class ShoppingCenterModel {
         CheckOut<Customer> line = this.nextLane();
         Customer cust = null;
        	if(line != null){
-		line.dequeue();
-
+		cust = line.dequeue();
         	if(leave) {
             		int index = customers.search(cust.getName());
             		index = index + customers.size();
             		customers.remove(index);
-        	} else {
+        	}else {
             		cust.setTotalTime(0);
             		cust.setCheckOut(false);
         	}

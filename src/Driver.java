@@ -349,24 +349,43 @@ public class Driver {
         }
     }
 
-    //
+    /**
+     * Method to handle input case six, to display all shoppers in store who are shopping.
+     * This method only displays customer in store who are shopping, not in a checkout. It calls internal ShoppingCenterModel methods, and displays all relevant customer information, name, item amount, and time.
+     * @param store -- ShoppingCenterModel to be updated.
+     */
     public static void inputCaseSix(ShoppingCenterModel store) {
         System.out.println(store.displayShoppers());
     }
 
+    /**
+     * Method to handle input case seven.
+     * Displays all customers in checkout lines in prope order. 
+     * Calls methods of ShoppingCenterModel for each checkout line.
+     * @param store -- ShoppingCenterModel to be reassigned. 
+     */
     public static void inputCaseSeven(ShoppingCenterModel store) {
         System.out.println(store.displayLine1() + store.displayLine2() + store.displayExpress());
     }
 
+    /**
+     * Method to handle input case eight.
+     * This method displays all items in Shopping Center that are at or below the restocking level set at original input.
+     * @param store -- ShoppingCenterModel to be checked.
+     */
     public static void inputCaseEight(ShoppingCenterModel store) {
         System.out.println("Items at re-stocking level: ");
         System.out.print(store.displayRestockingLevelItems());
     }
-    // change how it is retrieved, need to confirm if it exists first, then
-    // display if not existant, so search, return item, directly adjust, or pass to
-    // method to update
-    // CONFRIM BEFORE CORRECTION
-    // -- AS OF NOW, SEARCHES TWICE
+
+    /**
+     * Method to handle input case nine.
+     * This method is used to reorded an item based on name specified by user input. 
+     * It takes in string input of item name, confirms it exists, and then asks how much to be added to the stock.
+     * It will display if improper input is given, or if successful, new updated stock of item.
+     * @param store -- ShoppingCenterModel to be updated.
+     * @exception ioException -- IOException thrown if improper input is given.
+     */
     public static void inputCaseNine(ShoppingCenterModel store) throws IOException {
         System.out.print("Enter item name to be re-ordered : ");
         String name = stdin.readLine().trim();
@@ -375,18 +394,17 @@ public class Driver {
         if(item == null) {
             System.out.println(name + " is not it stock!");
         } else {
-            // search goes here, confirm if it exists
             System.out.print("Enter number of " + name + "s to be re-ordered : ");
             int num = convertToInt(stdin.readLine().trim());
             System.out.println(num);
             store.orderItem(item, num);
-            // then order based on name/item
             System.out.println("Stock has now " + item.getAmount() + " " + item.getName() + "s.");
         }
     }
 
-
-    // method to declare that inputted option is not valid from menu items
+    /**
+     * Method to display if invlaid input is given, and to prompt for new input.
+     */
     public static void invalidInput() {
         System.out.println("This is not an option. Try again.");
     }// end invalidInput
