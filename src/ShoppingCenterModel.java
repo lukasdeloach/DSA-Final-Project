@@ -22,6 +22,10 @@ public class ShoppingCenterModel {
 
     private Customer longestCustomer;
 
+    /**
+     * Constructor for ShoppingCenterModel. Takes not input, and sets the first few checkout lanes to be the proper title names.
+     * Also initializes customers and items list to empty, and restocking level, checkoutstart to 0, and longestCustomer to null.
+     */
     public ShoppingCenterModel() {
         lineOne = new CheckOut<>("first");
         lineTwo = new CheckOut<>("second");
@@ -32,6 +36,7 @@ public class ShoppingCenterModel {
 
         restockingLevel = 0;
         checkOutStart = 0;
+	longestCustomer = null;
     }
 
     public boolean isEmpty() {
@@ -163,7 +168,6 @@ public class ShoppingCenterModel {
      * If it is two times bigger, the two regular lines are compared in order to see which line a customer should be enqueued into.
      * The customer will be enqued into the lesser of those two compared lines.
      * If the customer has more than 4 items, they are added to either line one or line two, depending on which one has less customers.
-     * @param customer - passed customer object
      * @return String  - String object which describes which line the customer was added into
      */
     public String enqueueCustomer() {
@@ -202,29 +206,11 @@ public class ShoppingCenterModel {
     }
 
     /**
-     * This is a method to reset a Customer's shopping information after they have checked out.
-     * After the customer checks out, they will have the decision to leave or continue to shop.
-     * If they continue to shop, this method will be called.
-     * Their total time shopping will be set to 0 and the boolean value describing if they are in a checkout will be set to false.
-     * Since the customer checked out, they will have been the longestCustomer in the store so the longestCustomer is updated to null.
-     * This meeans they are no longer the customer in the store the longest.
-     * @param customer - A customer object representing the customer to
+     * Method to determine next lane to checkout from based on checkout counter.
+     * The checkoutstart data field tracks what the next checkout lane to use is, and ciruclarly iterates it to keep track.
+     * If it next checkout is empty, it will move to the next. If if goes through all 3 and there are no customers, it will return null.
+     * @return nextCheckout -- CheckOut variable of the checkout to be used to dequeue from
      */
-    public void resetCustomer(Customer customer) {
-        customer.setTotalTime(0);
-        customer.setCheckOut(false);
-        longestCustomer = null;
-    }
-
-    /**
-     * The removeLongestCustomer method sets the longestCustomer field to null meaning that there will be a new customer in the store the longest.
-     * @param customer - the Customer to be removed
-     */
-    public void removeLongestCustomer(Customer customer) {
-        customers.remove(customers.search(customer.getName())+customers.size());
-        longestCustomer = null;
-    }
-
     private CheckOut<Customer> nextLane() {
         CheckOut<Customer> next = null;
         boolean customers = false;
@@ -254,6 +240,10 @@ public class ShoppingCenterModel {
         return next;
     }
 
+    /**
+     * Method to get the name of the next Customer to checkout of the store based on the next checkout lane to be dequeue from.
+     * @return customer -- String variable that holds name of next customer to checkout.
+     */
     public String nextCheckOut() {
         String cust = null;
         CheckOut<Customer> next = nextLane();
@@ -263,25 +253,29 @@ public class ShoppingCenterModel {
         return cust;
     }
 
-    // check out person based on which checkout lane is next
-    // take in param of if they leave or return shopping
-    // if leave, remove from list of all customers aswell
-    // returns int of how many items they have. If -1, they are leaving and can be ignored,
-    // if they go back to shopping, returns the amount of items they have
-    // ADD ERROR CHECKING?
+    /**
+     * Method to check out the next person in the next Checkout lane.
+     * This method gets the correct next person to checkout based on who is next in the proper checkout line.
+     * If the line to be taken is not null, as a validation check, it will dequeue, andeither fully remove them, or have them return to shopping and reset their time counter. It then increments the values of the next line to be checked out from.
+     * @param leave -- boolean type that describes whether or not the peson should fully leave, true, or return to shopping, false.
+     * @return customer -- Customer type, returns the person who just left the checkout line
+     */
     public Customer checkOut(boolean leave) {
         CheckOut<Customer> line = this.nextLane();
-        Customer cust = line.dequeue();
+        Customer cust = null;
+       	if(line != null){
+		line.dequeue();
 
-        if(leave) {
-            int index = customers.search(cust.getName());
-            index = index + customers.size();
-            customers.remove(index);
-        } else {
-            cust.setTotalTime(0);
-            cust.setCheckOut(false);
-        }
-        checkOutStart = (checkOutStart + 1)%3;
+        	if(leave) {
+            		int index = customers.search(cust.getName());
+            		index = index + customers.size();
+            		customers.remove(index);
+        	} else {
+            		cust.setTotalTime(0);
+            		cust.setCheckOut(false);
+        	}
+        	checkOutStart = (checkOutStart + 1)%3;
+	}
         return cust;
     }
 
@@ -348,7 +342,7 @@ public class ShoppingCenterModel {
             for(int i = 0; i < numCust; i++) {
                 Customer cust = customers.get(i);
                 if(!cust.getCheckOut()) {
-                    retStr.append("\nCustomer " +cust.getName() +" with " + cust.getItemAmount() +
+                    retStr.append("\n\tCustomer " +cust.getName() +" with " + cust.getItemAmount() +
                                   " items present for " + cust.getTotalTime() + " minutes.");
                 }
             }
@@ -496,6 +490,12 @@ public class ShoppingCenterModel {
 
     }
 
+    /**
+     * This method is used to move the person longest in the store into a checkout line.
+     * This method is used to move a person who has no items, either back to shopping, or leave the store completely.
+     * @param leave -- boolean variable describie whether a person with no items should leave the store(true), or return shopping(false)
+     * @return result -- String type that describes action of customer that just occured through this method.
+     */
     public String doneShopping(boolean leave){
 	    String result = null;
 	    String name = longestCustomer.getName();
@@ -512,6 +512,10 @@ public class ShoppingCenterModel {
 	    return result;
     }
 
+    /**
+     * This method is for a customer who has items, and enqueues them in the proper checkoutline.
+     * @return result -- String type describing customer infomration and what checkout line they are in.
+     */
     public String doneShopping(){
 	String result = "After " + longestCustomer.getTotalTime() + " minutes in the Shopping Center, customer " + longestCustomer.getName() + " with " + longestCustomer.getItemAmount() + " is now in the ";
 	result = result +  this.enqueueCustomer() +".";
