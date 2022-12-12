@@ -3,7 +3,7 @@
  * The item that is considered a key for this class is a String which represents the name of the item.
  * Appropriate getter and setter methods for the class allow for easy access to the data fields and modification.
  * This class contains one Constructor which takes two paramters one of type String and the other of type int.
- * @author Lukas DeLoach
+ * @author Lukas DeLoach and Jessica Rodgers
  */
 public class Item extends KeyedItem<String> {
 
@@ -14,7 +14,7 @@ public class Item extends KeyedItem<String> {
      * The only Constructor for the Item class which takes two parameters that represent the item name and item amount. The constructor calls upon the KeyedItem classes constructor which instantiates the key as the Strng type name.
      * @param name - String type that represents the Item's name
      * @param amount - int type that represents the amount of the item
-     */
+     **/
     public Item(String name, int amount) {
         super(name);
         this.name = name;
@@ -25,7 +25,7 @@ public class Item extends KeyedItem<String> {
     /**
      * Getter method for the data field name.
      * @return name - String type name that represents the Item name.
-     */
+     **/
     public String getName() {
         return name;
     }

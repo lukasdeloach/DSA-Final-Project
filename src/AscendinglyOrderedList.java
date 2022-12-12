@@ -1,13 +1,13 @@
-/*
+/**
  * Purpose: Honors Data Structure and Algorithms Lab 8 Problem 4
  * Status: Complete and thoroughly tested
  * Last update: 11/08/22
  * Submitted:  11/08/22
  * Comment: test suite and sample run attached
  * Comment: I declare that this is entirely my own work
- * @author: Lukas DeLoach
+ * @author: Lukas DeLoach and Jessica Rodgers
  * @version: 2022.08.11
- */
+ **/
 public class AscendinglyOrderedList<T extends KeyedItem<KT>, KT extends Comparable <? super KT>> extends ListArrayBasedPlusN implements AscendinglyOrderedListInterface<T, KT> {
 
     /**

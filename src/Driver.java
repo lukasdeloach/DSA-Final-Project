@@ -1,6 +1,13 @@
 /**
- * Updated with driver options. No other features added.
- * - Lukas DeLoach
+ * Possibly update checkout descriptions after talking
+ * - Jess
+ *
+ *
+ * This is the Driver class that is used to run the entire Shopping Center model project, and allow for user input.
+ * This class uses all classes developed in folder, either directly on indirectly.
+ * The only data field in the class is a reader to take in input, and the main method holds a ShoppingCenterModel data field.
+ * @author:  Lukas DeLoach and Jessica Rodgers
+ * @version: 2022.12.12
  */
 
 import java.io.*;

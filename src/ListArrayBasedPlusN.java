@@ -1,11 +1,7 @@
-/*
- * Purpose: Honors Data Structure and Algorithms Lab 2 Problem 4
- * Status: Complete and thoroughly tested [choose only one!!!]
- * Last update: 09/20/22
- * Submitted:  09/20/22
- * Comment: test suite and sample run attached
- * Comment: I declare that this is entirely my own work
- * @author: Lukas DeLoach
+/**
+ * This class is ListArrayBasedPlusN, extends ListArrayBased. It creates and implementaion for the List ADT.
+ * List Array based uses an array based implementation, and this extends and overrides some methods to optimize its efficency.
+ * @author: Lukas DeLoach and Jessica Rodgers
  * @version: 2022.20.09
  */
 public class ListArrayBasedPlusN<T> extends ListArrayBased<T> {
@@ -17,6 +13,7 @@ public class ListArrayBasedPlusN<T> extends ListArrayBased<T> {
      * @param index
      * @param item
      */
+	@Override
     public void add(int index, T item) {
         if(numItems==items.length) {
             T[] tmp = (T[]) new Object[1<<items.length];
@@ -55,6 +52,7 @@ public class ListArrayBasedPlusN<T> extends ListArrayBased<T> {
      * Returns a String builder of appended items in the list
      * @return s.toString()
      */
+    @Override
     public String toString() {
         StringBuilder s = new StringBuilder();
         for(int i = 0; i < numItems; i++) {

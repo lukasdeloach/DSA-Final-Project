@@ -92,7 +92,7 @@ public class ShoppingCenterModel {
      * @param item     - an Item object
      */
     public void customerAddItem(Customer customer, Item item) {
-        customer.addItem(item);
+        customer.addItem();
         item.decrementAmount();
         simulateTime();
     }

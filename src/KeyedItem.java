@@ -1,9 +1,13 @@
 /**
- * KeyedItem class that uses a Key that can be compared
+ * KeyedItem class that extends Comparable. This class has a searchKey that is comparable, of generic type.
  */
 public abstract class KeyedItem<KT extends Comparable<? super KT>> {
     private KT searchKey;
 
+    /**
+     * Constructor for KeyedItem class that has one parameter of generic type to set the value of the searchKey.
+     * @param key -- Generic type to be used as comparable value and set serachKey variable.
+     */
     public KeyedItem(KT key) {
         searchKey = key;
     }  // end constructor

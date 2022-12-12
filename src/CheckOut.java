@@ -1,54 +1,79 @@
+/**
+ *
+ *Encapsulation error with toString?
+ *
+ *
+ * Purpose: Honors Data Structure and Algorithms Project
+ * This is the CheckOut class that extends class Queue.
+ * This class has one additional variable of name variable used to describe the checkout lane it represents. 
+ * Name is of String type and is used to describe the Checkout based on input.
+ * Most queue methods are the same, with the constructor being updated and a size method to
+ * return size. Along with a getter and setter for name, and a proper toString to describe
+ * the checkout.
+ * @author: Lukas DeLoach and Jessica Rodgers
+ * @version: 2022.12.12
+ **/
+
+
 import java.lang.*;
 
-public class CheckOut<T> extends Queue<T> {
+public class CheckOut<Customer> extends Queue<T> {
 
-    int size;
     String name;
-
+    
+    /**
+     * The only Constructor for the Checkout class, which takes one parameter that represent the Checkout name. The constructor calls upon the Queue class constructor, and then sets the name variable with the parameter input.
+     * @param name - String type that represents the Checkout's name
+     */
     public CheckOut(String name) {
         super();
         this.name = name;
-        size = 0;
     }
 
-    @Override
     /**
-    * Adds item to back of the queue and updates size
-    */
-    public void enqueue(T newItem) throws QueueException {
-        super.enqueue(newItem);
-        size++;
+     * Getter method for the data field name.
+     * @return name -- String type that represents the Checkout's name.
+     * */
+    public String getName(){
+	    return name;
     }
 
-    public T dequeue() throws QueueException {
-        T ret =super.dequeue();
-        size--;
-        return ret;
+    /**
+     * Setter method for data field name.
+     * @param newName -- String type to represent new name value.
+     * */ 
+    public void setName(String newName){
+	    name = newName;
     }
 
-    public void dequeueAll() {
-        super.dequeueAll();
-        size = 0;
-    }
-
+    /**
+     * Getter method for size of Checkout, which is the number of customers in the Checkout Queue.
+     * @return numItems -- int datafield of Queue size of Checkout.
+     * */
     public int size() {
-        return size;
+        return numItems;
     }
 
-    public String toString() {
-        //declare string builder to collect items from items
+
+    /**
+     * toString method to properly describe Checkout status. 
+     * If the Checkout is empty, it will return a statement desciribing there are no customers in the line and use the checkout name data field.
+     * If not empty, it will iterate through the checkout and compile all information about the customers in the checkout.
+     * */
+    @Override
+    public String toString(){
         StringBuilder str = new StringBuilder();
         // set curr to front to iterate through items
         int curr = front;
-        if(size == 0) {
+        if(numItems == 0) {
             str.append("No customers are in the " + name + " checkout line!\n");
         } else {
             // for loop iterates numItems times, adding starting from front and adding index that
             // increments amount normalized to size of array
-            if(size == 1) {
+            if(numItems == 1) {
                 str.append("The following customer is in the " + name + " checkout line:");
             } else {
-                str.append("The following " + size + " customers are in the " + name + " checkout line:");
+                str.append("The following " + numItems + " customers are in the " + name + " checkout line:");
             }
             for(int ind = 0; ind < numItems; ind++) {
                 // saved for readability
