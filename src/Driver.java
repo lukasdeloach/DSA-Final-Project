@@ -169,20 +169,22 @@ public class Driver {
             System.out.print(">>Enter customer name : ");
             String name = stdin.readLine().trim();
             System.out.println(name);
-            int custResult = store.customerSearch(name);
-            while(custResult<0) {
-                if(custResult == 0) {
-                    System.out.println("Customer "+ name+ " is in a checkoutline !");
-                } else {
-                    System.out.println("Customer " + name + " is not in shopping center!");
-                }
-
-                System.out.print(">>Enter customer name : ");
+	    Customer cust = store.customerSearch(name);
+            while(cust==null) {
+                System.out.println("Customer " + name + " is not in shopping center!");
+	        System.out.print(">>Enter customer name : ");
                 name = stdin.readLine().trim();
                 System.out.println(name);
-                custResult = store.customerSearch(name);
-            }
-            Customer customer = (Customer) store.getCustomers().get(custResult);
+                cust = store.customerSearch(name);
+	    }
+	    while(cust.getCheckOut()){
+		System.out.println("Customer "+ name+ " is in a checkoutline !");
+		System.out.print(">>Enter customer name : ");
+                name = stdin.readLine().trim();
+                System.out.println(name);
+                cust = store.customerSearch(name);
+	    }
+		
             System.out.print("What item does " + name + " want? ");
             String itemName = stdin.readLine().trim();
             System.out.println(itemName);
@@ -191,22 +193,21 @@ public class Driver {
                 System.out.println("No " + itemName + "s in Shopping Center.");
             }
 
-            else {
+            else{ 
                 if(item.getAmount() < 1) {
                     System.out.println("No " + itemName + "s in stock.");
                 }
                 else {
-                    store.customerAddItem(customer, item);
+                    store.customerAddItem(cust, item);
                     //ternary operator?
-                    int custItems = customer.getItemAmount();
+                    int custItems = cust.getItemAmount();
                     if(custItems != 1) {
-                        System.out.println("Customer " + name + " has now " + customer.getItemAmount() + " items in the shopping cart.");
+                        System.out.println("Customer " + name + " has now " + cust.getItemAmount() + " items in the shopping cart.");
                     } else {
-                        System.out.println("Customer " + name + " has now " + customer.getItemAmount() + " item in the shopping cart.");
+                        System.out.println("Customer " + name + " has now " + cust.getItemAmount() + " item in the shopping cart.");
                     }
-
-                }
-            }
+		}
+	    }
         } else {
             System.out.println("\tNo one is in the Shopping Center!");
         }
@@ -221,28 +222,34 @@ public class Driver {
             System.out.print(">>Enter customer name : ");
             String name = stdin.readLine().trim();
             System.out.println(name);
-            int custResult = store.customerSearch(name);
-            while(custResult<0) {
-
-                System.out.println(">>Enter customer name : ");
+            Customer cust = store.customerSearch(name);
+	    while(cust==null) {
+                System.out.println("Customer " + name + " is not in shopping center!");
+                System.out.print(">>Enter customer name : ");
                 name = stdin.readLine().trim();
                 System.out.println(name);
-                custResult = store.customerSearch(name);
+                cust = store.customerSearch(name);
             }
-            Customer customer = (Customer) store.getCustomers().get(custResult);
-            int amount = customer.getItemAmount();
+            while(cust.getCheckOut()){
+                System.out.println("Customer "+ name+ " is in a checkoutline !");
+                System.out.print(">>Enter customer name : ");
+                name = stdin.readLine().trim();
+                System.out.println(name);
+                cust = store.customerSearch(name);
+            }
+            int amount = cust.getItemAmount();
             //fix to call item amount once
             if(amount == 0) {
                 System.out.println("Customer " + name + " does not have any items in their shopping cart!");
             }
             //get rid of repeated code
             else {
-                store.customerRemoveItem(customer);
-                if(customer.getItemAmount() == 1) {
-                    System.out.println("Customer " + name + " has now " + customer.getItemAmount() +
+                store.customerRemoveItem(cust);
+                if(cust.getItemAmount() == 1) {
+                    System.out.println("Customer " + name + " has now " + cust.getItemAmount() +
                                        " item in the shopping cart.");
                 } else {
-                    System.out.println("Customer " + name + " has now " + customer.getItemAmount() +
+                    System.out.println("Customer " + name + " has now " + cust.getItemAmount() +
                                        " items in the shopping cart.");
                 }
             }

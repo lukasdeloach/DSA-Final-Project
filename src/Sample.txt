@@ -1,0 +1,557 @@
+Welcome to the Shopping Center!!!
+
+Please specify stock
+ How many items do you have? 7
+Please specify restocking amount: 3
+>>Enter item name : soup
+>>How many soups? 5
+5 items of soup have been placed in stock.
+>>Enter item name : bread
+>>How many breads? 7
+7 items of bread have been placed in stock.
+>>Enter item name : coffee
+>>How many coffees? 9
+9 items of coffee have been placed in stock.
+>>Enter item name : water
+>>How many waters? 10
+10 items of water have been placed in stock.
+>>Enter item name : juice
+>>How many juices? 4
+4 items of juice have been placed in stock.
+>>Enter item name : soap
+>>How many soaps? 3
+3 items of soap have been placed in stock.
+>>Enter item name : banana
+>>How many bananas? 15
+15 items of banana have been placed in stock.
+Please select the checkout line that should check out customers first (regular1/regular2/express): express
+
+Here are the choices to select from: 
+	0. Close the Shopping Center.
+	1. Customer enter Shopping Center.
+	2. Customer picks an item and places it in the shopping cart.
+	3. Customer removes an item from the shopping cart.
+	4. Customer is done shopping.
+	5. Customer checks out.
+	6. Print info about customers who are shopping.
+	7. Print info about customers in checkout lines.
+	8. Print info about items at or below re-stocking level.
+	9. Reorder an item.
+Make your menu selection now: 2
+	No one is in the Shopping Center!
+
+Select an operation from the following menu: 3
+	No one is in the Shopping Center!
+
+Select an operation from the following menu: 4
+	No customers in the Shopping Center!
+
+Select an operation from the following menu: 5
+	No customers in any line.
+
+Select an operation from the following menu: 6
+No customers are in the Shopping Center!
+
+Select an operation from the following menu: 7
+No customers are in the first checkout line!
+No customers are in the second checkout line!
+No customers are in the express checkout line!
+
+
+Select an operation from the following menu: 8
+Items at re-stocking level: 
+soap with 3 items.
+
+Select an operation from the following menu: 1
+>>Enter customer name : Latias
+Customer Latias is now in the Shopping Center.
+
+Select an operation from the following menu: 1
+>>Enter customer name : Eevee
+Customer Eevee is already in the Shopping Center!
+>>Enter customer name : 2
+Customer 2 is already in the Shopping Center!
+>>Enter customer name : Eevee
+Customer Eevee is already in the Shopping Center!
+>>Enter customer name : soup
+Customer soup is already in the Shopping Center!
+>>Enter customer name : 1
+Customer 1 is already in the Shopping Center!
+>>Enter customer name : Pickachu
+Customer Pickachu is already in the Shopping Center!
+>>Enter customer name : 2
+Customer 2 is already in the Shopping Center!
+>>Enter customer name : Eevee
+Customer Eevee is already in the Shopping Center!
+>>Enter customer name : soap
+Customer soap is already in the Shopping Center!
+>>Enter customer name : 1
+Customer 1 is already in the Shopping Center!
+>>Enter customer name : Clefairy
+Customer Clefairy is already in the Shopping Center!
+>>Enter customer name : 1
+Customer 1 is already in the Shopping Center!
+>>Enter customer name : Munna
+Customer Munna is already in the Shopping Center!
+>>Enter customer name : 2
+Customer 2 is already in the Shopping Center!
+>>Enter customer name : Munna
+Customer Munna is already in the Shopping Center!
+>>Enter customer name : bread
+Customer bread is already in the Shopping Center!
+>>Enter customer name : 2
+Customer 2 is already in the Shopping Center!
+>>Enter customer name : Munna
+Customer Munna is already in the Shopping Center!
+>>Enter customer name : soap
+Customer soap is already in the Shopping Center!
+>>Enter customer name : 2
+Customer 2 is already in the Shopping Center!
+>>Enter customer name : Pickachu
+Customer Pickachu is already in the Shopping Center!
+>>Enter customer name : soap
+Customer soap is already in the Shopping Center!
+>>Enter customer name : 2
+Customer 2 is already in the Shopping Center!
+>>Enter customer name : Eevee
+Customer Eevee is already in the Shopping Center!
+>>Enter customer name : soap
+Customer soap is already in the Shopping Center!
+>>Enter customer name : 2
+Customer 2 is already in the Shopping Center!
+>>Enter customer name : Eevee
+Customer Eevee is already in the Shopping Center!
+>>Enter customer name : juice
+Customer juice is already in the Shopping Center!
+>>Enter customer name : 2
+Customer 2 is already in the Shopping Center!
+>>Enter customer name : Eevee
+Customer Eevee is already in the Shopping Center!
+>>Enter customer name : bread
+Customer bread is already in the Shopping Center!
+>>Enter customer name : 3
+Customer 3 is already in the Shopping Center!
+>>Enter customer name : Munna
+Customer Munna is already in the Shopping Center!
+>>Enter customer name : 1
+Customer 1 is already in the Shopping Center!
+>>Enter customer name : Woobat
+Customer Woobat is already in the Shopping Center!
+>>Enter customer name : 2
+Customer 2 is already in the Shopping Center!
+>>Enter customer name : Clefairy
+Customer Clefairy is already in the Shopping Center!
+>>Enter customer name : babana
+Customer babana is already in the Shopping Center!
+>>Enter customer name : 2
+Customer 2 is already in the Shopping Center!
+>>Enter customer name : Clefairy
+Customer Clefairy is already in the Shopping Center!
+>>Enter customer name : banana
+Customer banana is already in the Shopping Center!
+>>Enter customer name : 1
+Customer 1 is already in the Shopping Center!
+>>Enter customer name : Munna
+Customer Munna is already in the Shopping Center!
+>>Enter customer name : Beartic
+Customer Beartic is already in the Shopping Center!
+>>Enter customer name : 1
+Customer 1 is already in the Shopping Center!
+>>Enter customer name : Minccino
+Customer Minccino is already in the Shopping Center!
+>>Enter customer name : 2
+Customer 2 is already in the Shopping Center!
+>>Enter customer name : Woobat
+Customer Woobat is already in the Shopping Center!
+>>Enter customer name : bread
+Customer bread is already in the Shopping Center!
+>>Enter customer name : 2
+Customer 2 is already in the Shopping Center!
+>>Enter customer name : Beartic
+Customer Beartic is already in the Shopping Center!
+>>Enter customer name : juice
+Customer juice is already in the Shopping Center!
+>>Enter customer name : 2
+Customer 2 is already in the Shopping Center!
+>>Enter customer name : Woobat
+Customer Woobat is already in the Shopping Center!
+>>Enter customer name : coffee
+Customer coffee is already in the Shopping Center!
+>>Enter customer name : 2
+Customer 2 is already in the Shopping Center!
+>>Enter customer name : Woobat
+Customer Woobat is already in the Shopping Center!
+>>Enter customer name : soup
+Customer soup is already in the Shopping Center!
+>>Enter customer name : 2
+Customer 2 is already in the Shopping Center!
+>>Enter customer name : Minccino
+Customer Minccino is already in the Shopping Center!
+>>Enter customer name : water
+Customer water is already in the Shopping Center!
+>>Enter customer name : 2
+Customer 2 is already in the Shopping Center!
+>>Enter customer name : Munna
+Customer Munna is already in the Shopping Center!
+>>Enter customer name : banana
+Customer banana is already in the Shopping Center!
+>>Enter customer name : 2
+Customer 2 is already in the Shopping Center!
+>>Enter customer name : Pickachu
+Customer Pickachu is already in the Shopping Center!
+>>Enter customer name : water
+Customer water is already in the Shopping Center!
+>>Enter customer name : 2
+Customer 2 is already in the Shopping Center!
+>>Enter customer name : Beartic
+Customer Beartic is already in the Shopping Center!
+>>Enter customer name : bread
+Customer bread is already in the Shopping Center!
+>>Enter customer name : 1
+Customer 1 is already in the Shopping Center!
+>>Enter customer name : Pansage
+Customer Pansage is already in the Shopping Center!
+>>Enter customer name : 6
+Customer 6 is already in the Shopping Center!
+>>Enter customer name : 7
+Customer 7 is already in the Shopping Center!
+>>Enter customer name : 8
+Customer 8 is already in the Shopping Center!
+>>Enter customer name : 9
+Customer 9 is already in the Shopping Center!
+>>Enter customer name : sop
+Customer sop is already in the Shopping Center!
+>>Enter customer name : 9
+Customer 9 is already in the Shopping Center!
+>>Enter customer name : soap
+Customer soap is already in the Shopping Center!
+>>Enter customer name : 10
+Customer 10 is already in the Shopping Center!
+>>Enter customer name : 9
+Customer 9 is already in the Shopping Center!
+>>Enter customer name : soup
+Customer soup is already in the Shopping Center!
+>>Enter customer name : 5
+Customer 5 is already in the Shopping Center!
+>>Enter customer name : 8
+Customer 8 is already in the Shopping Center!
+>>Enter customer name : 2
+Customer 2 is already in the Shopping Center!
+>>Enter customer name : Pansage
+Customer Pansage is already in the Shopping Center!
+>>Enter customer name : water
+Customer water is already in the Shopping Center!
+>>Enter customer name : 2
+Customer 2 is already in the Shopping Center!
+>>Enter customer name : Eevee
+Customer Eevee is already in the Shopping Center!
+>>Enter customer name : juice
+Customer juice is already in the Shopping Center!
+>>Enter customer name : 2
+Customer 2 is already in the Shopping Center!
+>>Enter customer name : Eevee
+Customer Eevee is already in the Shopping Center!
+>>Enter customer name : banana
+Customer banana is already in the Shopping Center!
+>>Enter customer name : 2
+Customer 2 is already in the Shopping Center!
+>>Enter customer name : Minccino
+Customer Minccino is already in the Shopping Center!
+>>Enter customer name : coffee
+Customer coffee is already in the Shopping Center!
+>>Enter customer name : 2
+Customer 2 is already in the Shopping Center!
+>>Enter customer name : Minccino
+Customer Minccino is already in the Shopping Center!
+>>Enter customer name : water
+Customer water is already in the Shopping Center!
+>>Enter customer name : 2
+Customer 2 is already in the Shopping Center!
+>>Enter customer name : Minccino
+Customer Minccino is already in the Shopping Center!
+>>Enter customer name : soap
+Customer soap is already in the Shopping Center!
+>>Enter customer name : 3
+Customer 3 is already in the Shopping Center!
+>>Enter customer name : Woobat
+Customer Woobat is already in the Shopping Center!
+>>Enter customer name : 2
+Customer 2 is already in the Shopping Center!
+>>Enter customer name : Beartic
+Customer Beartic is already in the Shopping Center!
+>>Enter customer name : banana
+Customer banana is already in the Shopping Center!
+>>Enter customer name : 2
+Customer 2 is already in the Shopping Center!
+>>Enter customer name : Woobat
+Customer Woobat is already in the Shopping Center!
+>>Enter customer name : water
+Customer water is already in the Shopping Center!
+>>Enter customer name : 2
+Customer 2 is already in the Shopping Center!
+>>Enter customer name : Woobat
+Customer Woobat is already in the Shopping Center!
+>>Enter customer name : water
+Customer water is already in the Shopping Center!
+>>Enter customer name : 2
+Customer 2 is already in the Shopping Center!
+>>Enter customer name : Woobat
+Customer Woobat is already in the Shopping Center!
+>>Enter customer name : cofee
+Customer cofee is already in the Shopping Center!
+>>Enter customer name : 2
+Customer 2 is already in the Shopping Center!
+>>Enter customer name : Minccino
+Customer Minccino is already in the Shopping Center!
+>>Enter customer name : bread
+Customer bread is already in the Shopping Center!
+>>Enter customer name : 2
+Customer 2 is already in the Shopping Center!
+>>Enter customer name : Beartic
+Customer Beartic is already in the Shopping Center!
+>>Enter customer name : yam
+Customer yam is already in the Shopping Center!
+>>Enter customer name : 3
+Customer 3 is already in the Shopping Center!
+>>Enter customer name : Pansage
+Customer Pansage is already in the Shopping Center!
+>>Enter customer name : 6
+Customer 6 is already in the Shopping Center!
+>>Enter customer name : 7
+Customer 7 is already in the Shopping Center!
+>>Enter customer name : 8
+Customer 8 is already in the Shopping Center!
+>>Enter customer name : 9
+Customer 9 is already in the Shopping Center!
+>>Enter customer name : soup
+Customer soup is already in the Shopping Center!
+>>Enter customer name : 7
+Customer 7 is already in the Shopping Center!
+>>Enter customer name : 8
+Customer 8 is already in the Shopping Center!
+>>Enter customer name : 2
+Customer 2 is already in the Shopping Center!
+>>Enter customer name : Pansage
+Customer Pansage is already in the Shopping Center!
+>>Enter customer name : soup
+Customer soup is already in the Shopping Center!
+>>Enter customer name : 2
+Customer 2 is already in the Shopping Center!
+>>Enter customer name : Beartic
+Customer Beartic is already in the Shopping Center!
+>>Enter customer name : banana
+Customer banana is already in the Shopping Center!
+>>Enter customer name : 2
+Customer 2 is already in the Shopping Center!
+>>Enter customer name : Woobat
+Customer Woobat is already in the Shopping Center!
+>>Enter customer name : water
+Customer water is already in the Shopping Center!
+>>Enter customer name : 2
+Customer 2 is already in the Shopping Center!
+>>Enter customer name : Pansage
+Customer Pansage is already in the Shopping Center!
+>>Enter customer name : coffee
+Customer coffee is already in the Shopping Center!
+>>Enter customer name : 2
+Customer 2 is already in the Shopping Center!
+>>Enter customer name : Beartic
+Customer Beartic is already in the Shopping Center!
+>>Enter customer name : water
+Customer water is already in the Shopping Center!
+>>Enter customer name : 2
+Customer 2 is already in the Shopping Center!
+>>Enter customer name : Woobat
+Customer Woobat is already in the Shopping Center!
+>>Enter customer name : bread
+Customer bread is already in the Shopping Center!
+>>Enter customer name : 2
+Customer 2 is already in the Shopping Center!
+>>Enter customer name : Pansage
+Customer Pansage is already in the Shopping Center!
+>>Enter customer name : soap
+Customer soap is already in the Shopping Center!
+>>Enter customer name : 3
+Customer 3 is already in the Shopping Center!
+>>Enter customer name : Pansage
+Customer Pansage is already in the Shopping Center!
+>>Enter customer name : 3
+Customer 3 is already in the Shopping Center!
+>>Enter customer name : Pansage
+Customer Pansage is already in the Shopping Center!
+>>Enter customer name : 2
+Customer 2 is already in the Shopping Center!
+>>Enter customer name : Munna
+Customer Munna is already in the Shopping Center!
+>>Enter customer name : banana
+Customer banana is already in the Shopping Center!
+>>Enter customer name : 2
+Customer 2 is already in the Shopping Center!
+>>Enter customer name : Munna
+Customer Munna is already in the Shopping Center!
+>>Enter customer name : juice
+Customer juice is already in the Shopping Center!
+>>Enter customer name : 2
+Customer 2 is already in the Shopping Center!
+>>Enter customer name : Pansage
+Customer Pansage is already in the Shopping Center!
+>>Enter customer name : soap
+Customer soap is already in the Shopping Center!
+>>Enter customer name : 2
+Customer 2 is already in the Shopping Center!
+>>Enter customer name : Eevee
+Customer Eevee is already in the Shopping Center!
+>>Enter customer name : soup
+Customer soup is already in the Shopping Center!
+>>Enter customer name : 6
+Customer 6 is already in the Shopping Center!
+>>Enter customer name : 7
+Customer 7 is already in the Shopping Center!
+>>Enter customer name : 8
+Customer 8 is already in the Shopping Center!
+>>Enter customer name : 4
+Customer 4 is already in the Shopping Center!
+>>Enter customer name : 4
+Customer 4 is already in the Shopping Center!
+>>Enter customer name : N
+Customer N is already in the Shopping Center!
+>>Enter customer name : 4
+Customer 4 is already in the Shopping Center!
+>>Enter customer name : 6
+Customer 6 is already in the Shopping Center!
+>>Enter customer name : 7
+Customer 7 is already in the Shopping Center!
+>>Enter customer name : 8
+Customer 8 is already in the Shopping Center!
+>>Enter customer name : 2
+Customer 2 is already in the Shopping Center!
+>>Enter customer name : Minccino
+Customer Minccino is already in the Shopping Center!
+>>Enter customer name : banana
+Customer banana is already in the Shopping Center!
+>>Enter customer name : 2
+Customer 2 is already in the Shopping Center!
+>>Enter customer name : Latias
+Customer Latias is now in the Shopping Center.
+
+Select an operation from the following menu: This is not an option. Try again.
+4
+Should customer Latias leave or keep on shopping? Leave?(Y/N): 6
+Customer Latias with 0 returned to shopping.
+
+Select an operation from the following menu: 7
+No customers are in the first checkout line!
+No customers are in the second checkout line!
+No customers are in the express checkout line!
+
+
+Select an operation from the following menu: 8
+Items at re-stocking level: 
+soap with 3 items.
+
+Select an operation from the following menu: 2
+>>Enter customer name : Clefairy
+Customer Clefairy is not in shopping center!
+>>Enter customer name : Beartic
+Customer Beartic is not in shopping center!
+>>Enter customer name : 6
+Customer 6 is not in shopping center!
+>>Enter customer name : 7
+Customer 7 is not in shopping center!
+>>Enter customer name : 8
+Customer 8 is not in shopping center!
+>>Enter customer name : 3
+Customer 3 is not in shopping center!
+>>Enter customer name : Pickachu
+Customer Pickachu is not in shopping center!
+>>Enter customer name : Beartic
+Customer Beartic is not in shopping center!
+>>Enter customer name : 4
+Customer 4 is not in shopping center!
+>>Enter customer name : 4
+Customer 4 is not in shopping center!
+>>Enter customer name : 4
+Customer 4 is not in shopping center!
+>>Enter customer name : 4
+Customer 4 is not in shopping center!
+>>Enter customer name : 6
+Customer 6 is not in shopping center!
+>>Enter customer name : 7
+Customer 7 is not in shopping center!
+>>Enter customer name : 8
+Customer 8 is not in shopping center!
+>>Enter customer name : 5
+Customer 5 is not in shopping center!
+>>Enter customer name : N
+Customer N is not in shopping center!
+>>Enter customer name : 5
+Customer 5 is not in shopping center!
+>>Enter customer name : Y
+Customer Y is not in shopping center!
+>>Enter customer name : 6
+Customer 6 is not in shopping center!
+>>Enter customer name : 7
+Customer 7 is not in shopping center!
+>>Enter customer name : 8
+Customer 8 is not in shopping center!
+>>Enter customer name : 1
+Customer 1 is not in shopping center!
+>>Enter customer name : Pansage
+Customer Pansage is not in shopping center!
+>>Enter customer name : Clefairy
+Customer Clefairy is not in shopping center!
+>>Enter customer name : Eevee
+Customer Eevee is not in shopping center!
+>>Enter customer name : 5
+Customer 5 is not in shopping center!
+>>Enter customer name : Y
+Customer Y is not in shopping center!
+>>Enter customer name : 5
+Customer 5 is not in shopping center!
+>>Enter customer name : Y
+Customer Y is not in shopping center!
+>>Enter customer name : 5
+Customer 5 is not in shopping center!
+>>Enter customer name : Y
+Customer Y is not in shopping center!
+>>Enter customer name : 5
+Customer 5 is not in shopping center!
+>>Enter customer name : Y
+Customer Y is not in shopping center!
+>>Enter customer name : 6
+Customer 6 is not in shopping center!
+>>Enter customer name : 7
+Customer 7 is not in shopping center!
+>>Enter customer name : 8
+Customer 8 is not in shopping center!
+>>Enter customer name : 5
+Customer 5 is not in shopping center!
+>>Enter customer name : N
+Customer N is not in shopping center!
+>>Enter customer name : 6
+Customer 6 is not in shopping center!
+>>Enter customer name : 7
+Customer 7 is not in shopping center!
+>>Enter customer name : 8
+Customer 8 is not in shopping center!
+>>Enter customer name : 2
+Customer 2 is not in shopping center!
+>>Enter customer name : Eevee
+Customer Eevee is not in shopping center!
+>>Enter customer name : soup
+Customer soup is not in shopping center!
+>>Enter customer name : 4
+Customer 4 is not in shopping center!
+>>Enter customer name : 5
+Customer 5 is not in shopping center!
+>>Enter customer name : Y
+Customer Y is not in shopping center!
+>>Enter customer name : 6
+Customer 6 is not in shopping center!
+>>Enter customer name : 7
+Customer 7 is not in shopping center!
+>>Enter customer name : 8
+Customer 8 is not in shopping center!
+>>Enter customer name : 0
+Customer 0 is not in shopping center!
+>>Enter customer name : 

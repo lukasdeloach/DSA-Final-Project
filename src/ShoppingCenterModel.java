@@ -53,8 +53,8 @@ public class ShoppingCenterModel {
             status = true;
         }
         else {
-            int search = customerSearch(name);
-            if(search==-1) {
+            Customer cust = customerSearch(name);
+            if(cust != null && !cust.getCheckOut()) {
                 customers.add(new Customer(name));
                 status = true;
             }
@@ -168,9 +168,7 @@ public class ShoppingCenterModel {
         int expressSize = expressLine.size(), lineOneSize = lineOne.size(), lineTwoSize = lineTwo.size();
         StringBuilder str = new StringBuilder();
         if(itemAmount < 5) {
-            //System.out.println("line one: " + (expressLine.size() + 1 > lineOne.size()<<1));
-            //System.out.println("line two: " + (expressLine.size() + 1 > lineTwo.size()<<1));
-            if((expressLine.size() > lineOne.size()<<1) || (expressLine.size() > lineTwo.size()<<1)) {
+            if((expressSize > lineOneSize<<1) || (expressSize > lineTwoSize<<1)) {
                 if(lineOneSize < lineTwoSize + 1) {
                     lineOne.enqueue(customer);
                     str.append("first checkout line");
@@ -200,6 +198,15 @@ public class ShoppingCenterModel {
         return str.toString();
     }
 
+    /**
+     * This is a method to reset a Customer's shopping information after they have checked out.
+     * After the customer checks out, they will have the decision to leave or continue to shop.
+     * If they continue to shop, this method will be called.
+     * Their total time shopping will be set to 0 and the boolean value describing if they are in a checkout will be set to false.
+     * Since the customer checked out, they will have been the longestCustomer in the store so the longestCustomer is updated to null.
+     * This meeans they are no longer the customer in the store the longest.
+     * @param customer - A customer object representing the customer to
+     */
     public void resetCustomer(Customer customer) {
         customer.setTotalTime(0);
         customer.setCheckOut(false);
@@ -280,31 +287,44 @@ public class ShoppingCenterModel {
         if(!items.isEmpty()) {
             temp = items.search(name);
             if(temp < 0) {
-                result = items.get(temp+items.size());;
+                result = items.get(temp+items.size());
             }
         }
         return result;
     }
 
-    // method to validate customer status, if they return -1, the customer does not exist
-    // if 0, customer is in checkout, if 1, customer is still shopping
-    public int customerSearch(String name) {
+    /**
+     * This is the customerSearch method which searches for a customer within the AscnedinglyOrderedList of customers and returns an int describing the index of the customer.
+     * This method calls upon the AscendinglyOrderedList's search method which returns an encoded negative value if a customer is found or a positive index if the customer is not found.
+     * This positive index represents the location of where the customer would be added.
+     * If the Customer is found, a negative value is returned and to decode it, the collection's size must be added to the negative value.
+     * The size+negativeValue = the index of where the customer is found.
+     * If the customer is found (negative value) the real index is obtained by adding the size(). If the customer is in the checkout line, the result is set to -2.
+     * -2 describes that the customer was found, but are in one of the checkout lines. 
+     *  Otherwise, a positive value is returned which is the index of the Customer. Any implementing method will need to call .get(the returned result (index)) to get the customer.
+     *  @param name - The customer's name to be searched for passed as a String type.
+     *  @return result - An int value that describes whether the customer was found. -1 means that the customer was not found. -2 means the customer was in a checkout line. A positive value returned represents the customer's index in the collection.
+     */
+    public Customer customerSearch(String name) {
         int result = 0;
+	Customer cust = null;
         int index = customers.search(name);
         if(index > -1) {
             result = -1;
         }
         else {
             int trueIndex = index + customers.size();
-            Customer cust = customers.get(trueIndex);
-            if(cust.getCheckOut()) {
-                result = -2;
-            } else {
-                result = trueIndex;
-            }
-        }
-        return result;
+            cust = customers.get(trueIndex);
+	}
+        return cust;
     }
+
+    /**
+     * This is a method to display the shoppers in the shopping center's list of customers.
+     * If there aren't any customers in the shopping center, a message is appended stating so.
+     * Otherwise, the method iteratively gets every customer in the AscnedinglyOrderedList of customers and appends a message with the customers name, item amount, and time.
+     * @return String - a String object that represents all of the customers within the shopping center.
+     */
     public String displayShoppers() {
         StringBuilder retStr = new StringBuilder();
         //TEMPORARY SOLUTION FOR HOW MANY CUSTOMERS ARE SHOPPING, NOT JUST ALL CUSTOMERS
