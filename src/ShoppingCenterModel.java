@@ -159,7 +159,10 @@ public class ShoppingCenterModel {
 
     /**
      * Method to enqueue a customer
-     * Need to add which queue takes priority after given input at initial start of program
+     * If the customer has less than or equal to 4 items they should be added into the express line unless it is two times bigger than a regular line.
+     * If it is two times bigger, the two regular lines are compared in order to see which line a customer should be enqueued into.
+     * The customer will be enqued into the lesser of those two compared lines.
+     * If the customer has more than 4 items, they are added to either line one or line two, depending on which one has less customers.
      * @param customer - passed customer object
      * @return String  - String object which describes which line the customer was added into
      */
@@ -213,13 +216,15 @@ public class ShoppingCenterModel {
         longestCustomer = null;
     }
 
+    /**
+     * The removeLongestCustomer method sets the longestCustomer field to null meaning that there will be a new customer in the store the longest.
+     * @param customer - the Customer to be removed
+     */
     public void removeLongestCustomer(Customer customer) {
         customers.remove(customers.search(customer.getName())+customers.size());
         longestCustomer = null;
     }
 
-
-    // confirm where the line counter should restart from
     private CheckOut<Customer> nextLane() {
         CheckOut<Customer> next = null;
         boolean customers = false;
@@ -280,7 +285,16 @@ public class ShoppingCenterModel {
         return cust;
     }
 
-    //ADJUSTED FOR CASE 9, REVISIT
+    /**
+     * Item search method which searches for an item given a key name.
+     * Calls upon the AscendignlyOrderedList size method which returns an encoded negative value if the key was found or a positive value if the key was not found.
+     * If the temp is a negative value after items.search() is called, then the Object with the name is found. 
+     * To decode temp to obtain the correct index of the item in the list, items.size() is added to temp. 
+     * Then the object is retrieved from the collection and returned.
+     * If no item is found, null is returned.
+     * @param name - String type that will be the key to search for
+     * @return result - Item object which is either null (meaning no object with the given name was found) or containing the reference to the Item which was found.
+     */
     public Item itemSearch(String name) {
         Item result =  null;
         int temp = 0;
@@ -293,26 +307,22 @@ public class ShoppingCenterModel {
         return result;
     }
 
-    /**
-     * This is the customerSearch method which searches for a customer within the AscnedinglyOrderedList of customers and returns an int describing the index of the customer.
-     * This method calls upon the AscendinglyOrderedList's search method which returns an encoded negative value if a customer is found or a positive index if the customer is not found.
-     * This positive index represents the location of where the customer would be added.
-     * If the Customer is found, a negative value is returned and to decode it, the collection's size must be added to the negative value.
-     * The size+negativeValue = the index of where the customer is found.
-     * If the customer is found (negative value) the real index is obtained by adding the size(). If the customer is in the checkout line, the result is set to -2.
-     * -2 describes that the customer was found, but are in one of the checkout lines. 
-     *  Otherwise, a positive value is returned which is the index of the Customer. Any implementing method will need to call .get(the returned result (index)) to get the customer.
+    /** 
+     * This is the customerSearch method which searches for a customer name in the collection of Customers.
+     *  This method calls upon the AscnedinglyOrderedList's search method which returns a negative encoded value if the key was found.
+     *  The search method returns a positive value if the key is not found indicating where the item should be added.
+     *  If the index value is less than zero, this means that they item was found. To decode it we add the size() of the collection to the negative value.
+     *  This decoding will give the proper index the Customer is found in the collection. 
+     *  Then we get the customer and return the customer.
+     *  If no customer is found we return null.  
      *  @param name - The customer's name to be searched for passed as a String type.
-     *  @return result - An int value that describes whether the customer was found. -1 means that the customer was not found. -2 means the customer was in a checkout line. A positive value returned represents the customer's index in the collection.
+     *  @return cust - A customer object which either returns the customer found by their name or null meaning that no customer with the name passed was found.
      */
     public Customer customerSearch(String name) {
         int result = 0;
 	Customer cust = null;
         int index = customers.search(name);
-        if(index > -1) {
-            result = -1;
-        }
-        else {
+        if(index > < 0) {
             int trueIndex = index + customers.size();
             cust = customers.get(trueIndex);
 	}
@@ -452,5 +462,4 @@ public class ShoppingCenterModel {
     public void setRestockingLevel(int restockingLevel) {
         this.restockingLevel = restockingLevel;
     }
-
 }
