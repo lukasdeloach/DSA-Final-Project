@@ -304,10 +304,6 @@ public class ShoppingCenterModel {
         Customer cust = null;
        	if(line != null){
 		cust = line.dequeue();
-<<<<<<< HEAD
-=======
-
->>>>>>> abfac2cb794931c3efed4f73dc0f9201de5a983b
         	if(leave) {
             		int index = customers.search(cust.getName());
             		index = index + customers.size();
