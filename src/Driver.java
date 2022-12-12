@@ -136,10 +136,6 @@ public class Driver {
         return store;
     }
 
-
-
-
-
     // method called when want to add item
     public static void inputCaseOne(ShoppingCenterModel store) throws IOException {
         // set up for variables needed
@@ -286,7 +282,6 @@ public class Driver {
             }
         }
     }
-
 
     public static void inputCaseFive(ShoppingCenterModel store) throws IOException {
         String name = store.nextCheckOut();

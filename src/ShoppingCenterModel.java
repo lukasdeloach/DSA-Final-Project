@@ -54,7 +54,7 @@ public class ShoppingCenterModel {
         }
         else {
             Customer cust = customerSearch(name);
-            if(cust != null && !cust.getCheckOut()) {
+            if(cust == null) {
                 customers.add(new Customer(name));
                 status = true;
             }
