@@ -1,0 +1,401 @@
+Jessica Rogers and Lukas DeLoach
+Dr. Hristescu
+Honors DSA Section 1
+12 December 2022
+Rationale Write-Up: Shopping Center
+
+Critical operation: 
+
+Throughout the entire execution of the program, we expect that searching will be the most frequent operation. This operation can be seen anytime a customer wants to add an item to their cart, an item is removed from a customer’s cart, when a customer enters the shopping center, and when an item is to be restocked. When a customer wants to add something to their cart, the program must search through the collection of customers to validate they exist. Then after the customer has chosen what item they want, the program must search through the items in the store to make sure that the item exists. If it exists, the program must ensure an adequate stock amount. When an item is removed from a customer’s cart, the program must search to validate the inputted customer’s name. Also, when a customer enters the shopping center, the program needs to validate they do not already exist in the store, and when an item needs restocking, the program must validate the item name before asking to restock.
+
+Optimization: 
+Since searching both customers and items will be the most frequent operation 
+throughout the program, we have decided to choose an AscendinglyOrderedList ADT to 
+hold the store’s collection of items, and collection of current customers. This list will be 
+sorted alphabetically upon addition of values, so that we will be able to easily implement 
+a binary search. If the customers and items were not sorted, we would have to perform a 
+sequential search that runs in O(n). The binary search optimizes this search and each 
+search will run in O(log(n)). Any need to search these lists in a different fashion are 
+performed less, and can either be done sequentially, or by resorting into a temporary 
+collection, and obtaining the first values in the temporary collection.
+
+ADTS and ADT Implementations
+
+List Interface ADT: 
+The List ADT will be used to store Objects that can be accessed from anywhere in the list, as it allows for indexing access. This will allow us to use optimized search techniques. Specifically we will use the AscendinglyOrderedList Implementation of the List ADT.
+AscendinglyOrderedList - The shopping center will utilize two of these ADTS. One that holds the current customers shopping and the other storing the items in the store. This ADT will optimize the searching that has to be done throughout this program. Since this collection is sorted, we will be able to utilize the binary search to efficiently find and validate items and customers. This utilizes an array based implementation, which is also an easy way to store our objects of customers to be able to index access all in the collection.
+	AscendinglyOrderedStringList - This will be used to hold a tracker of all people in the shopping center and all checkout lanes, just a String List that sorts alphabetically, to ensure no duplicate people are allowed to enter the store, and can be used when determining if a person already exists in checkout instead of the store, and can not add to their carts.
+
+Queue ADT: 
+We will be able to use the Queue ADT to specify out collection usage to first one in, first one out specifications. This allows us to minimize our access points, and have a simplified collection access. Specifically, we will use the QueueCRAB implementation of the Queue ADT.
+QueueCRAB/CheckOut –Our Checkout lines will be extensions of QueueCRAB inorder to have a wider variety of access to the queue, and have a proper output of the customers in the lines with an updated toString method. The new class will be called “CheckOut”. The first customer to enter the line, will be the first customer to checkout. Customers will be enqueued to the back of the line and the customer at the front of the line will be dequeued representing a checkout.  We can then rotate between each CheckOut to determine who gets checked out next in accordance with the shopping center rules. QueueCRAB is used instead of QueueCSLS or QueueCDLS, as our objects will be customers that will have exited the store list collections into the checkout lines. Furthermore, to easily iterate through the queue, Array implementation is easier. The store uses the AscendiglyOrderedList implementation to make it easy to sort the values being entered, and access by indexing. In order to minimize steps to transfer the customers from the store to the checkout, we can use the arrays in the Queue implementations as well, instead of nodes, to prevent from having to edit next and back values that would be stored within the customer class if it were to be used. This makes for an easy transition between store and checkout.
+
+KeyedItem:
+The KeyedItem class will be extended upon by both the Customer and Item class, to better aid our searching techniques. The key in this case will be the String name for both classes, as that will be what is used to sort and search for them
+
+
+Menu Option Flow
+
+Each Menu Option Design and Data flow is shown below:
+
+Option 0:
+		Print out: “The Shopping Center is closing...come back tomorrow.”
+		End program
+	
+	Option 1: 
+		List of Customer Names is Searched, 
+if value does not exist, the customer may enter,a dn continue to create  new customer object
+Else: print they already exist in shopping center 
+New Customer is created using the String name given at input.
+Sorted List of Customers in Shopping center is updated to add new customers.
+		
+Input Needed:
+String Name of desired customer
+		Data needed:
+List of customer names
+List of Customers in shopping center
+		What is affected:
+List of customer names is searched 
+List of customers and List of customer names may be added to
+Option 2:
+	Take in input from user for customer name
+	Search for the customer's name in the list of customers in the shopping center. 
+		If successful, continue to item input
+		If failure: search for inputted name in list of customer names
+			If successful: We know the customer is in checkout and can't pick 
+more items. Print: “Customer ____ is in checkout”
+Else: Customer does not exist, print: “Customer is not in shopping 
+center”
+		Take input for desired item name
+		Search for item in list of items:
+			If Successful:	check stock to determine if there is enough to give more
+				If there is not, print “out of stock”
+Else, provide item to desired customer
+Else: print that the item does not exist in the shopping center
+		Decrement item stock value in store
+		Increment number of items in customer cart
+		Update time spent in store for each customer in shopping center
+	
+Input Needed:
+String Name of desired customer
+String name of item
+		Data needed:
+List of customer names
+List of Customers in shopping center
+List of items in shopping center
+		What is affected:
+List of customers and list of customer names is searched 
+List of customers is retrieved from
+List of items is searched
+Customer item count is possibly increased
+Each customer who is shopping time in store increases
+Item stock count is possibly decreased
+
+	Option 3: 
+		Input is taken from user to ask for String name of customer to remove item from 
+Cart.
+Search for customer name in the list of customers in the shopping center:
+	If Successful: retrieve customer and decrement amount of items in their 
+Cart. Print remaining amount of items in customers cart
+else : search customer name in list of customer names:
+... (198 lines left)
+Collapse
+message.txt
+18 KB
+﻿
+Jessica Rogers and Lukas DeLoach
+Dr. Hristescu
+Honors DSA Section 1
+12 December 2022
+Rationale Write-Up: Shopping Center
+
+Critical operation: 
+
+Throughout the entire execution of the program, we expect that searching will be the most frequent operation. This operation can be seen anytime a customer wants to add an item to their cart, an item is removed from a customer’s cart, when a customer enters the shopping center, and when an item is to be restocked. When a customer wants to add something to their cart, the program must search through the collection of customers to validate they exist. Then after the customer has chosen what item they want, the program must search through the items in the store to make sure that the item exists. If it exists, the program must ensure an adequate stock amount. When an item is removed from a customer’s cart, the program must search to validate the inputted customer’s name. Also, when a customer enters the shopping center, the program needs to validate they do not already exist in the store, and when an item needs restocking, the program must validate the item name before asking to restock.
+
+Optimization: 
+Since searching both customers and items will be the most frequent operation 
+throughout the program, we have decided to choose an AscendinglyOrderedList ADT to 
+hold the store’s collection of items, and collection of current customers. This list will be 
+sorted alphabetically upon addition of values, so that we will be able to easily implement 
+a binary search. If the customers and items were not sorted, we would have to perform a 
+sequential search that runs in O(n). The binary search optimizes this search and each 
+search will run in O(log(n)). Any need to search these lists in a different fashion are 
+performed less, and can either be done sequentially, or by resorting into a temporary 
+collection, and obtaining the first values in the temporary collection.
+
+ADTS and ADT Implementations
+
+List Interface ADT: 
+The List ADT will be used to store Objects that can be accessed from anywhere in the list, as it allows for indexing access. This will allow us to use optimized search techniques. Specifically we will use the AscendinglyOrderedList Implementation of the List ADT.
+AscendinglyOrderedList - The shopping center will utilize two of these ADTS. One that holds the current customers shopping and the other storing the items in the store. This ADT will optimize the searching that has to be done throughout this program. Since this collection is sorted, we will be able to utilize the binary search to efficiently find and validate items and customers. This utilizes an array based implementation, which is also an easy way to store our objects of customers to be able to index access all in the collection.
+	AscendinglyOrderedStringList - This will be used to hold a tracker of all people in the shopping center and all checkout lanes, just a String List that sorts alphabetically, to ensure no duplicate people are allowed to enter the store, and can be used when determining if a person already exists in checkout instead of the store, and can not add to their carts.
+
+Queue ADT: 
+We will be able to use the Queue ADT to specify out collection usage to first one in, first one out specifications. This allows us to minimize our access points, and have a simplified collection access. Specifically, we will use the QueueCRAB implementation of the Queue ADT.
+QueueCRAB/CheckOut –Our Checkout lines will be extensions of QueueCRAB inorder to have a wider variety of access to the queue, and have a proper output of the customers in the lines with an updated toString method. The new class will be called “CheckOut”. The first customer to enter the line, will be the first customer to checkout. Customers will be enqueued to the back of the line and the customer at the front of the line will be dequeued representing a checkout.  We can then rotate between each CheckOut to determine who gets checked out next in accordance with the shopping center rules. QueueCRAB is used instead of QueueCSLS or QueueCDLS, as our objects will be customers that will have exited the store list collections into the checkout lines. Furthermore, to easily iterate through the queue, Array implementation is easier. The store uses the AscendiglyOrderedList implementation to make it easy to sort the values being entered, and access by indexing. In order to minimize steps to transfer the customers from the store to the checkout, we can use the arrays in the Queue implementations as well, instead of nodes, to prevent from having to edit next and back values that would be stored within the customer class if it were to be used. This makes for an easy transition between store and checkout.
+
+KeyedItem:
+The KeyedItem class will be extended upon by both the Customer and Item class, to better aid our searching techniques. The key in this case will be the String name for both classes, as that will be what is used to sort and search for them
+
+
+Menu Option Flow
+
+Each Menu Option Design and Data flow is shown below:
+
+Option 0:
+		Print out: “The Shopping Center is closing...come back tomorrow.”
+		End program
+	
+	Option 1: 
+		List of Customer Names is Searched, 
+if value does not exist, the customer may enter,a dn continue to create  new customer object
+Else: print they already exist in shopping center 
+New Customer is created using the String name given at input.
+Sorted List of Customers in Shopping center is updated to add new customers.
+		
+Input Needed:
+String Name of desired customer
+		Data needed:
+List of customer names
+List of Customers in shopping center
+		What is affected:
+List of customer names is searched 
+List of customers and List of customer names may be added to
+Option 2:
+	Take in input from user for customer name
+	Search for the customer's name in the list of customers in the shopping center. 
+		If successful, continue to item input
+		If failure: search for inputted name in list of customer names
+			If successful: We know the customer is in checkout and can't pick 
+more items. Print: “Customer ____ is in checkout”
+Else: Customer does not exist, print: “Customer is not in shopping 
+center”
+		Take input for desired item name
+		Search for item in list of items:
+			If Successful:	check stock to determine if there is enough to give more
+				If there is not, print “out of stock”
+Else, provide item to desired customer
+Else: print that the item does not exist in the shopping center
+		Decrement item stock value in store
+		Increment number of items in customer cart
+		Update time spent in store for each customer in shopping center
+	
+Input Needed:
+String Name of desired customer
+String name of item
+		Data needed:
+List of customer names
+List of Customers in shopping center
+List of items in shopping center
+		What is affected:
+List of customers and list of customer names is searched 
+List of customers is retrieved from
+List of items is searched
+Customer item count is possibly increased
+Each customer who is shopping time in store increases
+Item stock count is possibly decreased
+
+	Option 3: 
+		Input is taken from user to ask for String name of customer to remove item from 
+Cart.
+Search for customer name in the list of customers in the shopping center:
+	If Successful: retrieve customer and decrement amount of items in their 
+Cart. Print remaining amount of items in customers cart
+else : search customer name in list of customer names:
+	If successful: customer is then in checkout, and can not have 
+items removed, print: “Customer is in checkout”
+Else: customer does not exist in shopping center, print: “customer 
+does is not in shopping center”
+		Update time in store for each customer in shopping center
+
+		Input Needed:
+String Name of desired customer
+		Data needed:
+List of customer names
+List of Customers in shopping center
+		What is affected:
+List of customers and list of customer names is searched 
+List of customers is retrieved from
+Each customer in list of customers in shopping center increases time spent
+Customer item count is possibly decreased
+
+	Option 4:
+		Either temporarily re-sort list of customers in shopping center to be sorted by who 
+Should be first to check out or search sequentially through the list of customers in store. Person to first checkout is first determined by time, if tied, comes down to the amount of items in their cart.
+Retrieve the correct customer. 
+Check customer item count
+	If less than 0, prompt whether they should continue shopping or leave
+If continue shopping, keep customer in list of customers in 
+shopping center
+Else: have them exit store by removing them from list of customer names and list of customers in store
+Else, determine length of two regular lines and check if customer has less 
+than 5 items
+If customer has more than 4 items, enter line with less customers, 
+if they are equal, enter the first one 
+				If customer has less than 5 items, check the length of the express 
+lane. 
+If the express lane has double the amount of customers as 
+the smallest regular lane, join regular lane
+Else, the express lane is less than double the smallest 
+regular lane, customer joins express line
+Remove customer from list of customers in shopping center, add to proper 
+checkout queue 
+
+		Input Needed:
+No input needed from user
+		Data needed:
+List of Customers in shopping center
+Queue for regular checkout line 1
+Queue for regular checkout line 2
+Queue for express checkout
+		What is affected:
+List of customers is searched and possibly sorted
+List of customers is retrieved from
+List of customers in shopping center is possibly changed by removing customer who is there the longest
+Queue of checkout lines is possibly added to
+
+	Option 5:
+		Customers being checked out alternate circularly between each of the three 
+checkout lines. The line that is first checked out from is based on initial 
+Input provided by the user at the beginning of the program.
+	If checkout line that is next to check out is empty, rotate through lines until 
+one with customers is found, if rotate once and all empty, report so.
+			Else, begin checkout process:
+Confirmation of the customer checking out is prompted for
+If yes(checkout): checkout customer, remove from Queue of specific 
+Checkoutline. Search for name in list of customer names, and 
+remove
+Else, (don’t checkout): customer removed from checkout queue, customer 
+returns to the shopping center list of customers, and customer 
+time in store resets.
+  Change next register to checkout from to next in circular pattern, (0, 1, or 2), if 
+at 2, use mod to make it 0
+
+		Input Needed:
+Input at beginning for what checkout line to start with
+Input for whether or not to checkout or return to shopping
+		Data needed:
+List of Customers in shopping center
+Queue for regular checkout line 1
+Queue for regular checkout line 2
+Queue for express checkout
+List of customer names
+		What is affected:
+One of the queues is possibly changed by decreasing amount in them by 1, if not, all empty
+List of customers names is possibly searched for and one is removed
+List of customers is possibly added too
+Next checkout lane to be used is updated
+	
+	Option 6:
+		Iterate through List of customers in Shopping center. If no customers in the 
+list(list is empty), print so, 
+else:Print out each customer's name, amount of items, and time spent in the 
+store.
+
+Input Needed:
+			No input needed
+		Data needed:
+List of Customers in shopping center
+		What is affected:
+Each customer in list is retrieved and values printed
+	
+	Option 7:
+		Iterate through each queue for the checkout lines. If any of the lines are empty, 
+print so for each line.
+		Else: print out each lines customers and how many items each customer has in 
+their cart.
+
+Input Needed:
+			No input needed
+		Data needed:
+The three queues of customers for each check out line
+		What is affected:
+Each customer in each queue is retrieved and values printed
+
+	Option 8:
+		Iterate through list of items, and determine which items are at a stock level below 
+or equal to the restocking level inputted at the beginning of the program. If 
+no items are at the restocking level, print no items need to be restocked.
+		Else: if item is at restocking level, print item name and number of items left.
+
+		Input Needed:
+Beginning of program input fo what the restocking level is set to be
+		Data needed:
+List of items in shopping center
+		What is affected:
+Each item is retrieved and determine how much stock is left, and compared to restocking level
+	Option 9:
+		Take input for what item should be restocked. Search list of Items
+			If item does not exist in list: print “Item does not exist”
+			Else: item exists in list, and prompt for how many of that item is to be 
+re-ordered
+				If value provided is valid, add that amount of stock to the current 
+amount of stock left for the item and update item. Then print out the new amount of stock for the item.
+Else: ask for valid input
+
+Input Needed:
+Name of item to be restocked
+How many of specified item to be added to current stock
+		Data needed:
+List of items in shopping center
+		What is affected:
+List of items is searched
+An item possibly has its number of stock available increase
+
+Classes
+	The classes we believe will be necessary to create good encapsulation and data 
+abstraction are described below:
+
+Customer Class: 
+This class will hold the names of the customer that enters the store, 
+how long they have been there, and how many items they hold in their cart. This allows 
+to track each customer separately as objects, similarly to how actual customers in a 
+store would be kept track of. Lastly, we have a data field called checkout to determine if a customer is in a checkout line or not. We will have getters for all, and setters for time and itemCounter. This can then be used in the list of customers to put them all in a collection
+	Data Fields:
+String name
+Int time
+Int itemCounter
+Boolean checkOut
+	Item Class:
+		This class will allow us to track each of the items in the store separately, and can 
+hold the name of the item, and how many of that item are held in stock. This will allow us to put them into lists, and sort them by their names which would be a data field in the item class. We will also be able to have getters for each data field, and a setter for the stock
+		Data fields:
+String name
+Int stock
+	
+CheckOut Class:
+	This class is an extension of queue to provide a place to properly categorize the  checkout lanes with names and toString to properly describe their values. Otherwise, it uses the same methods as Queue.
+	Data fields:
+String name
+
+Shopping Center Class:
+	This class will hold the CheckOut/Queue and List Implementations, that hold the 
+checkout lines, customers, items, and customer names. It will also hold the restocking 
+level, beginning register to start checkout, and all the technical functionality for adding 
+and removing from carts, adding to check out lines, checking if you can add to the store, 
+etc. This will promote encapsulation, and data abstraction, as if we housed all of this in 
+the driver, much more of the functionality would not be well abstracted and hidden from 
+the user. This will promote the method usage of the shopping center, which will take care 
+of all steps to each of the menu options internally.
+		Data Fields:
+CheckOut - check1
+CheckOut - check2
+CheckOut - checkE
+AscOrdList - customers
+AscOrdStringList - customerNames
+Int restockingLevel
+Int checkoutStart
+Customer longestCustomer
+	
+Driver Class:
+		The driver class will be used to access and perform operations on the shopping 
+center it holds. It will allow for encapsulated use of the shopping center operations, and take care of all system input from the user.
+	Data Fields:
+BufferedReader - stdin (for user input)
+ShoppingCenterModel - myCenter (the center to be used in the program)
+
+Splitting of Work:
+Lukas and Jessica will be splitting the work as evenly as possible. To begin, the code for the Customer Class will be worked on by Lukas, and the Item class by Jess. Then, the Driver will be handled by the both of us, while we follow a format we develop together, and add to in turns. Lastly, the shopping center class will be worked on by both of us in turns as well, also following our outlined format and functionality. We intend to use git repositories to share code back and forth, and allow for easy access and code updating, so both partners can work on the code without waiting on the other. If any issues arise, we plan on handling it as partners instead of relying on one person.
+
+If we were to change anything, we would most likely store the items and customers via hashing, in order to better store, search and retrieve them. Other than minor errors or slightly better code reduction, we believe our solution is valid and runs well!
