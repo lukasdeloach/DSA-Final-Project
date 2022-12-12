@@ -39,10 +39,6 @@ public class ShoppingCenterModel {
 	longestCustomer = null;
     }
 
-    public boolean isEmpty() {
-        return (customers.isEmpty());
-    }
-
     /**
      * Method to add a customer.
      * Calls internal customer search method for customer validation.
@@ -143,6 +139,49 @@ public class ShoppingCenterModel {
         }
     }
 
+     /**
+     * Item search method which searches for an item given a key name.
+     * Calls upon the AscendignlyOrderedList size method which returns an encoded negative value if the key was found or a positive value if the key was not found.
+     * If the temp is a negative value after items.search() is called, then the Object with the name is found.
+     * To decode temp to obtain the correct index of the item in the list, items.size() is added to temp.
+     * Then the object is retrieved from the collection and returned.
+     * If no item is found, null is returned.
+     * @param name - String type that will be the key to search for
+     * @return result - Item object which is either null (meaning no object with the given name was found) or containing the reference to the Item which was found.
+     */
+    public Item itemSearch(String name) {
+        Item result =  null;
+        int temp = 0;
+        if(!items.isEmpty()) {
+            temp = items.search(name);
+            if(temp < 0) {
+                result = items.get(temp+items.size());
+            }
+        }
+        return result;
+    }
+
+    /**
+     * This is the customerSearch method which searches for a customer name in the collection of Customers.
+     *  This method calls upon the AscnedinglyOrderedList's search method which returns a negative encoded value if the key was found.
+     *  The search method returns a positive value if the key is not found indicating where the item should be added.
+     *  If the index value is less than zero, this means that they item was found. To decode it we add the size() of the collection to the negative value.
+     *  This decoding will give the proper index the Customer is found in the collection.
+     *  Then we get the customer and return the customer.
+     *  If no customer is found we return null.
+     *  @param name - The customer's name to be searched for passed as a String type.
+     *  @return cust - A customer object which either returns the customer found by their name or null meaning that no customer with the name passed was found.
+     */
+    public Customer customerSearch(String name) {
+        int result = 0;
+        Customer cust = null;
+        int index = customers.search(name);
+        if(index < 0) {
+            int trueIndex = index + customers.size();
+            cust = customers.get(trueIndex);
+        }
+        return cust;
+    }
 
     /**
      * Method to search for customer in the shopping center that is not in any of the checkout lines
@@ -265,6 +304,10 @@ public class ShoppingCenterModel {
         Customer cust = null;
        	if(line != null){
 		cust = line.dequeue();
+<<<<<<< HEAD
+=======
+
+>>>>>>> abfac2cb794931c3efed4f73dc0f9201de5a983b
         	if(leave) {
             		int index = customers.search(cust.getName());
             		index = index + customers.size();
@@ -279,50 +322,26 @@ public class ShoppingCenterModel {
     }
 
     /**
-     * Item search method which searches for an item given a key name.
-     * Calls upon the AscendignlyOrderedList size method which returns an encoded negative value if the key was found or a positive value if the key was not found.
-     * If the temp is a negative value after items.search() is called, then the Object with the name is found. 
-     * To decode temp to obtain the correct index of the item in the list, items.size() is added to temp. 
-     * Then the object is retrieved from the collection and returned.
-     * If no item is found, null is returned.
-     * @param name - String type that will be the key to search for
-     * @return result - Item object which is either null (meaning no object with the given name was found) or containing the reference to the Item which was found.
+     * The orderItem method updates a given item current stock amount
+     * This method calls upon the AscendinglyOrderedList's method called search.
+     * The search method searches for a provided key in the items collection and returns an encoded value describing whether an item name is found or not.
+     * The AscendinglyOrderedList Class further describes the search method and its encoded value. Simply put, if the item is found in the collection, a negative value is returned.
+     * To decode a negative value, the AscendinglyOrderedList's size() method is added to the negative value. The decoded value is the index of the item in the collection.
+     * If a positive index is returned, the item is not found. The AscendinglyOrderedList describes the meaning for a positively returned value
+     * @param name - String type varaible which will hold the item's name of which the user wants to search for.
+     * @param amount - primitive type int that holds the amount of new stock the user wants to add to the existing item stock.
+     * @return item - Object type Item. If the item is not found based on the given name, the method will return a null item
      */
-    public Item itemSearch(String name) {
-        Item result =  null;
-        int temp = 0;
-        if(!items.isEmpty()) {
-            temp = items.search(name);
-            if(temp < 0) {
-                result = items.get(temp+items.size());
-            }
+    public int orderItem(Item item, int amount) {
+        int updatedValue = -1;
+        if(item != null) {
+            updatedValue = item.getAmount()+amount;
+            item.setAmount(updatedValue);
         }
-        return result;
+        return updatedValue;
     }
 
-    /** 
-     * This is the customerSearch method which searches for a customer name in the collection of Customers.
-     *  This method calls upon the AscnedinglyOrderedList's search method which returns a negative encoded value if the key was found.
-     *  The search method returns a positive value if the key is not found indicating where the item should be added.
-     *  If the index value is less than zero, this means that they item was found. To decode it we add the size() of the collection to the negative value.
-     *  This decoding will give the proper index the Customer is found in the collection. 
-     *  Then we get the customer and return the customer.
-     *  If no customer is found we return null.  
-     *  @param name - The customer's name to be searched for passed as a String type.
-     *  @return cust - A customer object which either returns the customer found by their name or null meaning that no customer with the name passed was found.
-     */
-    public Customer customerSearch(String name) {
-        int result = 0;
-	Customer cust = null;
-        int index = customers.search(name);
-        if(index < 0) {
-            int trueIndex = index + customers.size();
-            cust = customers.get(trueIndex);
-	}
-        return cust;
-    }
-
-    /**
+     /**
      * This is a method to display the shoppers in the shopping center's list of customers.
      * If there aren't any customers in the shopping center, a message is appended stating so.
      * Otherwise, the method iteratively gets every customer in the AscnedinglyOrderedList of customers and appends a message with the customers name, item amount, and time.
@@ -368,67 +387,55 @@ public class ShoppingCenterModel {
     }
 
     /**
-     * The orderItem method updates a given item current stock amount
-     * This method calls upon the AscendinglyOrderedList's method called search.
-     * The search method searches for a provided key in the items collection and returns an encoded value describing whether an item name is found or not.
-     * The AscendinglyOrderedList Class further describes the search method and its encoded value. Simply put, if the item is found in the collection, a negative value is returned.
-     * To decode a negative value, the AscendinglyOrderedList's size() method is added to the negative value. The decoded value is the index of the item in the collection.
-     * If a positive index is returned, the item is not found. The AscendinglyOrderedList describes the meaning for a positively returned value
-     * @param name - String type varaible which will hold the item's name of which the user wants to search for.
-     * @param amount - primitive type int that holds the amount of new stock the user wants to add to the existing item stock.
-     * @return item - Object type Item. If the item is not found based on the given name, the method will return a null item
+     * This method is used to move the person longest in the store into a checkout line.
+     * This method is used to move a person who has no items, either back to shopping, or leave the store completely.
+     * @param leave -- boolean variable describie whether a person with no items should leave the store(true), or return shopping(false)
+     * @return result -- String type that describes action of customer that just occured through this method.
      */
-    public int orderItem(Item item, int amount) {
-        int updatedValue = -1;
-        if(item != null) {
-            updatedValue = item.getAmount()+amount;
-            item.setAmount(updatedValue);
-        }
-        return updatedValue;
+    public String doneShopping(boolean leave){
+            String result = null;
+            String name = longestCustomer.getName();
+            if(leave == true){
+                customers.remove(customers.search(name)+customers.size());
+                longestCustomer = null;
+                result = "Customer " + name + "has left.";
+            }else{
+                longestCustomer.setTotalTime(0);
+                longestCustomer.setCheckOut(false);
+                result = "Customer " + name + " with " + longestCustomer.getItemAmount() + "items returned to shopping.";
+                longestCustomer = null;
+            }
+            return result;
     }
 
     /**
-     * Method to get the restocking level
-     * @return restockingLevel - the ShoppingCenterModel's private type int variable that stores the restocking level inputted by the user
+     * This method is for a customer who has items, and enqueues them in the proper checkoutline.
+     * @return result -- String type describing customer infomration and what checkout line they are in.
      */
-    public int getRestockingLevel() {
-        return restockingLevel;
+    public String doneShopping(){
+	String result = "After " + longestCustomer.getTotalTime() + " minutes in the Shopping Center, customer " + longestCustomer.getName() + " with " + longestCustomer.getItemAmount() + " is now in the ";
+	result = result +  this.enqueueCustomer() +".";
+	return result;	
     }
 
-    /**
-     * Getter method to get the collection of items.
-     * @return items - an AscendinglyOrderedList of type Items.
-     */
-    public AscendinglyOrderedList getItems() {
-        return items;
-    }
-
-    /**
-     * Getter method to get the collection of customers.
-     * @return customers - an AscnedinglyList of Customers
-     */
-    public AscendinglyOrderedList getCustomers() {
-        return customers;
-    }
-
-    /**
+      /**
      * Method to display the contents of the first line
      * @return String - information of the contents in the first line.
      */
     public String displayLine1() {
-	    StringBuilder str = new StringBuilder();
-	    String name = lineOne.getName();
-	    if(lineOne.isEmpty()){
-		    str.append("No customers are in the " + name + " checkout line!");
-	    }else{
-		int size = lineOne.size();
-		if(size == 1) {
-                	str.append("The following customer is in the " + name  + " checkout line:");
-            	} else {
-                	str.append("The following " + size + " customers are in the " + name + " checkout line:");
-		}
-		str.append(lineOne.toString());
-	    }
+            StringBuilder str = new StringBuilder();
+            String name = lineOne.getName();
+            if(lineOne.isEmpty()){
+                    str.append("No customers are in the " + name + " checkout line!");
+            }else{
+                int size = lineOne.size();
+                if(size == 1) {
+                        str.append("The following customer is in the " + name  + " checkout line:");
+                } else {
+                        str.append("The following " + size + " customers are in the " + name + " checkout line:");
+                }
+                str.append(lineOne.toString());
+            }
         return str.toString();
     }
 
@@ -437,7 +444,7 @@ public class ShoppingCenterModel {
      * @return String - information of the contents in the second line.
      */
     public String displayLine2() {
-	    StringBuilder str = new StringBuilder();
+            StringBuilder str = new StringBuilder();
             String name = lineTwo.getName();
             if(lineTwo.isEmpty()){
                     str.append("\nNo customers are in the " + name + " checkout line!");
@@ -459,7 +466,7 @@ public class ShoppingCenterModel {
      * @return String - information of the contents in the express line.
      */
     public String displayExpress() {
-	    StringBuilder str = new StringBuilder();
+            StringBuilder str = new StringBuilder();
             String name = expressLine.getName();
             if(expressLine.isEmpty()){
                     str.append("\nNo customers are in the " + name + " checkout line!");
@@ -489,38 +496,38 @@ public class ShoppingCenterModel {
 
     }
 
-    /**
-     * This method is used to move the person longest in the store into a checkout line.
-     * This method is used to move a person who has no items, either back to shopping, or leave the store completely.
-     * @param leave -- boolean variable describie whether a person with no items should leave the store(true), or return shopping(false)
-     * @return result -- String type that describes action of customer that just occured through this method.
+
+     /**
+     * Method to get the restocking level
+     * @return restockingLevel - the ShoppingCenterModel's private type int variable that stores the restocking level inputted by the user
      */
-    public String doneShopping(boolean leave){
-	    String result = null;
-	    String name = longestCustomer.getName();
-	    if(leave == true){
-		customers.remove(customers.search(name)+customers.size());
-        	longestCustomer = null;
-		result = "Customer " + name + "has left."; 
-	    }else{
-		longestCustomer.setTotalTime(0);
-        	longestCustomer.setCheckOut(false);
-		result = "Customer " + name + " with " + longestCustomer.getItemAmount() + "items returned to shopping.";
-        	longestCustomer = null;
-	    }
-	    return result;
+    public int getRestockingLevel() {
+        return restockingLevel;
     }
 
     /**
-     * This method is for a customer who has items, and enqueues them in the proper checkoutline.
-     * @return result -- String type describing customer infomration and what checkout line they are in.
+     * Getter method to get the collection of items.
+     * @return items - an AscendinglyOrderedList of type Items.
      */
-    public String doneShopping(){
-	String result = "After " + longestCustomer.getTotalTime() + " minutes in the Shopping Center, customer " + longestCustomer.getName() + " with " + longestCustomer.getItemAmount() + " is now in the ";
-	result = result +  this.enqueueCustomer() +".";
-	return result;	
+    public AscendinglyOrderedList getItems() {
+        return items;
     }
-    
+
+    /**
+     * Getter method to get the collection of customers.
+     * @return customers - an AscnedinglyList of Customers
+     */
+    public AscendinglyOrderedList getCustomers() {
+        return customers;
+    }
+
+    /**
+     * Is empty method that checks if the list of customers is empty
+     * @return boolean - true if the list has a customer or customrs. False if the the list does not have any customers.
+     */
+    public boolean isEmpty() {
+        return (customers.isEmpty());
+    }
 
     /**
      * Mutator method to set the restocking level to the amount passed as a parameter
