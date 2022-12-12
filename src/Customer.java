@@ -1,4 +1,3 @@
-
 /**
  *
  * should we perform checkout checks for add and remove -- completed

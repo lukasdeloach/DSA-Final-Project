@@ -17,7 +17,7 @@
 
 import java.lang.*;
 
-public class CheckOut<Customer> extends Queue<T> {
+public class CheckOut<T> extends Queue<T> {
 
     String name;
     
