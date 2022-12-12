@@ -1,8 +1,4 @@
 /**
- * Possibly update checkout descriptions after talking
- * - Jess
- *
- *
  * This is the Driver class that is used to run the entire Shopping Center model project, and allow for user input.
  * This class uses all classes developed in folder, either directly on indirectly.
  * The only data field in the class is a reader to take in input, and the main method holds a ShoppingCenterModel data field.
@@ -18,7 +14,12 @@ public class Driver {
     static BufferedReader stdin = new BufferedReader(new InputStreamReader(System.in));
     // create static reader to be used throughout driver, in accordance with coding guidlines
     // static as it belongs to class
-
+	
+    /**
+     * Main method to run the driver. Has data fields of Shopping center. Calls simulate start to set up the shopping center.
+     * Also displlays options to user, and then loops in allowing input options until 0 is selected to close program.
+     * @param args -- String array which is taken in from initial call to run
+     */
     public static void main(String[] args) throws IOException {
 
 
@@ -89,16 +90,19 @@ public class Driver {
 
     }// end main
 
-    // method to call when input is out of range
-    public static void outOfRange() {
-        System.out.println("Position specified is out of range!");
-    }// end outOfRange call
-
-    // method to exit program
+    /**
+     * Method to exit program when 0 is inputted and display output.
+     */
     public static void exitProgram() {
         System.out.println("Exiting program...Good Bye");
     }// end exitProgram
-    //
+    
+    /**
+     * Method to simulate the start of the Shopping center and take in initial input.
+     * Initilaizes items, item stock, restocking level, and itinials checkout lane to checkout customers first.
+     * @param store -- Shopping center to simulate the start for
+     * @return store -- Shopping center to use in rest of simulation.
+     */
     public static ShoppingCenterModel simulateStart(ShoppingCenterModel store) throws IOException {
 
         System.out.println("Welcome to the Shopping Center!!!");
@@ -136,7 +140,12 @@ public class Driver {
         return store;
     }
 
-    // method called when want to add item
+    /**
+     * Handle the first case of input.
+     * A Customer is added to the store. This takes in input on name and attempts to add to the store. If they already exist in the store they will not be added.
+     * @param store -- ShoppingCenterModel to add customer too.
+     * @exception ioException -- IoException thrown if improper input is given
+     */
     public static void inputCaseOne(ShoppingCenterModel store) throws IOException {
         // set up for variables needed
         boolean added;
@@ -155,10 +164,13 @@ public class Driver {
         // prompt for item to insert
     }// end method
 
-
-    // HOW MUCH OF THE ITEMS NEEDS TO BE DONE IN SHOPPING CENTER, NOT HERE
-    // ADJUST ITEMSEARCH METHOD
-    // method to add item based on index
+    /**
+     * Method to handle input of case two, where a customer adds an item to their cart.
+     * Method takes in input for customer name,and seraches for them in the store. If they dont exist in the store, or in a checkout line, nothing will be added to their cart, and displayed to user. 
+     * Else, it will prompt for what item to add, search for the item name, and then add if it is a valid item and if in stock. Then will report new amount of items in customer cart. This also updates stock of item taken internally in store
+     * @param store -- store to add a item to a customer in.
+     * @exception ioException -- throws exception if improper input is given
+     */
     public static void inputCaseTwo(ShoppingCenterModel store) throws IOException {
         // prompt for and read index to remove from, if empty unecessary to call for prompt
         if(!store.isEmpty()) {
@@ -195,7 +207,6 @@ public class Driver {
                 }
                 else {
                     store.customerAddItem(cust, item);
-                    //ternary operator?
                     int custItems = cust.getItemAmount();
                     if(custItems != 1) {
                         System.out.println("Customer " + name + " has now " + cust.getItemAmount() + " items in the shopping cart.");
@@ -208,8 +219,14 @@ public class Driver {
             System.out.println("\tNo one is in the Shopping Center!");
         }
     }// end inputCaseTwo
-    //
 
+    /**
+     * This method handles input case three, where an item is to be removed from a customers cart.
+     * This method asks for cusotmer name to remove item from cart. Validates if they exist and not in a checkout lane, and otherwise displays if so. 
+     * Then, validates if the customer has anything in their cart, and displays if empty, and then if not, removes an item and displays now updated customer information.
+     * @param store -- ShoppingCenterModel to update cusotmer for.
+     * @exception ioException -- IoException thrown if improper input is given.
+     */
     public static void inputCaseThree(ShoppingCenterModel store) throws IOException {
         if(store.isEmpty()) {
             System.out.println("\tNo one is in the Shopping Center!");
@@ -252,6 +269,12 @@ public class Driver {
         }
     }
 
+    /**
+     * This method puts the customer who has been in the store the longest in the proper checkout line. 
+     * If customers are in the store, and shopping, it will use Shopping center methods to find the longest customer. If they have no items in their cart, they will be prompted if they should leave or return shopping. Otherwise, they will be put in the porper checkout line. The final decision and update will be displayed to user, and if in a line, all customer information, and what line they are in.
+     * @param store -- ShoppingCenterModel that is to be updated.
+     * @exception ioException -- IOException thrown with improper input
+     */
     public static void inputCaseFour(ShoppingCenterModel store) throws IOException {
         if(store.isEmpty()) {
             System.out.println("\tNo customers in the Shopping Center!");
@@ -282,6 +305,12 @@ public class Driver {
         }
     }
 
+    /**
+     * This mehtod handles input case 5, of a person checking out of a checkout lane. 
+     * If there are any customers in any checkout lane, it will confirm if they should checkout or go back ot shopping. Based on user confimration, it will display the proper infomration of the customer and if they stayed or left.
+     * @param store -- ShoppingCenterModel to be updated.
+     * @exception ioExcecption -- throws if improper input is given.
+     */
     public static void inputCaseFive(ShoppingCenterModel store) throws IOException {
         String name = store.nextCheckOut();
         if(name == null) {
@@ -291,8 +320,9 @@ public class Driver {
             String confirm;
             boolean correct = false;
             do {
-                System.out.print("Should customer " +  name + " leave or keep on shopping? Leave?(Y/N):");
+                System.out.print("Should customer " +  name + " leave or keep on shopping? Leave?(Y/N): ");
                 confirm = stdin.readLine().trim();
+		System.out.println(confirm);
                 if(confirm.equalsIgnoreCase("Y")) {
                     correct = true;
                 } else if(confirm.equalsIgnoreCase("N")) {
@@ -305,16 +335,16 @@ public class Driver {
 
             Customer left = store.checkOut(leave);
             if(leave == true) {
-                System.out.print("Customer" + name + " is now leaving the Shopping Center.");
+                System.out.println("\nCustomer " + name + " is now leaving the Shopping Center.");
             } else {
                 int items = left.getItemAmount();
-                System.out.print("Customer " + name + " with ");
+                System.out.print("\nCustomer " + name + " with ");
                 if(items > 1) {
                     System.out.print(items + " items ");
                 } else {
                     System.out.print(items + " item ");
                 }
-                System.out.println(" returned to shopping.");
+                System.out.println("returned to shopping.");
             }
         }
     }
