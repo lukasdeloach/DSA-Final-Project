@@ -1,9 +1,4 @@
 /**
- *
- *Encapsulation error with toString?
- *
- *
- * Purpose: Honors Data Structure and Algorithms Project
  * This is the CheckOut class that extends class Queue.
  * This class has one additional variable of name variable used to describe the checkout lane it represents. 
  * Name is of String type and is used to describe the Checkout based on input.
@@ -64,26 +59,14 @@ public class CheckOut<T> extends Queue<T> {
     public String toString(){
         StringBuilder str = new StringBuilder();
         // set curr to front to iterate through items
-        int curr = front;
-        if(numItems == 0) {
-            str.append("No customers are in the " + name + " checkout line!\n");
-        } else {
-            // for loop iterates numItems times, adding starting from front and adding index that
-            // increments amount normalized to size of array
-            if(numItems == 1) {
-                str.append("The following customer is in the " + name + " checkout line:");
-            } else {
-                str.append("The following " + numItems + " customers are in the " + name + " checkout line:");
-            }
-            for(int ind = 0; ind < numItems; ind++) {
-                // saved for readability
-                int normIndex = (front+ind)%items.length;
+	int normIndex = 0;
+        for(int ind = 0; ind < numItems; ind++) {
+		// saved for readability
+                normIndex = (front+ind)%items.length;
                 Customer cust = (Customer) items[normIndex];
                 str.append("\n\tCustomer " + cust.getName() + " has " + cust.getItemAmount() +
                            " items in the shopping basket.");
-            }
-            str.append("\n");
-        }
+	}
         return str.toString();
     }
 }

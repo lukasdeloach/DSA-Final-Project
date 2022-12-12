@@ -166,37 +166,37 @@ public class ShoppingCenterModel {
      * @param customer - passed customer object
      * @return String  - String object which describes which line the customer was added into
      */
-    public String enqueueCustomer(Customer customer) {
-        int itemAmount = customer.getItemAmount();
+    public String enqueueCustomer() {
+        int itemAmount = longestCustomer.getItemAmount();
         int expressSize = expressLine.size(), lineOneSize = lineOne.size(), lineTwoSize = lineTwo.size();
         StringBuilder str = new StringBuilder();
         if(itemAmount < 5) {
             if((expressSize > lineOneSize<<1) || (expressSize > lineTwoSize<<1)) {
                 if(lineOneSize < lineTwoSize + 1) {
-                    lineOne.enqueue(customer);
+                    lineOne.enqueue(longestCustomer);
                     str.append("first checkout line");
                 }
                 else {
-                    lineTwo.enqueue(customer);
+                    lineTwo.enqueue(longestCustomer);
                     str.append("second checkout line");
                 }
             }
             else {
-                expressLine.enqueue(customer);
+                expressLine.enqueue(longestCustomer);
                 str.append("express line");
             }
         }
         else {
             if(lineOneSize < lineTwoSize + 1) {
-                lineOne.enqueue(customer);
+                lineOne.enqueue(longestCustomer);
                 str.append("first checkout line");
             }
             else {
-                lineTwo.enqueue(customer);
+                lineTwo.enqueue(longestCustomer);
                 str.append("second checkout line");
             }
         }
-        customer.setCheckOut(true);
+        longestCustomer.setCheckOut(true);
         longestCustomer = null;
         return str.toString();
     }
@@ -322,7 +322,7 @@ public class ShoppingCenterModel {
         int result = 0;
 	Customer cust = null;
         int index = customers.search(name);
-        if(index > < 0) {
+        if(index < 0) {
             int trueIndex = index + customers.size();
             cust = customers.get(trueIndex);
 	}
@@ -344,12 +344,12 @@ public class ShoppingCenterModel {
         if(shoppers == 0) {
             retStr.append("No customers are in the Shopping Center!");
         } else {
-            retStr.append("The following " + shoppers + " customers are in the Shopping Center:\n");
+            retStr.append("The following " + shoppers + " customers are in the Shopping Center:");
             for(int i = 0; i < numCust; i++) {
                 Customer cust = customers.get(i);
                 if(!cust.getCheckOut()) {
-                    retStr.append("Customer " +cust.getName() +" with " + cust.getItemAmount() +
-                                  " items present for " + cust.getTotalTime() + " minutes.\n");
+                    retStr.append("\nCustomer " +cust.getName() +" with " + cust.getItemAmount() +
+                                  " items present for " + cust.getTotalTime() + " minutes.");
                 }
             }
         }
@@ -423,7 +423,20 @@ public class ShoppingCenterModel {
      * @return String - information of the contents in the first line.
      */
     public String displayLine1() {
-        return lineOne.toString();
+	    StringBuilder str = new StringBuilder();
+	    String name = lineOne.getName();
+	    if(lineOne.isEmpty()){
+		    str.append("No customers are in the " + name + " checkout line!");
+	    }else{
+		int size = lineOne.size();
+		if(size == 1) {
+                	str.append("The following customer is in the " + name  + " checkout line:");
+            	} else {
+                	str.append("The following " + size + " customers are in the " + name + " checkout line:");
+		}
+		str.append(lineOne.toString());
+	    }
+        return str.toString();
     }
 
     /**
@@ -431,7 +444,21 @@ public class ShoppingCenterModel {
      * @return String - information of the contents in the second line.
      */
     public String displayLine2() {
-        return lineTwo.toString();
+	    StringBuilder str = new StringBuilder();
+            String name = lineTwo.getName();
+            if(lineTwo.isEmpty()){
+                    str.append("\nNo customers are in the " + name + " checkout line!");
+            }else{
+                int size = lineTwo.size();
+                if(size == 1) {
+                        str.append("\nThe following customer is in the " + name  + " checkout line:");
+                } else {
+                        str.append("\nThe following " + size + " customers are in the " + name + " checkout line:");
+                }
+                str.append(lineTwo.toString());
+            }
+        return str.toString();
+
     }
 
     /**
@@ -439,7 +466,21 @@ public class ShoppingCenterModel {
      * @return String - information of the contents in the express line.
      */
     public String displayExpress() {
-        return expressLine.toString();
+	    StringBuilder str = new StringBuilder();
+            String name = expressLine.getName();
+            if(expressLine.isEmpty()){
+                    str.append("\nNo customers are in the " + name + " checkout line!");
+            }else{
+                int size = expressLine.size();
+                if(size == 1) {
+                        str.append("\nThe following customer is in the " + name  + " checkout line:");
+                } else {
+                        str.append("\nThe following " + size + " customers are in the " + name + " checkout line:");
+                }
+                str.append(expressLine.toString());
+            }
+        return str.toString();
+
     }
 
     /**
@@ -454,6 +495,29 @@ public class ShoppingCenterModel {
         return longestCustomer;
 
     }
+
+    public String doneShopping(boolean leave){
+	    String result = null;
+	    String name = longestCustomer.getName();
+	    if(leave == true){
+		customers.remove(customers.search(name)+customers.size());
+        	longestCustomer = null;
+		result = "Customer " + name + "has left."; 
+	    }else{
+		longestCustomer.setTotalTime(0);
+        	longestCustomer.setCheckOut(false);
+		result = "Customer " + name + " with " + longestCustomer.getItemAmount() + "items returned to shopping.";
+        	longestCustomer = null;
+	    }
+	    return result;
+    }
+
+    public String doneShopping(){
+	String result = "After " + longestCustomer.getTotalTime() + " minutes in the Shopping Center, customer " + longestCustomer.getName() + " with " + longestCustomer.getItemAmount() + " is now in the ";
+	result = result +  this.enqueueCustomer() +".";
+	return result;	
+    }
+    
 
     /**
      * Mutator method to set the restocking level to the amount passed as a parameter

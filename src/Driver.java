@@ -267,18 +267,17 @@ public class Driver {
                 System.out.print("Should customer " + name + " leave or keep on shopping? Leave?(Y/N): ");
                 String answer = stdin.readLine().trim();
                 System.out.println(answer);
+		String status = null;
                 if(answer.equalsIgnoreCase("y")) {
-                    store.removeLongestCustomer(cust);
-                    System.out.println("Customer " + name + "has left.");
+                    status = store.doneShopping(true);
                 }
                 else {
-                    store.resetCustomer(cust);
-                    System.out.println("Customer " + name + " with " + items + " returned to shopping.");
+                    status = store.doneShopping(false);
                 }
+		System.out.println(status);
             }
             else {
-                String lineStatus = store.enqueueCustomer(cust);
-                System.out.println("After " + cust.getTotalTime() + " minutes in the Shopping Center, customer " + name + " with " + items + " is now in the " + lineStatus + ".");
+		System.out.println(store.doneShopping());
             }
         }
     }
