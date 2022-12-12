@@ -137,6 +137,7 @@ public class Driver {
         System.out.print("Please select the checkout line that should check out customers first (regular1/regular2/express): ");
         String checkOutLine = stdin.readLine().trim();
         System.out.println(checkOutLine);
+	store.setLane(checkOutLine);
         return store;
     }
 
@@ -335,10 +336,10 @@ public class Driver {
 
             Customer left = store.checkOut(leave);
             if(leave == true) {
-                System.out.println("\nCustomer " + name + " is now leaving the Shopping Center.");
+                System.out.println("Customer " + name + " is now leaving the Shopping Center.");
             } else {
                 int items = left.getItemAmount();
-                System.out.print("\nCustomer " + name + " with ");
+                System.out.print("Customer " + name + " with ");
                 if(items > 1) {
                     System.out.print(items + " items ");
                 } else {

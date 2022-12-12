@@ -40,6 +40,20 @@ public class ShoppingCenterModel {
     }
 
     /**
+     * Method to set checkout lane to start check out from. Takes in string describing checkout lane and sets checkOutStart accordingly.
+     * @param lane -- String type describing what lane to start from
+     */
+    public void setLane(String lane){
+	    if(lane.compareTo("express") == 0){
+		    checkOutStart = 0;
+	    }else if(lane.compareTo("regular1") == 0){
+		    checkOutStart = 1;
+	    }else if(lane.compareTo("regular2") == 0){
+		    checkOutStart =2;
+	    }
+    }		
+
+    /**
      * Method to add a customer.
      * Calls internal customer search method for customer validation.
      * If the search method's returned value indicates that the customer is already in the store, will not add the customer.
@@ -270,8 +284,8 @@ public class ShoppingCenterModel {
             if(next.size() > 0) {
                 customers = true;
             }
-            lane = (lane + 1) % 3;
-            counter++;
+	    lane = (lane + 1)%3;
+	    counter++;
         }
         if(customers == false) {
             next = null;
