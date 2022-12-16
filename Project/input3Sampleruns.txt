@@ -40,523 +40,509 @@ Here are the choices to select from:
 Make your menu selection now: 2
 	No one is in the Shopping Center!
 
-Select an operation from the following menu: 3
+You know the choices! Select one: 3
 	No one is in the Shopping Center!
 
-Select an operation from the following menu: 4
+You know the choices! Select one: 4
 	No customers in the Shopping Center!
 
-Select an operation from the following menu: 5
+You know the choices! Select one: 5
 	No customers in any line.
 
-Select an operation from the following menu: 6
+You know the choices! Select one: 6
 No customers are in the Shopping Center!
 
-Select an operation from the following menu: 7
+You know the choices! Select one: 7
 No customers are in the first checkout line!
 No customers are in the second checkout line!
 No customers are in the express checkout line!
 
-
-Select an operation from the following menu: 8
+You know the choices! Select one: 8
 Items at re-stocking level: 
 soap with 3 items.
 
-Select an operation from the following menu: 1
+You know the choices! Select one: 1
 >>Enter customer name : Bulbasaur
 Customer Bulbasaur is now in the Shopping Center.
 
-Select an operation from the following menu: 1
+You know the choices! Select one: 1
 >>Enter customer name : Pidgey
 Customer Pidgey is now in the Shopping Center.
 
-Select an operation from the following menu: 2
+You know the choices! Select one: 2
 >>Enter customer name : Pidgey
 What item does Pidgey want? soup
 Customer Pidgey has now 1 item in the shopping cart.
 
-Select an operation from the following menu: 1
+You know the choices! Select one: 1
 >>Enter customer name : Hoopa
 Customer Hoopa is now in the Shopping Center.
 
-Select an operation from the following menu: 2
+You know the choices! Select one: 2
 >>Enter customer name : Pidgey
 What item does Pidgey want? soap
 Customer Pidgey has now 2 items in the shopping cart.
 
-Select an operation from the following menu: 1
+You know the choices! Select one: 1
 >>Enter customer name : Caterpie
 Customer Caterpie is now in the Shopping Center.
 
-Select an operation from the following menu: 1
+You know the choices! Select one: 1
 >>Enter customer name : Abra
 Customer Abra is now in the Shopping Center.
 
-Select an operation from the following menu: 2
+You know the choices! Select one: 2
 >>Enter customer name : Abra
 What item does Abra want? bread
 Customer Abra has now 1 item in the shopping cart.
 
-Select an operation from the following menu: 2
+You know the choices! Select one: 2
 >>Enter customer name : Abra
 What item does Abra want? soap
 Customer Abra has now 2 items in the shopping cart.
 
-Select an operation from the following menu: 2
+You know the choices! Select one: 2
 >>Enter customer name : Hoopa
 What item does Hoopa want? soap
 Customer Hoopa has now 1 item in the shopping cart.
 
-Select an operation from the following menu: 2
+You know the choices! Select one: 2
 >>Enter customer name : Pidgey
 What item does Pidgey want? soap
 No soaps in stock.
 
-Select an operation from the following menu: 2
+You know the choices! Select one: 2
 >>Enter customer name : Pidgey
 What item does Pidgey want? juice
 Customer Pidgey has now 3 items in the shopping cart.
 
-Select an operation from the following menu: 2
+You know the choices! Select one: 2
 >>Enter customer name : Pidgey
 What item does Pidgey want? bread
 Customer Pidgey has now 4 items in the shopping cart.
 
-Select an operation from the following menu: 3
+You know the choices! Select one: 3
 >>Enter customer name : Abra
 Customer Abra has now 1 item in the shopping cart.
 
-Select an operation from the following menu: 1
+You know the choices! Select one: 1
 >>Enter customer name : Kadabra
 Customer Kadabra is now in the Shopping Center.
 
-Select an operation from the following menu: 2
+You know the choices! Select one: 2
 >>Enter customer name : Caterpie
 What item does Caterpie want? babana
 No babanas in Shopping Center.
 
-Select an operation from the following menu: 2
+You know the choices! Select one: 2
 >>Enter customer name : Caterpie
 What item does Caterpie want? banana
 Customer Caterpie has now 1 item in the shopping cart.
 
-Select an operation from the following menu: 1
+You know the choices! Select one: 1
 >>Enter customer name : Abra
 Customer Abra is already in the Shopping Center!
 >>Enter customer name : Darkrai
 Customer Darkrai is now in the Shopping Center.
 
-Select an operation from the following menu: 1
+You know the choices! Select one: 1
 >>Enter customer name : Patrat
 Customer Patrat is now in the Shopping Center.
 
-Select an operation from the following menu: 2
+You know the choices! Select one: 2
 >>Enter customer name : Kadabra
 What item does Kadabra want? bread
 Customer Kadabra has now 1 item in the shopping cart.
 
-Select an operation from the following menu: 2
+You know the choices! Select one: 2
 >>Enter customer name : Darkrai
 What item does Darkrai want? juice
 Customer Darkrai has now 1 item in the shopping cart.
 
-Select an operation from the following menu: 2
+You know the choices! Select one: 2
 >>Enter customer name : Kadabra
 What item does Kadabra want? coffee
 Customer Kadabra has now 2 items in the shopping cart.
 
-Select an operation from the following menu: 2
+You know the choices! Select one: 2
 >>Enter customer name : Kadabra
 What item does Kadabra want? soup
 Customer Kadabra has now 3 items in the shopping cart.
 
-Select an operation from the following menu: 2
+You know the choices! Select one: 2
 >>Enter customer name : Patrat
 What item does Patrat want? water
 Customer Patrat has now 1 item in the shopping cart.
 
-Select an operation from the following menu: 2
+You know the choices! Select one: 2
 >>Enter customer name : Abra
 What item does Abra want? banana
 Customer Abra has now 2 items in the shopping cart.
 
-Select an operation from the following menu: 2
+You know the choices! Select one: 2
 >>Enter customer name : Hoopa
 What item does Hoopa want? water
 Customer Hoopa has now 2 items in the shopping cart.
 
-Select an operation from the following menu: 2
+You know the choices! Select one: 2
 >>Enter customer name : Darkrai
 What item does Darkrai want? bread
 Customer Darkrai has now 2 items in the shopping cart.
 
-Select an operation from the following menu: 1
+You know the choices! Select one: 1
 >>Enter customer name : Golem
 Customer Golem is now in the Shopping Center.
 
-Select an operation from the following menu: 6
+You know the choices! Select one: 6
 The following 9 customers are in the Shopping Center:
-Customer Abra with 2 items present for 15 minutes.
-Customer Bulbasaur with 0 items present for 17 minutes.
-Customer Caterpie with 1 items present for 15 minutes.
-Customer Darkrai with 2 items present for 8 minutes.
-Customer Golem with 0 items present for 0 minutes.
-Customer Hoopa with 2 items present for 16 minutes.
-Customer Kadabra with 3 items present for 9 minutes.
-Customer Patrat with 1 items present for 8 minutes.
-Customer Pidgey with 4 items present for 17 minutes.
+	Customer Abra with 2 items present for 15 minutes.
+	Customer Bulbasaur with 0 items present for 17 minutes.
+	Customer Caterpie with 1 items present for 15 minutes.
+	Customer Darkrai with 2 items present for 8 minutes.
+	Customer Golem with 0 items present for 0 minutes.
+	Customer Hoopa with 2 items present for 16 minutes.
+	Customer Kadabra with 3 items present for 9 minutes.
+	Customer Patrat with 1 items present for 8 minutes.
+	Customer Pidgey with 4 items present for 17 minutes.
 
-
-Select an operation from the following menu: 7
+You know the choices! Select one: 7
 No customers are in the first checkout line!
 No customers are in the second checkout line!
 No customers are in the express checkout line!
 
-
-Select an operation from the following menu: 8
+You know the choices! Select one: 8
 Items at re-stocking level: 
 bread with 3 items.
 juice with 2 items.
 soap with 0 items.
 soup with 3 items.
 
-Select an operation from the following menu: 9
+You know the choices! Select one: 9
 Enter item name to be re-ordered : sop
 sop is not it stock!
 
-Select an operation from the following menu: 9
+You know the choices! Select one: 9
 Enter item name to be re-ordered : soap
 Enter number of soaps to be re-ordered : 10
 Stock has now 10 soaps.
 
-Select an operation from the following menu: 9
+You know the choices! Select one: 9
 Enter item name to be re-ordered : soup
 Enter number of soups to be re-ordered : 5
 Stock has now 8 soups.
 
-Select an operation from the following menu: 8
+You know the choices! Select one: 8
 Items at re-stocking level: 
 bread with 3 items.
 juice with 2 items.
 
-Select an operation from the following menu: 2
+You know the choices! Select one: 2
 >>Enter customer name : Golem
 What item does Golem want? water
 Customer Golem has now 1 item in the shopping cart.
 
-Select an operation from the following menu: 2
+You know the choices! Select one: 2
 >>Enter customer name : Pidgey
 What item does Pidgey want? juice
 Customer Pidgey has now 5 items in the shopping cart.
 
-Select an operation from the following menu: 2
+You know the choices! Select one: 2
 >>Enter customer name : Pidgey
 What item does Pidgey want? banana
 Customer Pidgey has now 6 items in the shopping cart.
 
-Select an operation from the following menu: 2
+You know the choices! Select one: 2
 >>Enter customer name : Patrat
 What item does Patrat want? coffee
 Customer Patrat has now 2 items in the shopping cart.
 
-Select an operation from the following menu: 2
+You know the choices! Select one: 2
 >>Enter customer name : Patrat
 What item does Patrat want? water
 Customer Patrat has now 3 items in the shopping cart.
 
-Select an operation from the following menu: 2
+You know the choices! Select one: 2
 >>Enter customer name : Patrat
 What item does Patrat want? soap
 Customer Patrat has now 4 items in the shopping cart.
 
-Select an operation from the following menu: 3
+You know the choices! Select one: 3
 >>Enter customer name : Kadabra
 Customer Kadabra has now 2 items in the shopping cart.
 
-Select an operation from the following menu: 2
+You know the choices! Select one: 2
 >>Enter customer name : Darkrai
 What item does Darkrai want? banana
 Customer Darkrai has now 3 items in the shopping cart.
 
-Select an operation from the following menu: 2
+You know the choices! Select one: 2
 >>Enter customer name : Kadabra
 What item does Kadabra want? water
 Customer Kadabra has now 3 items in the shopping cart.
 
-Select an operation from the following menu: 2
+You know the choices! Select one: 2
 >>Enter customer name : Kadabra
 What item does Kadabra want? water
 Customer Kadabra has now 4 items in the shopping cart.
 
-Select an operation from the following menu: 2
+You know the choices! Select one: 2
 >>Enter customer name : Kadabra
 What item does Kadabra want? cofee
 No cofees in Shopping Center.
 
-Select an operation from the following menu: 2
+You know the choices! Select one: 2
 >>Enter customer name : Patrat
 What item does Patrat want? bread
 Customer Patrat has now 5 items in the shopping cart.
 
-Select an operation from the following menu: 2
+You know the choices! Select one: 2
 >>Enter customer name : Darkrai
 What item does Darkrai want? yam
 No yams in Shopping Center.
 
-Select an operation from the following menu: 3
+You know the choices! Select one: 3
 >>Enter customer name : Golem
 Customer Golem has now 0 items in the shopping cart.
 
-Select an operation from the following menu: 6
+You know the choices! Select one: 6
 The following 9 customers are in the Shopping Center:
-Customer Abra with 2 items present for 27 minutes.
-Customer Bulbasaur with 0 items present for 29 minutes.
-Customer Caterpie with 1 items present for 27 minutes.
-Customer Darkrai with 3 items present for 20 minutes.
-Customer Golem with 0 items present for 12 minutes.
-Customer Hoopa with 2 items present for 28 minutes.
-Customer Kadabra with 4 items present for 21 minutes.
-Customer Patrat with 5 items present for 20 minutes.
-Customer Pidgey with 6 items present for 29 minutes.
+	Customer Abra with 2 items present for 27 minutes.
+	Customer Bulbasaur with 0 items present for 29 minutes.
+	Customer Caterpie with 1 items present for 27 minutes.
+	Customer Darkrai with 3 items present for 20 minutes.
+	Customer Golem with 0 items present for 12 minutes.
+	Customer Hoopa with 2 items present for 28 minutes.
+	Customer Kadabra with 4 items present for 21 minutes.
+	Customer Patrat with 5 items present for 20 minutes.
+	Customer Pidgey with 6 items present for 29 minutes.
 
-
-Select an operation from the following menu: 7
+You know the choices! Select one: 7
 No customers are in the first checkout line!
 No customers are in the second checkout line!
 No customers are in the express checkout line!
 
-
-Select an operation from the following menu: 8
+You know the choices! Select one: 8
 Items at re-stocking level: 
 bread with 2 items.
 juice with 1 items.
 
-Select an operation from the following menu: 9
+You know the choices! Select one: 9
 Enter item name to be re-ordered : soup
 Enter number of soups to be re-ordered : 7
 Stock has now 15 soups.
 
-Select an operation from the following menu: 8
+You know the choices! Select one: 8
 Items at re-stocking level: 
 bread with 2 items.
 juice with 1 items.
 
-Select an operation from the following menu: 2
+You know the choices! Select one: 2
 >>Enter customer name : Golem
 What item does Golem want? soup
 Customer Golem has now 1 item in the shopping cart.
 
-Select an operation from the following menu: 2
+You know the choices! Select one: 2
 >>Enter customer name : Darkrai
 What item does Darkrai want? banana
 Customer Darkrai has now 4 items in the shopping cart.
 
-Select an operation from the following menu: 2
+You know the choices! Select one: 2
 >>Enter customer name : Kadabra
 What item does Kadabra want? water
 Customer Kadabra has now 5 items in the shopping cart.
 
-Select an operation from the following menu: 2
+You know the choices! Select one: 2
 >>Enter customer name : Golem
 What item does Golem want? coffee
 Customer Golem has now 2 items in the shopping cart.
 
-Select an operation from the following menu: 2
+You know the choices! Select one: 2
 >>Enter customer name : Darkrai
 What item does Darkrai want? water
 Customer Darkrai has now 5 items in the shopping cart.
 
-Select an operation from the following menu: 2
+You know the choices! Select one: 2
 >>Enter customer name : Kadabra
 What item does Kadabra want? bread
 Customer Kadabra has now 6 items in the shopping cart.
 
-Select an operation from the following menu: 2
+You know the choices! Select one: 2
 >>Enter customer name : Golem
 What item does Golem want? soap
 Customer Golem has now 3 items in the shopping cart.
 
-Select an operation from the following menu: 3
+You know the choices! Select one: 3
 >>Enter customer name : Golem
 Customer Golem has now 2 items in the shopping cart.
 
-Select an operation from the following menu: 3
+You know the choices! Select one: 3
 >>Enter customer name : Golem
 Customer Golem has now 1 item in the shopping cart.
 
-Select an operation from the following menu: 2
+You know the choices! Select one: 2
 >>Enter customer name : Abra
 What item does Abra want? banana
 Customer Abra has now 3 items in the shopping cart.
 
-Select an operation from the following menu: 2
+You know the choices! Select one: 2
 >>Enter customer name : Abra
 What item does Abra want? juice
 Customer Abra has now 4 items in the shopping cart.
 
-Select an operation from the following menu: 2
+You know the choices! Select one: 2
 >>Enter customer name : Golem
 What item does Golem want? soap
 Customer Golem has now 2 items in the shopping cart.
 
-Select an operation from the following menu: 2
+You know the choices! Select one: 2
 >>Enter customer name : Pidgey
 What item does Pidgey want? soup
 Customer Pidgey has now 7 items in the shopping cart.
 
-Select an operation from the following menu: 6
+You know the choices! Select one: 6
 The following 9 customers are in the Shopping Center:
-Customer Abra with 4 items present for 40 minutes.
-Customer Bulbasaur with 0 items present for 42 minutes.
-Customer Caterpie with 1 items present for 40 minutes.
-Customer Darkrai with 5 items present for 33 minutes.
-Customer Golem with 2 items present for 25 minutes.
-Customer Hoopa with 2 items present for 41 minutes.
-Customer Kadabra with 6 items present for 34 minutes.
-Customer Patrat with 5 items present for 33 minutes.
-Customer Pidgey with 7 items present for 42 minutes.
+	Customer Abra with 4 items present for 40 minutes.
+	Customer Bulbasaur with 0 items present for 42 minutes.
+	Customer Caterpie with 1 items present for 40 minutes.
+	Customer Darkrai with 5 items present for 33 minutes.
+	Customer Golem with 2 items present for 25 minutes.
+	Customer Hoopa with 2 items present for 41 minutes.
+	Customer Kadabra with 6 items present for 34 minutes.
+	Customer Patrat with 5 items present for 33 minutes.
+	Customer Pidgey with 7 items present for 42 minutes.
 
-
-Select an operation from the following menu: 7
+You know the choices! Select one: 7
 No customers are in the first checkout line!
 No customers are in the second checkout line!
 No customers are in the express checkout line!
 
-
-Select an operation from the following menu: 8
+You know the choices! Select one: 8
 Items at re-stocking level: 
 bread with 1 items.
 juice with 0 items.
 water with 2 items.
 
-Select an operation from the following menu: 4
+You know the choices! Select one: 4
 Should customer Bulbasaur leave or keep on shopping? Leave?(Y/N): 4
-Customer Bulbasaur with 0 returned to shopping.
+Customer Bulbasaur with 0items returned to shopping.
 
-Select an operation from the following menu: This is not an option. Try again.
+You know the choices! Select one: This is not an option. Try again.
 4
 After 42 minutes in the Shopping Center, customer Pidgey with 7 is now in the first checkout line.
 
-Select an operation from the following menu: 6
+You know the choices! Select one: 6
 The following 8 customers are in the Shopping Center:
-Customer Abra with 4 items present for 40 minutes.
-Customer Bulbasaur with 0 items present for 0 minutes.
-Customer Caterpie with 1 items present for 40 minutes.
-Customer Darkrai with 5 items present for 33 minutes.
-Customer Golem with 2 items present for 25 minutes.
-Customer Hoopa with 2 items present for 41 minutes.
-Customer Kadabra with 6 items present for 34 minutes.
-Customer Patrat with 5 items present for 33 minutes.
+	Customer Abra with 4 items present for 40 minutes.
+	Customer Bulbasaur with 0 items present for 0 minutes.
+	Customer Caterpie with 1 items present for 40 minutes.
+	Customer Darkrai with 5 items present for 33 minutes.
+	Customer Golem with 2 items present for 25 minutes.
+	Customer Hoopa with 2 items present for 41 minutes.
+	Customer Kadabra with 6 items present for 34 minutes.
+	Customer Patrat with 5 items present for 33 minutes.
 
-
-Select an operation from the following menu: 7
+You know the choices! Select one: 7
 The following customer is in the first checkout line:
 	Customer Pidgey has 7 items in the shopping basket.
 No customers are in the second checkout line!
 No customers are in the express checkout line!
 
-
-Select an operation from the following menu: 8
+You know the choices! Select one: 8
 Items at re-stocking level: 
 bread with 1 items.
 juice with 0 items.
 water with 2 items.
 
-Select an operation from the following menu: 2
+You know the choices! Select one: 2
 >>Enter customer name : Patrat
 What item does Patrat want? banana
 Customer Patrat has now 6 items in the shopping cart.
 
-Select an operation from the following menu: 2
+You know the choices! Select one: 2
 >>Enter customer name : Bulbasaur
 What item does Bulbasaur want? juice
 No juices in stock.
 
-Select an operation from the following menu: 4
+You know the choices! Select one: 4
 After 42 minutes in the Shopping Center, customer Hoopa with 2 is now in the express line.
 
-Select an operation from the following menu: 6
+You know the choices! Select one: 6
 The following 7 customers are in the Shopping Center:
-Customer Abra with 4 items present for 41 minutes.
-Customer Bulbasaur with 0 items present for 1 minutes.
-Customer Caterpie with 1 items present for 41 minutes.
-Customer Darkrai with 5 items present for 34 minutes.
-Customer Golem with 2 items present for 26 minutes.
-Customer Kadabra with 6 items present for 35 minutes.
-Customer Patrat with 6 items present for 34 minutes.
+	Customer Abra with 4 items present for 41 minutes.
+	Customer Bulbasaur with 0 items present for 1 minutes.
+	Customer Caterpie with 1 items present for 41 minutes.
+	Customer Darkrai with 5 items present for 34 minutes.
+	Customer Golem with 2 items present for 26 minutes.
+	Customer Kadabra with 6 items present for 35 minutes.
+	Customer Patrat with 6 items present for 34 minutes.
 
-
-Select an operation from the following menu: 7
+You know the choices! Select one: 7
 The following customer is in the first checkout line:
 	Customer Pidgey has 7 items in the shopping basket.
 No customers are in the second checkout line!
 The following customer is in the express checkout line:
 	Customer Hoopa has 2 items in the shopping basket.
 
-
-Select an operation from the following menu: 8
+You know the choices! Select one: 8
 Items at re-stocking level: 
 bread with 1 items.
 juice with 0 items.
 water with 2 items.
 
-Select an operation from the following menu: 2
+You know the choices! Select one: 2
 >>Enter customer name : Caterpie
 What item does Caterpie want? Darkrai
 No Darkrais in Shopping Center.
 
-Select an operation from the following menu: This is not an option. Try again.
+You know the choices! Select one: This is not an option. Try again.
 6
 The following 7 customers are in the Shopping Center:
-Customer Abra with 4 items present for 41 minutes.
-Customer Bulbasaur with 0 items present for 1 minutes.
-Customer Caterpie with 1 items present for 41 minutes.
-Customer Darkrai with 5 items present for 34 minutes.
-Customer Golem with 2 items present for 26 minutes.
-Customer Kadabra with 6 items present for 35 minutes.
-Customer Patrat with 6 items present for 34 minutes.
+	Customer Abra with 4 items present for 41 minutes.
+	Customer Bulbasaur with 0 items present for 1 minutes.
+	Customer Caterpie with 1 items present for 41 minutes.
+	Customer Darkrai with 5 items present for 34 minutes.
+	Customer Golem with 2 items present for 26 minutes.
+	Customer Kadabra with 6 items present for 35 minutes.
+	Customer Patrat with 6 items present for 34 minutes.
 
-
-Select an operation from the following menu: 7
+You know the choices! Select one: 7
 The following customer is in the first checkout line:
 	Customer Pidgey has 7 items in the shopping basket.
 No customers are in the second checkout line!
 The following customer is in the express checkout line:
 	Customer Hoopa has 2 items in the shopping basket.
 
-
-Select an operation from the following menu: 8
+You know the choices! Select one: 8
 Items at re-stocking level: 
 bread with 1 items.
 juice with 0 items.
 water with 2 items.
 
-Select an operation from the following menu: 3
+You know the choices! Select one: 3
 >>Enter customer name : Hoopa
->>Enter customer name : 
-Darkrai
+Customer Hoopa is in a checkoutline !
+>>Enter customer name : Darkrai
 Customer Darkrai has now 4 items in the shopping cart.
 
-Select an operation from the following menu: 4
+You know the choices! Select one: 4
 After 42 minutes in the Shopping Center, customer Abra with 4 is now in the second checkout line.
 
-Select an operation from the following menu: 4
+You know the choices! Select one: 4
 After 42 minutes in the Shopping Center, customer Caterpie with 1 is now in the express line.
 
-Select an operation from the following menu: 4
+You know the choices! Select one: 4
 After 36 minutes in the Shopping Center, customer Kadabra with 6 is now in the first checkout line.
 
-Select an operation from the following menu: 4
+You know the choices! Select one: 4
 After 35 minutes in the Shopping Center, customer Darkrai with 4 is now in the express line.
 
-Select an operation from the following menu: 6
+You know the choices! Select one: 6
 The following 3 customers are in the Shopping Center:
-Customer Bulbasaur with 0 items present for 2 minutes.
-Customer Golem with 2 items present for 27 minutes.
-Customer Patrat with 6 items present for 35 minutes.
+	Customer Bulbasaur with 0 items present for 2 minutes.
+	Customer Golem with 2 items present for 27 minutes.
+	Customer Patrat with 6 items present for 35 minutes.
 
-
-Select an operation from the following menu: 7
+You know the choices! Select one: 7
 The following 2 customers are in the first checkout line:
 	Customer Pidgey has 7 items in the shopping basket.
 	Customer Kadabra has 6 items in the shopping basket.
@@ -567,138 +553,144 @@ The following 3 customers are in the express checkout line:
 	Customer Caterpie has 1 items in the shopping basket.
 	Customer Darkrai has 4 items in the shopping basket.
 
-
-Select an operation from the following menu: 8
+You know the choices! Select one: 8
 Items at re-stocking level: 
 bread with 1 items.
 juice with 0 items.
 water with 2 items.
 
-Select an operation from the following menu: 5
-Should customer Hoopa leave or keep on shopping? Leave?(Y/N):Customer Hoopa with 2 items  returned to shopping.
+You know the choices! Select one: 5
+Should customer Abra leave or keep on shopping? Leave?(Y/N): N
 
-Select an operation from the following menu: 5
-Should customer Pidgey leave or keep on shopping? Leave?(Y/N):CustomerPidgey is now leaving the Shopping Center.
-Select an operation from the following menu: 6
+Customer Abra with 4 items returned to shopping.
+
+You know the choices! Select one: 5
+Should customer Hoopa leave or keep on shopping? Leave?(Y/N): Y
+
+Customer Hoopa is now leaving the Shopping Center.
+
+You know the choices! Select one: 6
 The following 4 customers are in the Shopping Center:
-Customer Bulbasaur with 0 items present for 2 minutes.
-Customer Golem with 2 items present for 27 minutes.
-Customer Hoopa with 2 items present for 0 minutes.
-Customer Patrat with 6 items present for 35 minutes.
+	Customer Abra with 4 items present for 0 minutes.
+	Customer Bulbasaur with 0 items present for 2 minutes.
+	Customer Golem with 2 items present for 27 minutes.
+	Customer Patrat with 6 items present for 35 minutes.
 
-
-Select an operation from the following menu: 7
-The following customer is in the first checkout line:
+You know the choices! Select one: 7
+The following 2 customers are in the first checkout line:
+	Customer Pidgey has 7 items in the shopping basket.
 	Customer Kadabra has 6 items in the shopping basket.
-The following customer is in the second checkout line:
-	Customer Abra has 4 items in the shopping basket.
+No customers are in the second checkout line!
 The following 2 customers are in the express checkout line:
 	Customer Caterpie has 1 items in the shopping basket.
 	Customer Darkrai has 4 items in the shopping basket.
 
-
-Select an operation from the following menu: 8
+You know the choices! Select one: 8
 Items at re-stocking level: 
 bread with 1 items.
 juice with 0 items.
 water with 2 items.
 
-Select an operation from the following menu: 1
+You know the choices! Select one: 1
 >>Enter customer name : Golem
 Customer Golem is already in the Shopping Center!
 >>Enter customer name : Caterpie
 Customer Caterpie is already in the Shopping Center!
 >>Enter customer name : Hoopa
-Customer Hoopa is already in the Shopping Center!
->>Enter customer name : 5
-Customer 5 is now in the Shopping Center.
+Customer Hoopa is now in the Shopping Center.
 
-Select an operation from the following menu: This is not an option. Try again.
-5
-Should customer Abra leave or keep on shopping? Leave?(Y/N):CustomerAbra is now leaving the Shopping Center.
-Select an operation from the following menu: 5
-Should customer Caterpie leave or keep on shopping? Leave?(Y/N):CustomerCaterpie is now leaving the Shopping Center.
-Select an operation from the following menu: 5
-Should customer Kadabra leave or keep on shopping? Leave?(Y/N):CustomerKadabra is now leaving the Shopping Center.
-Select an operation from the following menu: 6
+You know the choices! Select one: 5
+Should customer Pidgey leave or keep on shopping? Leave?(Y/N): Y
+
+Customer Pidgey is now leaving the Shopping Center.
+
+You know the choices! Select one: 5
+Should customer Caterpie leave or keep on shopping? Leave?(Y/N): Y
+
+Customer Caterpie is now leaving the Shopping Center.
+
+You know the choices! Select one: 5
+Should customer Darkrai leave or keep on shopping? Leave?(Y/N): Y
+
+Customer Darkrai is now leaving the Shopping Center.
+
+You know the choices! Select one: 5
+Should customer Kadabra leave or keep on shopping? Leave?(Y/N): Y
+
+Customer Kadabra is now leaving the Shopping Center.
+
+You know the choices! Select one: 6
 The following 5 customers are in the Shopping Center:
-Customer 5 with 0 items present for 0 minutes.
-Customer Bulbasaur with 0 items present for 2 minutes.
-Customer Golem with 2 items present for 27 minutes.
-Customer Hoopa with 2 items present for 0 minutes.
-Customer Patrat with 6 items present for 35 minutes.
+	Customer Abra with 4 items present for 0 minutes.
+	Customer Bulbasaur with 0 items present for 2 minutes.
+	Customer Golem with 2 items present for 27 minutes.
+	Customer Hoopa with 0 items present for 0 minutes.
+	Customer Patrat with 6 items present for 35 minutes.
 
-
-Select an operation from the following menu: 7
-No customers are in the first checkout line!
-No customers are in the second checkout line!
-The following customer is in the express checkout line:
-	Customer Darkrai has 4 items in the shopping basket.
-
-
-Select an operation from the following menu: 8
-Items at re-stocking level: 
-bread with 1 items.
-juice with 0 items.
-water with 2 items.
-
-Select an operation from the following menu: 5
-Should customer Darkrai leave or keep on shopping? Leave?(Y/N):Customer Darkrai with 4 items  returned to shopping.
-
-Select an operation from the following menu: 6
-The following 6 customers are in the Shopping Center:
-Customer 5 with 0 items present for 0 minutes.
-Customer Bulbasaur with 0 items present for 2 minutes.
-Customer Darkrai with 4 items present for 0 minutes.
-Customer Golem with 2 items present for 27 minutes.
-Customer Hoopa with 2 items present for 0 minutes.
-Customer Patrat with 6 items present for 35 minutes.
-
-
-Select an operation from the following menu: 7
+You know the choices! Select one: 7
 No customers are in the first checkout line!
 No customers are in the second checkout line!
 No customers are in the express checkout line!
 
-
-Select an operation from the following menu: 8
+You know the choices! Select one: 8
 Items at re-stocking level: 
 bread with 1 items.
 juice with 0 items.
 water with 2 items.
 
-Select an operation from the following menu: 2
+You know the choices! Select one: 5
+	No customers in any line.
+
+You know the choices! Select one: This is not an option. Try again.
+6
+The following 5 customers are in the Shopping Center:
+	Customer Abra with 4 items present for 0 minutes.
+	Customer Bulbasaur with 0 items present for 2 minutes.
+	Customer Golem with 2 items present for 27 minutes.
+	Customer Hoopa with 0 items present for 0 minutes.
+	Customer Patrat with 6 items present for 35 minutes.
+
+You know the choices! Select one: 7
+No customers are in the first checkout line!
+No customers are in the second checkout line!
+No customers are in the express checkout line!
+
+You know the choices! Select one: 8
+Items at re-stocking level: 
+bread with 1 items.
+juice with 0 items.
+water with 2 items.
+
+You know the choices! Select one: 2
 >>Enter customer name : Bulbasaur
 What item does Bulbasaur want? soup
 Customer Bulbasaur has now 1 item in the shopping cart.
 
-Select an operation from the following menu: 4
+You know the choices! Select one: 4
 After 36 minutes in the Shopping Center, customer Patrat with 6 is now in the first checkout line.
 
-Select an operation from the following menu: 5
-Should customer Patrat leave or keep on shopping? Leave?(Y/N):CustomerPatrat is now leaving the Shopping Center.
-Select an operation from the following menu: 6
-The following 5 customers are in the Shopping Center:
-Customer 5 with 0 items present for 1 minutes.
-Customer Bulbasaur with 1 items present for 3 minutes.
-Customer Darkrai with 4 items present for 1 minutes.
-Customer Golem with 2 items present for 28 minutes.
-Customer Hoopa with 2 items present for 1 minutes.
+You know the choices! Select one: 5
+Should customer Patrat leave or keep on shopping? Leave?(Y/N): Y
 
+Customer Patrat is now leaving the Shopping Center.
 
-Select an operation from the following menu: 7
+You know the choices! Select one: 6
+The following 4 customers are in the Shopping Center:
+	Customer Abra with 4 items present for 1 minutes.
+	Customer Bulbasaur with 1 items present for 3 minutes.
+	Customer Golem with 2 items present for 28 minutes.
+	Customer Hoopa with 0 items present for 1 minutes.
+
+You know the choices! Select one: 7
 No customers are in the first checkout line!
 No customers are in the second checkout line!
 No customers are in the express checkout line!
 
-
-Select an operation from the following menu: 8
+You know the choices! Select one: 8
 Items at re-stocking level: 
 bread with 1 items.
 juice with 0 items.
 water with 2 items.
 
-Select an operation from the following menu: 0
+You know the choices! Select one: 0
 Exiting program...Good Bye
-
-Select an operation from the following menu: 

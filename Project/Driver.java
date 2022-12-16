@@ -84,7 +84,7 @@ public class Driver {
                 invalidInput();
                 break;
             }
-            System.out.print("\nSelect an operation from the following menu: ");
+            if(choice!=0) System.out.print("\nYou know the choices! Select one: ");
         } while(choice != 0);// do while choice is not 0
 
 
